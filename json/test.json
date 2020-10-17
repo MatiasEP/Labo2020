@@ -1,0 +1,26 @@
+{
+    "Usuarios":
+    [
+        {
+            "id":"123",
+            "nombre":"tu vieja",            
+            "recetas":
+            [
+                {
+                    "id":"1",
+                    "titulo":"tu vieja",
+                    "imagen":"./tu vieja.jpg",
+                    "pasos":
+                    [
+                        "roa chupate una pija",
+                        "o 2, como mas te guste"
+                    ]
+                }
+            ]
+        },
+        {
+            "id":"123",
+            "nombre":"tu vieja x2"
+        }
+    ]
+}
