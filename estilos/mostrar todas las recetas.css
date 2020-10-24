@@ -1,0 +1,23 @@
+.thumbnail
+{
+    max-width: 100%;
+    max-height: 20rem;
+    display:block;
+    margin:auto;
+}
+
+.panel .panel-primary
+{
+    padding:0; 
+    margin:1rem;
+}
+
+.panel-heading
+{
+    text-align:center;
+}
+
+.panel-body
+{
+    padding:0;
+}
