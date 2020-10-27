@@ -28,7 +28,7 @@
                 $rows = $client->executeQuery("proyecto.recetas", $query); // $mongo contains the connection object to MongoDB
                 foreach($rows as $r)
                 {
-                    if($r->visible)
+                    if($r->visible and $r->activado)
                     {                        
                         echo("<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>");
                         echo("<div class='panel panel-primary' >");    
