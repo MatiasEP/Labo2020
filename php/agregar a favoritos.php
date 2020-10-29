@@ -11,7 +11,7 @@
         $query = new BulkWrite();
         $query->update(['_idUsuario' => $idUsuario],
         ['$addset' => ['Recetas' => $idReceta]]);
-        $client->executeBulkWrite("proyecto.favoritos",$bw);
+        $client->executeBulkWrite("proyecto.favoritos",$query);
     }
    
 ?>
