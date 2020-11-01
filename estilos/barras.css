@@ -1,0 +1,101 @@
+.centrado
+{
+    align-items: center;
+
+}
+.select-group
+{
+    justify-content: center;
+}
+
+.select-group input.form-control
+{ 
+    width: 85%
+}
+.select-group select.input-group-addon 
+{ 
+    width: 15%; 
+}
+.select-group
+{
+    padding-top: 10px;
+}
+
+.perfil
+{
+    width: 5rem;
+    height: 5rem;
+}
+
+img{
+    width: 20rem;
+    height: 20rem;
+}
+
+.main
+{
+    margin-top: 5rem;
+    display: block;
+}
+.card
+{
+    margin: 2rem;
+    align-content: center;
+}
+body,html{
+    height: 100%;
+}
+
+.container-fluid
+{
+    display: block;
+}
+
+.sidebtn
+{
+    color: #f1f1f1;
+    padding-left: 0%;
+    margin-left: 0%;
+}
+body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1eded;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }

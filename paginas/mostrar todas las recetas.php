@@ -15,7 +15,7 @@
     <title>Inicio</title>
 </head>
 <body>
-    <div class="container" >
+    <div class="container cPrincipal" >
         <div class="row" id="main">
 
         </div>
