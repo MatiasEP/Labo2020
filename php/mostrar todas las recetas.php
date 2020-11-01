@@ -10,8 +10,11 @@
     $options = ['sort' =>['_id'=>-1],];
     $query = new MongoDB\Driver\Query($filter,$options);
     $rows = $client->executeQuery("proyecto.recetas", $query); // $mongo contains the connection object to MongoDB    
-    $file = '../json/mostrar%20todas%20las%20recetas.json';
-    unlink($file);
+    $file = '../json/mostrar todas las recetas.json';
+    if(file_exists($file))
+    {        
+        unlink($file);
+    }
     //file_put_contents($file,"[",FILE_APPEND | LOCK_EX);
     $array = array();
     foreach ($rows as $row) 

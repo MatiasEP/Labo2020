@@ -10,6 +10,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./estilo.css" type="text/css">
     <script src= "../scripts/agregar receta.js"></script>
+    <?php include '../php/barras.php';
+        ?>
     <title>Agregar receta</title>
     
 
