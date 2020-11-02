@@ -1,7 +1,7 @@
 html
 {
     font-family: 'Roboto';
-    background: url(image_example.jpg) no-repeat center fixed;    
+    background: url(../imagenes/image_example.jpg) no-repeat center fixed;    
 }
 
 .centrado
