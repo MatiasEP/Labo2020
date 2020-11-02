@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="./estilo.css" type="text/css">
+        <link rel="stylesheet" href="../estilos/barras.css" type="text/css">
         <title>Document</title>
     </head>
     <body>
@@ -60,7 +60,6 @@
                         <div class="input-group select-group form-group col-lg-6">
                             <select class="form-control input-group-addon ">
                                 <option value="1"> Titulo </option>
-                                <option value="2"> Tipo </option>
                                 <option value="3"> Ingredientes </option>
                             </select> 
                             <input type="text" class="form-control" placeholder="Buscar..."/>
@@ -78,169 +77,6 @@
             </div>
         </nav>
         
-        
-        <div class="main ">
-            <h1 class="title-page">Inicio</h1>
-            <!------->
-            <div class="row">
-                <div class="card col-lg-4 shadow-card" style="width: 18rem;">
-                    <img src="./pollo frito.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-
-                        <h3><strong> Card title </strong></h3>
-                        <p class="card-text"><small> This is a wider card with supporting text below as a natural lead-in... </small></p>
-                        <ul class="list-inline small">
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_half </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                        </ul>
-                        <a href="#" id="btn_1" class="btn btn-primary"> Ver más... </a>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>                        
-                        
-                    </div>
-                </div>
-                
-                <div class="card col-lg-4 shadow-card" style="width: 18rem;">
-                    <img src="./pollo frito.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-
-                        <h3><strong> Card title </strong></h3>
-                        <p class="card-text"><small> This is a wider card with supporting text below as a natural lead-in... </small></p>
-                        <ul class="list-inline small">
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_half </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                        </ul>
-                        <a href="#" id="btn_1" class="btn btn-primary"> Ver más... </a>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>                        
-                        
-                    </div>
-                </div>
-                
-                <div class="card col-lg-4 shadow-card" style="width: 18rem;">
-                    <img src="./pollo frito.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-
-                        <h3><strong> Card title </strong></h3>
-                        <p class="card-text"><small> This is a wider card with supporting text below as a natural lead-in... </small></p>
-                        <ul class="list-inline small">
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_half </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                        </ul>
-                        <a href="#" id="btn_1" class="btn btn-primary"> Ver más... </a>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>                        
-                        
-                    </div>
-                </div>
-                
-                <div class="card col-lg-4 shadow-card" style="width: 18rem;">
-                    <img src="./pollo frito.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-
-                        <h3><strong> Card title </strong></h3>
-                        <p class="card-text"><small> This is a wider card with supporting text below as a natural lead-in... </small></p>
-                        <ul class="list-inline small">
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_half </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                        </ul>
-                        <a href="#" id="btn_1" class="btn btn-primary"> Ver más... </a>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>                        
-                        
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="row">
-                <div class="card col-lg-4 shadow-card" style="width: 18rem;">
-                    <img src="./pollo frito.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-
-                        <h3><strong> Card title </strong></h3>
-                        <p class="card-text"><small> This is a wider card with supporting text below as a natural lead-in... </small></p>
-                        <ul class="list-inline small">
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_half </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                        </ul>
-                        <a href="#" id="btn_1" class="btn btn-primary"> Ver más... </a>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>                        
-                        
-                    </div>
-                </div>
-                
-                <div class="card col-lg-4 shadow-card" style="width: 18rem;">
-                    <img src="./pollo frito.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-
-                        <h3><strong> Card title </strong></h3>
-                        <p class="card-text"><small> This is a wider card with supporting text below as a natural lead-in... </small></p>
-                        <ul class="list-inline small">
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_half </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                        </ul>
-                        <a href="#" id="btn_1" class="btn btn-primary"> Ver más... </a>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>                        
-                        
-                    </div>
-                </div>
-                
-                <div class="card col-lg-4 shadow-card" style="width: 18rem;">
-                    <img src="./pollo frito.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-
-                        <h3><strong> Card title </strong></h3>
-                        <p class="card-text"><small> This is a wider card with supporting text below as a natural lead-in... </small></p>
-                        <ul class="list-inline small">
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_half </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                        </ul>
-                        <a href="#" id="btn_1" class="btn btn-primary"> Ver más... </a>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>                        
-                        
-                    </div>
-                </div>
-                
-                <div class="card col-lg-4 shadow-card" style="width: 18rem;">
-                    <img src="./pollo frito.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-
-                        <h3><strong> Card title </strong></h3>
-                        <p class="card-text"><small> This is a wider card with supporting text below as a natural lead-in... </small></p>
-                        <ul class="list-inline small">
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_half </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                            <li class="list-inline-item m-0"><i class="fa material-icons fa-2x"> star_border </i></li>
-                        </ul>
-                        <a href="#" id="btn_1" class="btn btn-primary"> Ver más... </a>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>                        
-                        
-                    </div>
-                </div>
-                
-            </div>            
-            <!------->
-        </div>
         
     </body>
 </html>
