@@ -5,15 +5,19 @@
     display:block;
     margin:auto;
 }
-
+.panel{
+    
+    border-color: black;
+}
 .panel .panel-primary
 {
     padding:0; 
     margin:1rem;
 }
 
-.panel-heading
+.panel-primary >.panel-heading
 {
+    background-color: black;
     text-align:center;
 }
 
@@ -31,9 +35,4 @@ body
 {
     height: 100%;
     padding-top: 0%;
-}
-
-.navbar
-{
-    margin-bottom: 0%;
 }
