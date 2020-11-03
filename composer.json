@@ -1,0 +1,11 @@
+{
+    "name": "algalarza/labo2020",
+    "description": "labo2020",
+    "type": "project",
+    "require": {
+		"mongodb/mongodb": "^1.7",
+        "soyuka/stubs-mongodb": "^1.0",
+        "google/apiclient": "^2.8"
+
+    }
+}

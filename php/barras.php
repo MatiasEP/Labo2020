@@ -2,6 +2,8 @@
 <!------------------------------------- SECTOR GOOGLE ICONS -------------------------------------->        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../estilos/barras.css" type="text/css">
+        <script src= "../scripts/servicios.js"></script>
+
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <form action="" class="navbar-left" id="buscador">
@@ -19,6 +21,8 @@
                         <a href="#">Sopas &amp; Cremas</a>
                         <a href="#">Verduras</a>
                         <a href="#">Legumbres</a>
+                        <a id="sesionData"href="#"></a>
+                        <a id ="micuenta" href="#"></a>
                     </div>
                     <span style="font-size:30px;cursor:pointer" class="sidebtn navbar-brand" onclick="openNav()">&#9776;</span>
 
