@@ -2,6 +2,8 @@
 <!------------------------------------- SECTOR GOOGLE ICONS -------------------------------------->        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../estilos/barras.css" type="text/css">
+        <?php include "../php/get_categorias.php" ?>
+        <script src= "../scripts/categorias.js"></script>
         <script src= "../scripts/servicios.js"></script>
 
         <nav class="navbar navbar-inverse">
@@ -9,18 +11,6 @@
                 <form action="" class="navbar-left" id="buscador">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="#">Pastas</a>
-                        <a href="#">Carnes</a>
-                        <a href="#">Salsas</a>
-                        <a href="#">Huevos &amp; Lacteos</a>
-                        <a href="#">Panificados</a>
-                        <a href="#">Coctéles &amp; Bebidas</a>
-                        <a href="#">Aperitivos</a>
-                        <a href="#">Ensaladas</a>
-                        <a href="#">Postres</a>
-                        <a href="#">Sopas &amp; Cremas</a>
-                        <a href="#">Verduras</a>
-                        <a href="#">Legumbres</a>
                         <a id="sesionData"href="#"></a>
                         <a id ="micuenta" href="#"></a>
                     </div>
