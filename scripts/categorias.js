@@ -10,7 +10,7 @@ function mostrarCategorias()
         request.done(function(data) { 
         for(let j = 0; j<data.length ; j++)
         {
-            $(".closebtn").after("<a href=#>"+data[j]["nombre"]+"</a>\n");
+            $(".closebtn").after("<a href=./mostrar%20recetas%20por%20tipo.php?categoria="+data[j]["nombre"]+">"+data[j]["nombre"]+"</a>\n");
         }
     });
     request.fail(function() {
