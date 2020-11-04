@@ -4,8 +4,7 @@
     use \MongoDB\Driver\ReadPreference;
     use \MongoDB\Driver\Aggregate;
     use \MongoDB\Driver\Command;
-    $titulo = isset($_POST["titulo"])?$_POST["titulo"]:'';
-    $titulo = "vieja en tanga test2";//provisorio para test
+    $titulo = isset($_POST["titulo"])?$_POST["busqueda"]:'';
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
     if($titulo != '')

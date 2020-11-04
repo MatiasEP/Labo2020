@@ -8,7 +8,7 @@
 
         <nav class="navbar navbar-inverse">
             <div class="container">
-                <form action="" class="navbar-left" id="buscador">
+                <form action="./mostrar recetas por titulo.php" method="post" class="navbar-left" id="buscador">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a id="sesionData"href="#"></a>
@@ -39,9 +39,9 @@
                         <div class="input-group select-group form-group col-lg-6">
                             <select class="form-control input-group-addon ">
                                 <option value="1"> Titulo </option>
-                                <option value="3"> Ingredientes </option>
+                                <option value="2"> Ingredientes </option>
                             </select> 
-                            <input type="text" class="form-control" placeholder="Buscar..."/>
+                            <input type="text" class="form-control" name="busqueda" placeholder="Buscar..."/>
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                     <i class="glyphicon glyphicon-search"></i>

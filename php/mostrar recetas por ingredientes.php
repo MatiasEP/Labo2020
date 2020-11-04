@@ -2,11 +2,9 @@
     use \MongoDB\Driver\BulkWrite;
     use \MongoDB\Driver\Query;
     use \MongoDB\Driver\ReadPreference;
-    $ingrediente = isset($_POST["ingrediente"])?$_POST["ingrediente"]:'';
+    $ingrediente = isset($_POST["busqueda"])?$_POST["busqueda"]:'';
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
-    $ingrediente = isset($_POST["ingrediente"])?$_POST["ingrediente"]:'';
-    $ingrediente = "pepino";//provisorio para test
     if($ingrediente !='')
     {            
         $filter = ["ingredientes.descripcion"=>$ingrediente];
