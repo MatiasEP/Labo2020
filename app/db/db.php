@@ -18,19 +18,24 @@ use MongoDB\Client;
            
 
             $coleccionu = $this->getConnection()->proyecto->usuarios;
-            $coleccionu->insertOne(array("googleID"=>$resultadog->getInsertedId(),"nombre"=>$payload->givenName,"visible"=>FALSE));
+            $resultadou=$coleccionu->insertOne(array("googleID"=>$resultadog->getInsertedId(),"nombre"=>$payload->givenName,"visible"=>FALSE));
 
             $coleccionr = $this->getConnection()->proyecto->roles;
             $coleccionr->insertOne(array("googleID"=>$resultadog->getInsertedId(),"roles"=>array("crearReceta","eliminarPost","verReceta","comentarReceta")));
+
+            $coleccionf = $this->getConnection()->proyecto->favoritos;
+            $coleccionf->insertOne(array("_idUsuario"=>$resultadou->getInsertedId(),"Recetas"=>array()));
+
 
             return $resultadog;
         }
 
         public function findGooleUser($payload)
         {
-            $coleccion = $this->getConnection()->proyecto->google_users;
-            $resultado = $coleccion->findOne(['email' => $payload->email]);
-            return $resultado;
+            $colecciong = $this->getConnection()->proyecto->google_users;
+            $resultadog = $colecciong->findOne(['email' => $payload->email]);
+            
+            return $resultadog;
         }
         
         public function findGoogleUserId($id)

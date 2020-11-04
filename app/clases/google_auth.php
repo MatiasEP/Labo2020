@@ -11,7 +11,7 @@
                 $this->client->setClientId('551225167982-o60lgfjtranukq6grujqoh64figblk86.apps.googleusercontent.com');
                 $this->client->setClientSecret('MQ0PTluu8ngMWSsaDMf09YNj');
                 $this->client->setRedirectUri('http://localhost/Labo2020/index.php');         
-                
+                $this->client->setApprovalPrompt('force');
                 //$this->client->setRedirectUri('http://localhost/Labo2020/paginas/mostrartodaslasrecetas.php');         
                 
                 $this->client->AddScope('email');
