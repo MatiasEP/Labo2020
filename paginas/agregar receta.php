@@ -25,8 +25,11 @@
         <label for="imgPrincipal">Foto de la receta: </label><br>
         <input autocomplete="off" autofocus value="" type="file" id="imgPrincipal" name="imgPrincipal"><br>
         <div id="listTipos">
-            <label for="tipo">Tipo: </label><br>
-            <input type="text" name="tipo" id="tipo" placeholder="Ingrese un tipo..."><br><br>
+            <div >
+                <label for="tipo">Tipo: </label><br>
+                <select name="tipo[]" id="tipo">
+                </select><br><br>
+            </div>
         </div>
         <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
         <input name="agregarTipo" id="agregarTipo" type="button" value="Agregar tipo" ></button><br><br>
