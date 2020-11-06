@@ -6,11 +6,22 @@
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
     if($ingrediente !='')
-    {            
-        $filter = ["ingredientes.descripcion"=>$ingrediente];
-        $options = ['sort' =>['_id'=>-1],];
-        $query = new MongoDB\Driver\Query($filter,$options);
-        $rows = $client->executeQuery("proyecto.recetas", $query); // $mongo contains the connection object to MongoDB    
+    {   
+        $command = new MongoDB\Driver\command([
+        'aggregate' => 'recetas',
+        'pipeline' => [['$search'=>[
+            "index"=>"BusquedaIngredientes",
+            "search"=>[
+                "path"=>"ingredientes.descripcion",
+                "query"=>$ingrediente
+            ],
+            "highlight"=>[
+                "path"=>"ingredientes.descripcion"
+            ]]
+            ]],
+            'cursor' => new stdClass()
+        ]);
+        $rows = $client->executeCommand('proyecto', $command);  
         $file = '../json/mostrar recetas por ingredientes.json';
         if(file_exists($file))
         {        
