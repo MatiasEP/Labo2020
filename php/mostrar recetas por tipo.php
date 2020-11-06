@@ -4,10 +4,10 @@
     use \MongoDB\Driver\ReadPreference;
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
-    $ingrediente = isset($_GET["categoria"])?$_GET["categoria"]:'';
-    if($ingrediente !='')
+    $categoria = isset($_GET["categoria"])?$_GET["categoria"]:'';
+    if($categoria !='')
     {            
-        $filter = ["tipo"=>$ingrediente];
+        $filter = ["tipo"=>$categoria];
         $options = ['sort' =>['_id'=>-1],];
         $query = new MongoDB\Driver\Query($filter,$options);
         $rows = $client->executeQuery("proyecto.recetas", $query); // $mongo contains the connection object to MongoDB    

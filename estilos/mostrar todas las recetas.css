@@ -21,6 +21,12 @@
     text-align:center;
 }
 
+.panel-footer
+{
+    height: 3.5rem;
+    overflow: hidden;
+}
+
 .panel-body
 {
     padding:0;

@@ -27,7 +27,7 @@ function mostrarRecetasPorTipo()
             "<div class='panel-heading'>"+data[i]["titulo"]+"</div>"+
             "<div class='panel-body' >"+       
             "<img src="+data[i]["imagen"]+" class='thumbnail' alt='preview'>"+
-            "<div class='panel-footer' >Tipo: "+tipos(data[i]["tipo"])+
+            "<div class='panel-footer' >Categoria: "+tipos(data[i]["tipo"])+
             
             "</div>"+
             "</div>"+
