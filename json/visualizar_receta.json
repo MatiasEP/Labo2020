@@ -1,0 +1,1 @@
+[{"_id":{"$oid":"5fa58577bd0d000028004567"},"_idCreador":3,"titulo":"test select","imagen":"..\/imagenes\/68f8b9dc-d378-41d1-8974-97701267d538.jpg","tipo":["Legumbres","Cocteles Y Bebidas"],"ingredientes":[{"descripcion":"select","cantidad":"2"}],"pasos":[{"descripcion":"asdas","imagen":"..\/imagenes\/3611259433.jpeg"}],"activado":false,"visible":false}]

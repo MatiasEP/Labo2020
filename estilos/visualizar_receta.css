@@ -1,0 +1,49 @@
+.container
+{
+    background-color: aliceblue;
+}
+
+.thumbnail
+{
+    max-width: 100%;
+    max-height: 20rem;
+    display:block;
+    margin:auto;
+}
+.panel{
+    
+    border-color: black;
+}
+.panel .panel-primary
+{
+    padding:0; 
+    margin:1rem;
+}
+
+.panel-primary >.panel-heading
+{
+    background-color: black;
+    text-align:center;
+}
+
+.panel-footer
+{
+    height: 3.5rem;
+    overflow: hidden;
+}
+
+.panel-body
+{
+    padding:0;
+}
+
+body
+{
+    background-color: dimgray;
+}
+
+.cPrincipal
+{
+    height: 100%;
+    padding-top: 0%;
+}

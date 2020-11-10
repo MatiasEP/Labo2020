@@ -26,7 +26,7 @@ function mostrarTodasLasRecetas()
             "<div class='panel panel-primary' >"+   
             "<div class='panel-heading'>"+data[i]["titulo"]+"</div>"+
             "<div class='panel-body' >"+       
-            "<img src="+data[i]["imagen"]+" class='thumbnail' alt='no tenia fotos de culo'>"+
+            "<a href='../paginas/visualizar_receta.php?id="+(Object.values(data[i]["_id"]))[0]+"'><img src="+data[i]["imagen"]+" class='thumbnail' alt='preview'></a>"+
             "<div class='panel-footer' >Categoria: "+tipos(data[i]["tipo"])+
             
             "</div>"+
