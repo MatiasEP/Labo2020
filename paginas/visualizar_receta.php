@@ -10,8 +10,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../estilos/visualizar_receta.css" type="text/css">
     <?php include '../php/barras.php';
-        include '../php/visualizar_receta.php'?>
+        include '../php/get_comentarios.php';
+        include '../php/visualizar_receta.php';?>
     <script src="../scripts/visualizar_receta.js" async></script>
+    <script src="../scripts/get_comentarios.js" async></script>
     <title>Inicio</title>
 </head>
 <body>
@@ -26,6 +28,9 @@
         </fieldset>
         <fieldset id="pasos">
             <legend>Pasos:</legend>
+        </fieldset><br><br>
+        <fieldset id="comentarios">
+            <legend>Comentarios:</legend>
         </fieldset>
 
     </div>
