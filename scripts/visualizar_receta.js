@@ -51,7 +51,109 @@ function visualizarReceta()
     });
 }
 
+function agregarAFavoritos()
+{
+    //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
+    //id de receta se tomara de la receta actual
+       /*let parametros = {
+        "idUsuario" : $idUsuario,
+        "idReceta" : $idReceta
+    };*/
+    let request = $.ajax(
+    {
+        //data: parametros,
+        method: "POST",
+        url: "../php/agregar_a_favoritos.php"
+    });
+        request.done(function(data) {  
+        
+    })
+    request.fail(function() {
+    alert("Algo salió mal");
+    });
+}
+
+function eliminarDeFavoritos()
+{
+    //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
+    //id de receta se tomara de la receta actual
+       /*let parametros = {
+        "idUsuario" : $idUsuario,
+        "idReceta" : $idReceta
+    };*/
+    let request = $.ajax(
+    {
+        //data: parametros,
+        method: "POST",
+        url: "../php/eliminar_de_favoritos.php"
+    });
+        request.done(function(data) {  
+        
+    })
+    request.fail(function() {
+    alert("Algo salió mal");
+    });
+}
+
+function crearJsonComprobarFavorito()
+{
+    //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
+    //id de receta se tomara de la receta actual
+       /*let parametros = {
+        "idUsuario" : $idUsuario,
+        "idReceta" : $idReceta
+    };*/
+    let request = $.ajax(
+        {
+            //data: parametros,
+            method: "POST",
+            url: "../php/comprobar_favorito.php"
+        });
+            request.done(function(data) {  
+            
+        })
+        request.fail(function() {
+        alert("Algo salió mal");
+        });
+}
+
+function cargarJsonComprobarFavorito()
+{
+    let request = $.ajax(
+        {
+            method: "POST",
+            url: "../json/comprobar_favorito.json"
+        });
+            request.done(function(data) {  
+            if(data.length == 0)
+            {
+                $("#favorito").text("Agregar a favoritos");
+                $("#favorito").on("click",agregarAFavoritos);
+                crearJsonComprobarFavorito();
+                setTimeout(cargarJsonComprobarFavorito,300);
+            }
+            else
+            {
+                $("#favorito").text("Eliminar de favoritos");                
+                $("#favorito").on("click",eliminarDeFavoritos);
+                crearJsonComprobarFavorito();
+                setTimeout(cargarJsonComprobarFavorito,300);
+            }
+            
+        })
+        request.fail(function() {
+        alert("Algo salió mal");
+        });
+}
+
+function comprobarFavorito()
+{
+    crearJsonComprobarFavorito();
+    setTimeout(cargarJsonComprobarFavorito,300);
+}
+
 function inicio()
 {
     visualizarReceta();
+    comprobarFavorito();
 }

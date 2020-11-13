@@ -29,6 +29,7 @@
         <fieldset id="pasos">
             <legend>Pasos:</legend>
         </fieldset><br><br>
+        <button id="favorito">Agregar a favoritos</button>
         <fieldset id="comentarios">
             <legend>Comentarios:</legend>
         </fieldset>
