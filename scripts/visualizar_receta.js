@@ -121,39 +121,41 @@ function cargarJsonComprobarFavorito()
 {
     let request = $.ajax(
         {
-            method: "POST",
+            method: "GET",
             url: "../json/comprobar_favorito.json"
         });
             request.done(function(data) {  
             if(data.length == 0)
             {
                 $("#favorito").text("Agregar a favoritos");
-                $("#favorito").on("click",agregarAFavoritos);
-                crearJsonComprobarFavorito();
-                setTimeout(cargarJsonComprobarFavorito,300);
+                $("#favorito").on("click",function()
+                {                    
+                    agregarAFavoritos();
+                })
             }
             else
             {
                 $("#favorito").text("Eliminar de favoritos");                
-                $("#favorito").on("click",eliminarDeFavoritos);
-                crearJsonComprobarFavorito();
-                setTimeout(cargarJsonComprobarFavorito,300);
+                $("#favorito").on("click",function()
+                {                    
+                    eliminarDeFavoritos();
+                })
             }
-            
         })
         request.fail(function() {
         alert("Algo salió mal");
         });
 }
 
-function comprobarFavorito()
-{
-    crearJsonComprobarFavorito();
-    setTimeout(cargarJsonComprobarFavorito,300);
-}
-
 function inicio()
 {
     visualizarReceta();
-    comprobarFavorito();
+    crearJsonComprobarFavorito();
+    setTimeout(cargarJsonComprobarFavorito,500);
+    $("#favorito").on("click",function()
+    {    
+        cargarJsonComprobarFavorito();
+        setTimeout(crearJsonComprobarFavorito,200);
+        setTimeout(cargarJsonComprobarFavorito,1200);
+    })
 }
