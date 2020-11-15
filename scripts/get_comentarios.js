@@ -8,9 +8,10 @@ function visualizarComentarios()
         url: "../json/comentarios.json"
     });
         request.done(function(data) {  
+            $("#divComentarios").empty();
         for(let i = 0; i<data.length;i++)
         {            
-            $("#comentarios").append(data[i]["usuario"][0]["nombre"]+" : "+data[i]["texto"]+"<br><br>")
+            $("#divComentarios").append(data[i]["usuario"][0]["nombre"]+" : "+data[i]["texto"]+"<br><br>")
         }
         
     })
