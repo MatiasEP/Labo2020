@@ -30,6 +30,7 @@
             <legend>Pasos:</legend>
         </fieldset><br><br>
         <button id="favorito">Agregar a favoritos</button>
+        <button id="descargar">Descargar como PDF</button>
         <fieldset id="comentarios">
             <legend>Comentarios:</legend>
         </fieldset>
