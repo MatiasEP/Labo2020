@@ -66,6 +66,7 @@ function agregarAFavoritos()
         url: "../php/agregar_a_favoritos.php"
     });
         request.done(function(data) {  
+            comprobarFavorito();
         
     })
     request.fail(function() {
@@ -88,6 +89,7 @@ function eliminarDeFavoritos()
         url: "../php/eliminar_de_favoritos.php"
     });
         request.done(function(data) {  
+            comprobarFavorito();
         
     })
     request.fail(function() {
@@ -95,7 +97,7 @@ function eliminarDeFavoritos()
     });
 }
 
-function crearJsonComprobarFavorito()
+function comprobarFavorito()
 {
     //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
     //id de receta se tomara de la receta actual
@@ -109,8 +111,8 @@ function crearJsonComprobarFavorito()
             method: "POST",
             url: "../php/comprobar_favorito.php"
         });
-            request.done(function(data) {  
-            
+            request.done(function(data) { 
+                cargarJsonComprobarFavorito(); 
         })
         request.fail(function() {
         alert("Algo salió mal");
@@ -128,18 +130,14 @@ function cargarJsonComprobarFavorito()
             if(data.length == 0)
             {
                 $("#favorito").text("Agregar a favoritos");
-                $("#favorito").on("click",function()
-                {                    
-                    agregarAFavoritos();
-                })
+                $("#favorito").addClass("agregar");
+                $("#favorito").removeClass("eliminar");
             }
             else
             {
-                $("#favorito").text("Eliminar de favoritos");                
-                $("#favorito").on("click",function()
-                {                    
-                    eliminarDeFavoritos();
-                })
+                $("#favorito").text("Eliminar de favoritos");        
+                $("#favorito").addClass("eliminar");
+                $("#favorito").removeClass("agregar");
             }
         })
         request.fail(function() {
@@ -246,13 +244,17 @@ function descargarPDF()
 function inicio()
 {
     visualizarReceta();
-    crearJsonComprobarFavorito();
-    setTimeout(cargarJsonComprobarFavorito,500);
+    comprobarFavorito();
     $("#favorito").on("click",function()
     {    
-        cargarJsonComprobarFavorito();
-        setTimeout(crearJsonComprobarFavorito,200);
-        setTimeout(cargarJsonComprobarFavorito,1200);
+        if($("#favorito").hasClass("agregar"))
+        {
+            agregarAFavoritos();
+        }
+        else if($("#favorito").hasClass("eliminar"))
+        {
+            eliminarDeFavoritos();
+        }
     })
     $("#descargar").on("click",descargarPDF);
 }
