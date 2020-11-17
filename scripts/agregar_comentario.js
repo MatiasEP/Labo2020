@@ -16,7 +16,7 @@ function recargarComentarios()
         });
             request.done(function(data) {  
             
-        setTimeout(visualizarComentarios(),5000);
+        visualizarComentarios();
         })
         request.fail(function() {
         alert("Algo salió mal");
@@ -41,11 +41,11 @@ function agregarComentario()
         });
             request.done(function(data) {  
             
+            recargarComentarios();
         })
         request.fail(function() {
         alert("Algo salió mal");
         });
-    setTimeout(recargarComentarios,200);
     $("#inputComentario").val('');
 }
 
