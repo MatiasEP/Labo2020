@@ -12,26 +12,26 @@
         <!-- <link rel="stylesheet" href="./estilo.css" type="text/css"> -->
         <script src= "../scripts/agregar receta.js"></script>
         <?php include '../php/barras.php'; ?>
-        <title>Agregar receta</title>
+        <title> Agregar receta </title>
     </head>
 
     <body>
 
-        <h1 class="title-body">Agregar Receta</h1><br><br>
-        <form class="formulary" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
+        <h1 class="title-body"> Agregar Receta </h1><br><br>
+        <form class="formulary col-sm-3" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
             
             <fieldset class="field-1">            
                 <label for="titulo">Titulo: </label><br>
-                <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
-                <label for="imgPrincipal">Foto de la receta: </label><br>
-                <input autocomplete="off" autofocus value="" type="file" id="imgPrincipal" name="imgPrincipal"><br>
+                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
+                <label for="imgPrincipal"> Foto de la receta: </label><br>
+                <input autocomplete="off" class="form-control" autofocus value="" type="file" id="imgPrincipal" name="imgPrincipal"><br>
             </fieldset>
                 
             <fieldset class="field-1">
                 <div id="listTipos">
                     <div >
-                        <label for="tipo">Tipo: </label><br>
-                        <select name="tipo[]" id="tipo">
+                        <label for="tipo"> Tipo: </label><br>
+                        <select class="form-control" name="tipo[]" id="tipo">
                         </select><br><br>
                     </div>
                 </div>
@@ -43,23 +43,23 @@
             <fieldset class="field-1">
                 <div id="listIngredientes">
                     <label for="ingrediente">Ingrediente: </label><br>
-                    <input autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..."><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..."><br>
                     <label for="cantidad">Cantidad</label><br>
-                    <input autocomplete="off" autofocus value="" type="text" name="cantidad[]"><br><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]"><br><br>
                 </div>  
                 <input name="agregarIngrediente" class="btn btn-primary" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ><br><br>
             </fieldset>
                 
             <fieldset class="field-1">            
                 <div id="listPasos">
-                    <label for="paso">Paso: </label><br>
-                    <input autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese un paso..."><br>
-                    <label for="imagen">Imagen: </label><br>
-                    <input autocomplete="off" autofocus value="" type="file" name="imagen[]"><br><br>
+                    <label for="paso"> Paso: </label><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese un paso..."><br>
+                    <label for="imagen"> Imagen: </label><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="file" name="imagen[]"><br><br>
                 </div>
                 
                 <input name="agregarPaso" class="btn btn-primary" id="agregarPaso" type="button" value="Agregar Paso" ><br><br>
-                <button name="guardar" class="btn btn-primary" type="submit">Guardar receta</button>                
+                <button name="guardar" class="btn btn-primary" type="submit"> Guardar receta </button>                
             </fieldset>    
 
         </form>
