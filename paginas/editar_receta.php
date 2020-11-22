@@ -20,39 +20,27 @@
 
 </head>
 <body>
-    
-    <h1>Editar receta</h1><br><br>
-    <form method="post" action="../php/actualizar_receta.php" enctype="multipart/form-data">
-        <label for="titulo">Titulo: </label><br>
-        <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
-        <label >Foto de la receta: </label><br>
-        <img id="imgPrincipalPreview"src="" alt="Plato terminado"><br><br>
-        <label for="imgPrincipal" class="botonImg">Cambiar imagen </label><br>
-        <input type="file" id="imgPrincipal" name="imgPrincipal" class="d-none" style='display: none;'><br>
-        <div id="listTipos">
-        </div>
-        <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
-        <input name="agregarTipo" id="agregarTipo" type="button" value="Agregar tipo" ></button><br><br>
-        <div id="listIngredientes">
-            <div >
-                <label for="ingrediente">Ingrediente: </label><br>
-                <input autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..."><br>
-                <label for="cantidad">Cantidad</label><br>
-                <input autocomplete="off" autofocus value="" type="text" name="cantidad[]"><br><br>
+    <div class="container-fluid">
+        <h1>Editar receta</h1><br><br>
+        <form class="editar" method="post" action="../php/actualizar_receta.php" enctype="multipart/form-data">
+            <label for="titulo">Titulo: </label><br>
+            <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
+            <label >Foto de la receta: </label><br>
+            <img id="imgPrincipalPreview"src="" alt="Plato terminado"><br><br>
+            <label for="imgPrincipal" class="botonImg">Cambiar imagen </label><br>
+            <input type="file" id="imgPrincipal" name="imgPrincipal" class="d-none" style='display: none;'><br>
+            <div id="listTipos">
             </div>
-        </div>        
-        <input name="agregarIngrediente" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ></button><br><br>
-        <div id="listPasos">
-            <div>
-                <label for="paso">Paso: </label><br>
-                <input autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese un paso..."><br>
-                <img id="imgPasoPreview"src="" alt="Paso 1"><br><br>
-                <label for="imagen">Cambiar imagen</label><br>
-                <input autocomplete="off" autofocus value="" type="file" name="imagen[]" style='display: none;'><br><br>
+            <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
+            <input name="agregarTipo" id="agregarTipo" type="button" value="Agregar tipo" ></button><br><br>
+            <div id="listIngredientes">
+            </div>        
+            <input name="agregarIngrediente" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ></button><br><br>
+            <div id="listPasos">
             </div>
-        </div>
-        <input name="agregarPaso" id="agregarPaso" type="button" value="Agregar Paso" ></button><br><br>
-        <button name="guardar" type="submit">Actualizar receta</button>
-    </form>
+            <input name="agregarPaso" id="agregarPaso" type="button" value="Agregar Paso" ></button><br><br>
+            <button name="guardar" type="submit">Actualizar receta</button>
+        </form>
+    </div>
     </body>
 </html>
