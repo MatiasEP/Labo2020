@@ -50,3 +50,9 @@ input[type="text"]
     border-radius:20px;
     backdrop-filter:blur(2px) brightness(50%);    
 }
+
+
+.oculto
+{
+    display: none;
+}

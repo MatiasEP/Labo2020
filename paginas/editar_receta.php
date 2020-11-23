@@ -27,8 +27,8 @@
             <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
             <label >Foto de la receta: </label><br>
             <img id="imgPrincipalPreview"src="" alt="Plato terminado"><br><br>
-            <label for="imgPrincipal" class="botonImg">Cambiar imagen </label><br>
-            <input type="file" id="imgPrincipal" name="imgPrincipal" class="d-none" style='display: none;'><br>
+            <label for="imgPrincipal" class="btn btn-primary">Cambiar imagen </label><br>
+            <input type="file" id="imgPrincipal" name="imgPrincipal" class="invisible"><br>
             <div id="listTipos">
             </div>
             <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
@@ -38,7 +38,7 @@
             <input name="agregarIngrediente" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ></button><br><br>
             <div id="listPasos">
             </div>
-            <input name="agregarPaso" id="agregarPaso" type="button" value="Agregar Paso" ></button><br><br>
+            <input name="agregarPaso" id="agregarPaso" class="btn btn-primary" type="button" value="Agregar Paso" ></button><br><br>
             <button name="guardar" type="submit">Actualizar receta</button>
         </form>
     </div>

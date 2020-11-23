@@ -83,7 +83,8 @@ function imprimirPasos(pasos)
             {           
                 $("#listPasos").append($("<div id='paso"+i+"'>").append(data));
                 $('#listPasos').children("div").children("#paso").last().val(pasos[i]["descripcion"]);
-                $('#listPasos').children("div").children("#imgPasoPreview").last().attr("src",pasos[i]["imagen"]).attr("id","imgPasoPreview"+i);
+                $('#listPasos').children("div").children("#imgPasoPreview").last().attr("src",pasos[i]["imagen"]).attr("id","imgPasoPreview"+i);                
+                $("#imgPasoPreview"+i).removeClass("oculto");
                 $('#listPasos').children("div").children("#imagen").last().attr("id","imagen"+i);        
                 $('#listPasos').children("div").children("label").last().attr("for","imagen"+i);
                 
@@ -157,8 +158,48 @@ function previews(indice)
             reader.onload = function()
             {      console.log(indice)
                 $(seleccionArchivos).children("#paso"+indice+"").children("#imgPasoPreview"+indice+"").attr("src",reader.result);
+                $(seleccionArchivos).children("#paso"+indice+"").children("#imgPasoPreview"+indice+"").removeClass("oculto")
             }        
         })
+}
+
+
+function pasosConImagenes()
+{
+    setTimeout(function()
+    {
+        var pasos = $(seleccionArchivos).children();
+        for(var i=0;i<pasos.length;i++)
+        {   const actual = i;//por alguna razon, no tomaba bien el indice directamente    
+            previews(actual)
+        } 
+    },1000);
+}
+function agregarPaso()
+{ 
+    console.log("wea");  
+        let request = $.ajax(
+        {
+            method: "POST",
+            url: "../php/pasos%20dinamicos.php"
+        });
+            request.done(function(data) 
+            {         
+                
+                seleccionArchivos = document.querySelectorAll("#listPasos");
+                let i = $(seleccionArchivos).children().length;
+                $("#listPasos").append($("<div id='paso"+(i)+"'>").append(data));
+                $('#listPasos').children("div").children("#imgPasoPreview").last().attr("id","imgPasoPreview"+(i));
+                $('#listPasos').children("div").children("#imagen").last().attr("id","imagen"+(i));        
+                $('#listPasos').children("div").children("label").last().attr("for","imagen"+(i)).text("Seleccionar imagen");
+                
+            })
+}
+
+function eventAgregarPaso()
+{    
+    agregarPaso();
+    pasosConImagenes();
 }
 
 function inicio()
@@ -243,14 +284,7 @@ $imagenPrevisualizacion.src = objectURL;})*/
             },false)
         }
     },500)*/
-    setTimeout(function()
-    {
-        var pasos = $(seleccionArchivos).children();
-        for(var i=0;i<pasos.length;i++)
-        {   const actual = i;//por alguna razon, no tomaba bien el indice directamente    
-            previews(actual)
-        } 
-    },1000);/*
+    pasosConImagenes();/*
     $(seleccionArchivos).children("#paso0").children("#imagen0").change(function(e){
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
@@ -276,4 +310,17 @@ $imagenPrevisualizacion.src = objectURL;})*/
         }
     })
     }*/
+
+    $("#agregarPaso").unbind("click").bind("click",function(e) {
+        eventAgregarPaso();
+       });
+    $("#agregarTipo").unbind("click").bind("click",function() {
+     
+     $("#listTipos").append($("<div>").load('../php/tipos%20dinamicos.php'));
+     cargarCategoriasConDelay();
+    });
+    $("#agregarIngrediente").unbind("click").bind("click",function() {
+        
+        $("#listIngredientes").append($("<div>").load('../php/ingredientes%20dinamicos.php'));
+    });
 }

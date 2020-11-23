@@ -1,0 +1,27 @@
+.d-none
+{
+    display: none;
+}
+
+.botonImg
+{    
+    padding: 5px 10px;
+    background: #f55d3e;
+    color:#fff;
+    border:0px solid #fff;
+}
+ 
+.botonImg:hover{
+    color:#fff;
+    background: #f7cb15;
+}
+
+.editar
+{
+    position: absolute;
+}
+
+.oculto
+{
+    display: none;
+}
