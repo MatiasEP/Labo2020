@@ -5,13 +5,14 @@
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
     $idUsuario = isset($_POST["idUsuario"])?$_POST["idUsuario"]:'';
-    $idReceta = isset($_POST["idReceta"])?$_POST["idReceta"]:'';
-    if($idUsuario != '' and $idReceta !='')
-    {
+    $idUsuario = "5fa1f37a25700000930007ed"; //temporal para test
+    if($idUsuario != '' )
+    {                
+        $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);       
         $query = new BulkWrite();
-        $query->update(['_idUsuario' => $idUsuario],
-        ['$addset' => ['Recetas' => $idReceta]]);
-        $client->executeBulkWrite("proyecto.favoritos",$query);
+        $query->update(["_id"=>$idUsuario],
+        ['$set' => ['visible' => false]]);
+        $client->executeBulkWrite("proyecto.usuarios",$query);
     }
    
 ?>
