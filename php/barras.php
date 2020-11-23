@@ -9,7 +9,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <form action="./mostrar recetas por titulo.php" method="post" class="navbar-left" id="buscador">
-                    <div id="mySidenav" class="sidenav">
+                    <div id="mySidenav" class="sidenav"> <!--el ID y la CLASS del Sidebar-->
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a id="sesionData"href="#"></a>
                         <a id ="micuenta" href="#"></a>
