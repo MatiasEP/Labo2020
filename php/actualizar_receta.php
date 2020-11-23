@@ -1,12 +1,19 @@
 
 <?php
+
     use \MongoDB\Driver\BulkWrite;
     use \MongoDB\Driver\Query;
+    use \MongoDB\Driver\ReadPreference;
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
     $idUsuario = isset($_POST["idUsuario"])?$_POST["idUsuario"]:'';
     $idReceta = isset($_POST["idReceta"])?$_POST["idReceta"]:'';
     $idReceta = "5fa58577bd0d000028004567";
+    
+
+    $imagenesSinEditar = findImagenesPasos($idReceta);
+    $imgPrincipalSinEditar = findImagenPrincipal($idReceta);
+    var_dump($imgPrincipalSinEditar);
     $idUsuario = "5fa1f37a25700000930007ed"; //temporal para test
     $contadorPasos=0;
     $contadorIngredientes=0;
@@ -66,8 +73,15 @@
             $ruta = "../imagenes/".$imagenes['name'][$i];
             move_uploaded_file($imagenes['tmp_name'][$i],$ruta);
         }
-        $ruta = "../imagenes/".$imgPrincipal['name'];
-        move_uploaded_file($imgPrincipal['tmp_name'],$ruta);
+        if($imgPrincipal["name"]=='')
+        {            
+            $ruta = $imgPrincipalSinEditar;
+        }
+        else
+        {                
+            $ruta = "../imagenes/".$imgPrincipal['name'];
+            move_uploaded_file($imgPrincipal['tmp_name'],$ruta);
+        }
         for($i=0; $i < $contadorIngredientes; $i++)
         {
             $obj = new ingrediente();
@@ -79,7 +93,14 @@
         {
             $obj = new paso();
             $obj->descripcion = $pasos[$i];
-            $obj->imagen = "../imagenes/".$imagenes['name'][$i];
+            if($imagenes["name"][$i] == '')
+            {                
+                $obj->imagen = $imagenesSinEditar[$i];
+            }
+            else
+            {                
+                $obj->imagen = "../imagenes/".$imagenes['name'][$i];
+            }
             array_push($arrayPasos, $obj);
         }
     if($idUsuario != '' and $idReceta !='')
@@ -87,7 +108,7 @@
         $idReceta = new MongoDB\BSON\ObjectId($idReceta);        
         $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);
         $filter = [ "_id"=>$idReceta,"_idCreador"=>$idUsuario];
-        $options = ['sort' =>['_id'=>-1],];
+        $options = ['sort' =>['_id'=>-1]];
         $query = new MongoDB\Driver\Query($filter,$options);
         $rows = $client->executeQuery("proyecto.recetas", $query);
         $res = $rows->toArray();
@@ -95,10 +116,49 @@
         if($count != 0)
         {            
             $query2 = new BulkWrite();
-            $query2->update(["_id"=>$idReceta,'_idCreador' => $idUsuario],
-            ['$set' => ["titulo"=>$_POST["titulo"],"imagen"=>$ruta,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos]]);
+            $query2->update(["_id"=>$idReceta,'_idCreador' => $idUsuario],['$set' => ["titulo"=>$_POST["titulo"],"imagen"=>$ruta,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos]]);
             $client->executeBulkWrite("proyecto.recetas",$query2);
         }
     }
-   
+}
+
+function findImagenesPasos($id)
+{
+        $client = new MongoDB\Driver\Manager(sprintf(
+            'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
+        $id = new MongoDB\BSON\ObjectId($id);
+        $filter = ["_id"=>$id];
+        $options = ["projection"=>["_id" => false, "pasos" => true]];
+        $query = new MongoDB\Driver\Query($filter,$options);
+        $rows = $client->executeQuery("proyecto.recetas", $query); // $mongo contains the connection object to MongoDB    
+        $imagenes = array();
+        $array = $rows->toArray();
+        $pasos = $array[0];
+        $pasos =  ($pasos->pasos);
+        foreach($pasos as $clave => $valor) {
+            foreach($valor as $desc => $text)
+            {
+                if($desc == "imagen")
+                {                    
+                    array_push($imagenes, $text);
+                }
+            }
+        }
+        return ($imagenes);
+}
+
+function findImagenPrincipal($id)
+{
+        $client = new MongoDB\Driver\Manager(sprintf(
+            'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
+        $id = new MongoDB\BSON\ObjectId($id);
+        $filter = ["_id"=>$id];
+        $options = ["projection"=>["_id" => false, "imagen" => true]];
+        $query = new MongoDB\Driver\Query($filter,$options);
+        $rows = $client->executeQuery("proyecto.recetas", $query); // $mongo contains the connection object to MongoDB    
+        $array = $rows->toArray();
+        $imagen = $array[0];
+        $imagen =  ($imagen->imagen);
+        return $imagen;
+}
 ?>

@@ -84,7 +84,7 @@ function imprimirPasos(pasos)
                 $("#listPasos").append($("<div id='paso"+i+"'>").append(data));
                 $('#listPasos').children("div").children("#paso").last().val(pasos[i]["descripcion"]);
                 $('#listPasos').children("div").children("#imgPasoPreview").last().attr("src",pasos[i]["imagen"]).attr("id","imgPasoPreview"+i);
-                $('#listPasos').children("div").children("#imagen").last().attr("id","imagen"+i);                
+                $('#listPasos').children("div").children("#imagen").last().attr("id","imagen"+i);        
                 $('#listPasos').children("div").children("label").last().attr("for","imagen"+i);
                 
                 /*
