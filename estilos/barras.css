@@ -32,7 +32,7 @@ html
 form
 {
     /*position: fixed;*/
-
+    /*background-color: rgba(0, 0, 0, .5);*/
     /*background: linear-gradient(black 10%, transparent 60%);*/      
     z-index: 2;
 }

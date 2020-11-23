@@ -22,16 +22,16 @@
             
             <fieldset class="field-1">            
                 <label for="titulo">Titulo: </label><br>
-                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
+                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." maxlength="100" required><br>
                 <label for="imgPrincipal"> Foto de la receta: </label><br>
-                <input autocomplete="off" class="form-control" autofocus value="" type="file" id="imgPrincipal" name="imgPrincipal"><br>
+                <input autocomplete="off" class="form-control" autofocus value="" type="file" id="imgPrincipal" name="imgPrincipal" required><br>
             </fieldset>
                 
             <fieldset class="field-1">
                 <div id="listTipos">
                     <div >
                         <label for="tipo"> Tipo: </label><br>
-                        <select class="form-control" name="tipo[]" id="tipo">
+                        <select class="form-control" name="tipo[]" id="tipo" required>
                         </select><br><br>
                     </div>
                 </div>
@@ -43,9 +43,9 @@
             <fieldset class="field-1">
                 <div id="listIngredientes">
                     <label for="ingrediente">Ingrediente: </label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..."><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..." maxlength="50" required><br>
                     <label for="cantidad">Cantidad</label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]"><br><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]" maxlength="100" required><br><br>
                 </div>  
                 <input name="agregarIngrediente" class="btn btn-primary" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ><br><br>
             </fieldset>
@@ -53,9 +53,9 @@
             <fieldset class="field-1">            
                 <div id="listPasos">
                     <label for="paso"> Paso: </label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese un paso..."><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese un paso..." required minlength="100" maxlength="350"><br>
                     <label for="imagen"> Imagen: </label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="file" name="imagen[]"><br><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="file" name="imagen[]" required><br><br>
                 </div>
                 
                 <input name="agregarPaso" class="btn btn-primary" id="agregarPaso" type="button" value="Agregar Paso" ><br><br>

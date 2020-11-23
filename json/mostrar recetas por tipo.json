@@ -1,1 +1,1 @@
-[]
+[{"_id":{"$oid":"5fa58577bd0d000028004567"},"_idCreador":{"$oid":"5fa1f37a25700000930007ed"},"titulo":"test select","imagen":"..\/imagenes\/68f8b9dc-d378-41d1-8974-97701267d538.jpg","tipo":["Legumbres","Cocteles Y Bebidas"],"ingredientes":[{"descripcion":"select","cantidad":"2"}],"pasos":[{"descripcion":"asdas","imagen":"..\/imagenes\/3611259433.jpeg"},{"descripcion":"ta que te pario jquery","imagen":"..\/imagenes\/3611259433.jpeg"},{"descripcion":"la wea","imagen":"..\/imagenes\/3611259433.jpeg"}],"activado":true,"visible":true}]
