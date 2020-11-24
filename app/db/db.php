@@ -1,5 +1,8 @@
 <?php 
 use MongoDB\Client;
+use \MongoDB\Driver\BulkWrite;
+use \MongoDB\Driver\Query;
+use \MongoDB\Driver\ReadPreference;
     class DB{
         private $conn;
         public function __construct(){
@@ -58,7 +61,60 @@ use MongoDB\Client;
             $resultado = $coleccion->findOne(['googleID' => $id]);
             return $resultado;
         }
+        public function comentarios($idReceta)
+        {   
+            
 
+        $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+            $id = new MongoDB\BSON\ObjectId($idReceta);
+
+            $command = new MongoDB\Driver\command([
+                'aggregate' => 'comentarios',
+                'pipeline' => [['$lookup'=>[
+                    
+                        "from"=> 'usuarios',
+                        "localField"=> 'idUsuario',
+                        "foreignField"=> '_id',
+                        "as"=> 'usuario'
+                    ] 
+                    ],
+                        ['$match'=>["idReceta"=>$id]]
+                    ],
+                    'cursor' => new stdClass()
+                ]);
+            $rows = $client->executeCommand('proyecto', $command);
+  
+            $array = array();
+            foreach ($rows as $row) 
+            {
+                array_push($array, $row);
+            }
+            return $array;
+        }
+	    
+		public function findRecetaId($idReceta){
+			 try{
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+
+                $id = new MongoDB\BSON\ObjectId($idReceta);
+                $filter = ["_id"=>$id];
+                $options = ['sort' =>['_id'=>-1],];
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $rows = $client->executeQuery("proyecto.recetas", $query); // $mongo contains the connection object to MongoDB    
         
+                $array = array();
+                foreach ($rows as $row) 
+                {
+                    array_push($array, $row);
+                }
+                return $array[0];
+           }catch(Exception $ex){
+
+           }	
+        }
+	public static function urlConn(){
+            return 'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority';
+		}
+	        
     }
 ?>

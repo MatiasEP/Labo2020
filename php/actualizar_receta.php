@@ -1,20 +1,30 @@
 
 <?php
+    require_once("../vendor/autoload.php");
+    require_once("../app/clases/google_auth.php");
+    require_once("../app/clases/operaciones.php");
+    require_once("../app/init.php");
 
     use \MongoDB\Driver\BulkWrite;
     use \MongoDB\Driver\Query;
     use \MongoDB\Driver\ReadPreference;
-    $client = new MongoDB\Driver\Manager(sprintf(
-        'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
-    $idUsuario = isset($_POST["idUsuario"])?$_POST["idUsuario"]:'';
+    $googleClient = new Google_Client();
+    $auth = new GoogleAuth($googleClient);  
+
+    $ctrl = new Operaciones();
+    if(!$ctrl->isLoggedIn()){
+        echo "<script>alert('no se encuentra logueado');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+
+    }
+
+    $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
     $idReceta = isset($_POST["idReceta"])?$_POST["idReceta"]:'';
-    $idReceta = "5fa58577bd0d000028004567";
-    
 
     $imagenesSinEditar = findImagenesPasos($idReceta);
     $imgPrincipalSinEditar = findImagenPrincipal($idReceta);
     var_dump($imgPrincipalSinEditar);
-    $idUsuario = "5fa1f37a25700000930007ed"; //temporal para test
+
+    $idUsuario = $ctrl->getUserInfo()->_id->__toString(); //temporal para test
     $contadorPasos=0;
     $contadorIngredientes=0;
     $pasos = [];// La lista de pasos; por defecto vacía
@@ -66,7 +76,7 @@
     # Detectar cuál botón fue presionado
     # En caso de que haya sido el de guardar, no agregamos más campos
     if (isset($_POST["guardar"])) 
-    {        
+    {
         
         for($i = 0; $i<$contadorPasos;$i++)
         {
@@ -119,6 +129,8 @@
             $query2->update(["_id"=>$idReceta,'_idCreador' => $idUsuario],['$set' => ["titulo"=>$_POST["titulo"],"imagen"=>$ruta,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos]]);
             $client->executeBulkWrite("proyecto.recetas",$query2);
         }
+        echo "<script>window.location = 'http://localhost/Labo2020/paginas/visualizar_receta.php?id=$idReceta';</script>";
+
     }
 }
 

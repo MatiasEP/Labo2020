@@ -1,8 +1,14 @@
+<?php
+    require_once("../vendor/autoload.php");
+    require_once("../app/clases/google_auth.php");
+    require_once("../app/clases/operaciones.php");
+    require_once("../app/init.php");
+?>
 
 <!------------------------------------- SECTOR GOOGLE ICONS -------------------------------------->        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../estilos/barras.css" type="text/css">
-        <?php include "../php/get_categorias.php" ?>
+        
         <script src= "../scripts/categorias.js"></script>
         <script src= "../scripts/servicios.js"></script>
 
@@ -11,8 +17,9 @@
                 <form action="./mostrar recetas por titulo.php" method="post" class="navbar-left" id="buscador">
                     <div id="mySidenav" class="sidenav"> <!--el ID y la CLASS del Sidebar-->
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a id="sesionData"href="#"></a>
                         <a id ="micuenta" href="#"></a>
+                        <a id="crearreceta"href="#"></a>
+                        <a id="sesionData"href="#"></a>
                     </div>
                     <span style="font-size:30px;cursor:pointer" class="sidebtn navbar-brand" onclick="openNav()">&#9776;</span>
 

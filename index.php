@@ -19,6 +19,8 @@
         }else{
             echo "<br>";
            if($ctrl->isLoggedIn()){
+            header('Location: http://localhost/Labo2020/paginas/mostrartodaslasrecetas.php');
+
             echo "usar servicios<br>";
             echo "<a href='http://localhost/Labo2020/index.php?login'>http://localhost/Labo2020/index.php?login</a><br>";
             echo "<a href='http://localhost/Labo2020/index.php?accion=logout'>http://localhost/Labo2020/index.php?accion=logout</a><br>";

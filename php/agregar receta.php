@@ -1,12 +1,25 @@
 
 <?php
+    require_once("../vendor/autoload.php");
+    require_once("../app/clases/google_auth.php");
+    require_once("../app/clases/operaciones.php");
+    require_once("../app/init.php");
+    
     use \MongoDB\Driver\BulkWrite;
     use \MongoDB\Driver\Query;
-    $client = new MongoDB\Driver\Manager(sprintf(
-        'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
+
+    $googleClient = new Google_Client();
+    $auth = new GoogleAuth($googleClient);  
+
+    $ctrl = new Operaciones();
+    if(!$ctrl->isLoggedIn()){
+        echo "<script>alert('no se encuentra logueado');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+
+    }
+    $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
     $query = new MongoDB\Driver\BulkWrite;
-    $idUsuario = isset($_POST["idUsuario"])?$_POST["idUsuario"]:'';
-    $idUsuario = 3;//provisional para test
+    $idUsuario =$ctrl->getUserInfo()->_id;
+    //$idUsuario = 3;//provisional para test
     $contadorPasos=0;
     $contadorIngredientes=0;
     $pasos = [];// La lista de pasos; por defecto vacía
@@ -83,5 +96,8 @@
         }
         $query->insert(["_idCreador"=>$idUsuario,"titulo"=>$_POST["titulo"],"imagen"=>$ruta,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos,"activado"=>FALSE,"visible"=>FALSE]);
         $result = $client->executeBulkWrite("proyecto.recetas",$query);
+        echo "<script>alert('receta creada');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+
+
     }
     ?>

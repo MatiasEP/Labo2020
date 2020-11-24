@@ -1,5 +1,5 @@
 <?php
-    require_once("app/db/db.php");
+    require_once("../app/db/db.php");
 
 
     class GoogleAuth{

@@ -2,10 +2,15 @@ $(document).ready(inicio)
 
 function visualizarComentarios()
 {
+    let params = new URLSearchParams(location.search);
+    var idUrl = params.get('id');
     let request = $.ajax(
     {
-        method: "POST",
-        url: "../json/comentarios.json"
+        method: "GET",
+        url: "../php/get_comentarios.php",
+        data: { 
+            id: idUrl,
+          }
     });
         request.done(function(data) {  
             $("#divComentarios").empty();

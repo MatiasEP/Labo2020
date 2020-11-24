@@ -8,7 +8,7 @@ function cargarJsonCategorias()
     let request = $.ajax(
     {
     method: "POST",
-    url: "../json/categorias.json"
+    url: "../php/get_categorias.php"
     });
     request.done(function(data) 
     {           
@@ -123,10 +123,15 @@ function imprimirPasos(pasos)
 
 function visualizarReceta()
 {
+    let params = new URLSearchParams(location.search);
+    var idUrl = params.get('id');
     let request = $.ajax(
     {
-        method: "POST",
-        url: "../json/visualizar_receta.json"
+        method: "GET",
+        url: "../php/visualizar_receta.php",
+        data: { 
+            id: idUrl
+          }
     });
         request.done(function(data) {  
         for(let i = 0; i<data.length;i++)

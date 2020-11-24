@@ -4,7 +4,9 @@ $(document).ready(inicio)
 
 function recargarComentarios()
 {
-    let idReceta = "5fa58577bd0d000028004567"//temporal para test
+    
+    let params = new URLSearchParams(location.search);
+    let idReceta = params.get('id');
     let parametros = {
         "id" : idReceta
     };
@@ -25,12 +27,13 @@ function recargarComentarios()
 
 function agregarComentario()
 {
+    let params = new URLSearchParams(location.search);
+    let idReceta = params.get('id');
     let comentario = $("#inputComentario").val();
     //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
     //id de receta se tomara de la receta actual
        let parametros = {
-        /*"idUsuario" : $idUsuario,
-        "idReceta" : $idReceta,*/
+        "idReceta" : idReceta,
         "comentario": comentario
     };
     let request = $.ajax(
