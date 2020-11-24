@@ -1,7 +1,21 @@
 
 <?php
+    require_once("../vendor/autoload.php");
+    require_once("../app/clases/google_auth.php");
+    require_once("../app/clases/operaciones.php");
+    require_once("../app/init.php");
+    
     use \MongoDB\Driver\BulkWrite;
     use \MongoDB\Driver\Query;
+
+    $googleClient = new Google_Client();
+    $auth = new GoogleAuth($googleClient);  
+
+    $ctrl = new Operaciones();
+    if(!$ctrl->isLoggedIn()){
+        echo "<script>alert('no se encuentra logueado');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+
+    }
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
     $query = new MongoDB\Driver\BulkWrite;
@@ -83,5 +97,8 @@
         }
         $query->insert(["_idCreador"=>$idUsuario,"titulo"=>$_POST["titulo"],"imagen"=>$ruta,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos,"activado"=>FALSE,"visible"=>FALSE]);
         $result = $client->executeBulkWrite("proyecto.recetas",$query);
+        echo "<script>alert('receta creada');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+
+
     }
     ?>

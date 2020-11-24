@@ -12,7 +12,6 @@
     <script src= "../scripts/editar_receta.js"></script>
     <?php include '../php/barras.php';
     include '../php/visualizar_receta.php';
-    include '../php/get_categorias.php';
         ?>
     <link rel="stylesheet" href="../estilos/estilos.css" type="text/css">
     <title>Editar receta</title>

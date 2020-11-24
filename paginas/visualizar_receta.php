@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php 
+    require_once("../app/clases/operaciones.php");
+    require_once("../app/init.php");
+    $ctrl = new Operaciones();
+    
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +16,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../estilos/visualizar_receta.css" type="text/css">
     <?php include '../php/barras.php';
-        include '../php/get_comentarios.php';
         include '../php/visualizar_receta.php';?>
     <script type="text/javascript" src="../scripts/visualizar_receta.js" async></script>
     <script type="text/javascript" src="../scripts/get_comentarios.js" async></script>
@@ -41,11 +46,14 @@
             <div id="divComentarios">
             </div>
         </fieldset>
+        <?php if ($ctrl->isLoggedIn()): ?>  
+
         <div class="" id="nuevoComentario">
-        <label for="inputComentario"> Nuevo comentario: </label><br>
-        <textarea name="inputComentario" id="inputComentario" cols="50" rows="5" placeholder="Ingrese su comentario..."></textarea><br>
-        <button id="agregarComentario">Agregar comentario</button>
+         <label for="inputComentario"> Nuevo comentario: </label><br>
+         <textarea name="inputComentario" id="inputComentario" cols="50" rows="5" placeholder="Ingrese su comentario..."></textarea><br>
+         <button id="agregarComentario">Agregar comentario</button>
         </div>
+        <?php endif; ?>
 
     </div>
 

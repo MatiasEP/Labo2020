@@ -1,6 +1,6 @@
 <?php
 
-require_once("app/db/db.php");
+require_once("../app/db/db.php");
     class Operaciones{
         public function __construct(){
         
@@ -79,6 +79,16 @@ require_once("app/db/db.php");
             return isset($_SESSION['access_token']);
         }
 
-        
+        public function comentarios($idReceta){
+            try{
+                $db = new DB();
+                $result = $db->comentarios($idReceta);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
     }
 ?>

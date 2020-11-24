@@ -8,7 +8,7 @@ function cargarJsonCategorias()
     let request = $.ajax(
     {
     method: "POST",
-    url: "../json/categorias.json"
+    url: "../php/get_categorias.php"
     });
     request.done(function(data) 
     {           
