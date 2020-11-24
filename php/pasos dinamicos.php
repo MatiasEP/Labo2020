@@ -1,5 +1,5 @@
         <label for="paso">Paso: </label><br>
-        <input class="form-control" id="paso"autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese nuevo paso..." minlength="10" maxlength="150" required><br>
+        <input class="form-control" id="paso"autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese nuevo paso..." minlength="15" maxlength="350" required><br>
 
         <label >Imagen: </label><br>
         <img id="imgPasoPreview"src=""><br><br>
