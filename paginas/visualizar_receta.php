@@ -3,20 +3,26 @@
     require_once("../app/clases/operaciones.php");
     require_once("../app/init.php");
     $ctrl = new Operaciones();
-    
+    $urlCompartir= $_SERVER["REQUEST_URI"];
+    $idCompartir= $_GET["id"];
+	$tituloCompartir="compartir receta	";
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url"           content="http://localhost/<?php  echo $urlCompartir;?>" />
+    <meta property="og:type"          content="Recetas" />
+    <meta property="og:title"         content="<?php echo $tituloCompartir;?>" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../estilos/visualizar_receta.css" type="text/css">
-    <?php include '../php/barras.php';
-        include '../php/visualizar_receta.php';?>
+    <?php 
+		include '../php/barras.php';
+        ?>
     <script type="text/javascript" src="../scripts/visualizar_receta.js" async></script>
     <script type="text/javascript" src="../scripts/get_comentarios.js" async></script>
     <script type="text/javascript" src="../scripts/agregar_comentario.js" async></script>
@@ -41,11 +47,38 @@
         <a href="#" class="btn btn-default" data-toggle="modal" data-target="#myModal">
                         <span class="glyphicon glyphicon-exclamation-sign"> Reportar receta</span>
                     </a>
+        
+                    <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+        <?php if ($ctrl->isLoggedIn()): ?>  
+
+        <a href="http://localhost/Labo2020/paginas/editar_receta.php?id=<?php echo $_GET['id'];?>" target="_blank">Editar Receta</a>
+        
+        <br>        
+        <?php endif; ?>
+
+        <!-- Your share button code -->
+        <div class="fb-share-button" 
+        data-href="http://localhost/<?php echo $urlCompartir;?>" 
+        data-layout="button_count">
+        </div>
+
+        <a href="https://twitter.com/intent/tweet?text=recetas compartidas&url=http%3A%2F%2Flocalhost%2FLabo2020%2Fpaginas%2Fvisualizar_receta.php?id=<?php echo $idCompartir;?>&via=labo2020&hashtags=recetas" target="_blank">Twittear</a>
+        
+
         <fieldset id="comentarios">
             <legend>Comentarios:</legend>
             <div id="divComentarios">
             </div>
         </fieldset>
+        
         <?php if ($ctrl->isLoggedIn()): ?>  
 
         <div class="" id="nuevoComentario">

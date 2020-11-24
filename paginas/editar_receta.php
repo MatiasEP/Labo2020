@@ -11,8 +11,19 @@
     <script src= "../scripts/agregar receta.js"></script>
     <script src= "../scripts/editar_receta.js"></script>
     <?php include '../php/barras.php';
-    include '../php/visualizar_receta.php';
-        ?>
+
+    $googleClient = new Google_Client();
+    $auth = new GoogleAuth($googleClient);  
+
+    $ctrl = new Operaciones();
+    if(!$ctrl->isLoggedIn()){
+        echo "<script>alert('no se encuentra logueado');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+    }
+    if(!(isset($_GET['id']) && $ctrl->editable($_GET['id']))){
+      echo "<script>alert('no es el usuario creador');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+    }
+
+    ?>
     <link rel="stylesheet" href="../estilos/estilos.css" type="text/css">
     <title>Editar receta</title>
     
@@ -22,6 +33,7 @@
     <div class="container-fluid">
         <h1>Editar receta</h1><br><br>
         <form class="editar" method="post" action="../php/actualizar_receta.php" enctype="multipart/form-data">
+            <input hidden="true" type="text" name="idReceta" id="idReceta" value="<?php echo $_GET['id'];?>"><br>
             <label for="titulo">Titulo: </label><br>
             <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
             <label >Foto de la receta: </label><br>
