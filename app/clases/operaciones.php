@@ -59,6 +59,7 @@ require_once("../app/db/db.php");
 
         }
 
+
         public function roleUsers()
         {
             try{
@@ -90,5 +91,17 @@ require_once("../app/db/db.php");
 
            }
         }
+        public function editable($idReceta){
+			 try{
+                $db = new DB();
+                $result = $db->findRecetaId($idReceta);
+                $userId=$this->getUserInfo()->_id->__toString();
+                
+                return $result->_idCreador==$userId;
+           }catch(Exception $ex){
+
+           }
+		}
+
     }
 ?>
