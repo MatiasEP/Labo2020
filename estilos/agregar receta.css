@@ -12,7 +12,7 @@ html
     justify-content: center;
 }
 
-.field-1
+.field-1, .field-2
 {
     margin: 20px;
 }
@@ -27,14 +27,10 @@ body
     align-content: center;
 }
 
-input[type="text"]
-{
 
-}
-
-.formulary
+.formulary, .editar
 {
-    width: auto;
+    width: 100%;
     margin-left: 2%;
     margin-right: 2%;
     padding-left: 2%;
@@ -43,6 +39,7 @@ input[type="text"]
     padding-bottom: 2%;
     
     text-align: center;
+    justify-content: space-between;
 
     
     z-index: 1;

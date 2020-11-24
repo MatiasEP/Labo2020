@@ -8,9 +8,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
         <link rel="stylesheet" href="../estilos/agregar receta.css" type="text/css">    
         <!-- <link rel="stylesheet" href="./estilo.css" type="text/css"> -->
+        <script src= "../scripts/validacion_entrada_datos.js"></script>        
         <script src= "../scripts/agregar receta.js"></script>
+        
         <?php include '../php/barras.php'; ?>
         <title> Agregar receta </title>
     </head>
@@ -18,50 +21,52 @@
     <body>
 
         <h1 class="title-body"> Agregar Receta </h1><br><br>
-        <form class="formulary col-sm-3" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
-            
-            <fieldset class="field-1">            
-                <label for="titulo">Titulo: </label><br>
-                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." maxlength="100" required><br>
-                <label for="imgPrincipal"> Foto de la receta: </label><br>
-                <input autocomplete="off" class="form-control" autofocus value="" type="file" id="imgPrincipal" name="imgPrincipal" required><br>
-            </fieldset>
-                
-            <fieldset class="field-1">
-                <div id="listTipos">
-                    <div >
-                        <label for="tipo"> Tipo: </label><br>
-                        <select class="form-control" name="tipo[]" id="tipo" required>
-                        </select><br><br>
-                    </div>
-                </div>
-                
-                <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
-                <input name="agregarTipo" class="btn btn-primary" id="agregarTipo" type="button" value="Agregar tipo" ><br><br>
-            </fieldset>
-            
-            <fieldset class="field-1">
-                <div id="listIngredientes">
-                    <label for="ingrediente">Ingrediente: </label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..." maxlength="50" required><br>
-                    <label for="cantidad">Cantidad</label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]" maxlength="100" required><br><br>
-                </div>  
-                <input name="agregarIngrediente" class="btn btn-primary" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ><br><br>
-            </fieldset>
-                
-            <fieldset class="field-1">            
-                <div id="listPasos">
-                    <label for="paso"> Paso: </label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese un paso..." required minlength="100" maxlength="350"><br>
-                    <label for="imagen"> Imagen: </label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="file" name="imagen[]" required><br><br>
-                </div>
-                
-                <input name="agregarPaso" class="btn btn-primary" id="agregarPaso" type="button" value="Agregar Paso" ><br><br>
-                <button name="guardar" class="btn btn-primary" type="submit"> Guardar receta </button>                
-            </fieldset>    
+        <div class="container col-sm">
+    <form class="formulary" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
 
-        </form>
+                <fieldset class="field-1">            
+                    <label for="titulo">Titulo: </label><br>
+                    <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="70" required><br>
+                    <label for="imgPrincipal"> Foto de la receta: </label><br>
+                    <input autocomplete="off" class="form-control" autofocus value="" type="file" id="imgPrincipal" name="imgPrincipal" required><br>
+                </fieldset>
+
+                <fieldset class="field-1">
+                    <div id="listTipos">
+                        <div >
+                            <label for="tipo"> Tipo: </label><br>
+                            <select class="form-control" name="tipo[]" id="tipo" required>
+                            </select><br><br>
+                        </div>
+                    </div>
+
+                    <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
+                    <input name="agregarTipo" class="btn btn-primary" id="agregarTipo" type="button" value="Agregar tipo" ><br><br>
+                </fieldset>
+
+                <fieldset class="field-1">
+                    <div id="listIngredientes">
+                        <label for="ingrediente">Ingrediente: </label><br>
+                        <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..." minlength="3" maxlength="50" required><br>
+                        <label for="cantidad">Cantidad</label><br>
+                        <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]" placeholder="Ingrese cantidad del ingrediente..." minlength="1" maxlength="2" required><br><br>
+                    </div>  
+                    <input name="agregarIngrediente" class="btn btn-primary" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ><br><br>
+                </fieldset>
+
+                <fieldset class="field-1">            
+                    <div id="listPasos">
+                        <label for="paso"> Paso: </label><br>
+                        <input class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese un paso..." minlength="10" maxlength="150" required><br>
+                        <label for="imagen"> Imagen: </label><br>
+                        <input class="form-control" autocomplete="off" autofocus value="" type="file" name="imagen[]" required><br><br>
+                    </div>
+
+                    <input name="agregarPaso" class="btn btn-primary" id="agregarPaso" type="button" value="Agregar Paso" ><br><br>
+                    <button name="guardar" class="btn btn-primary" type="submit"> Guardar receta </button>                
+                </fieldset>    
+
+            </form>            
+            </div>
     </body>
 </html>

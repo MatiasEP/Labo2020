@@ -1,6 +1,24 @@
-.container
+.subcontener
 {
-    background-color: aliceblue;
+    /*background-color: lightgray;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    border:1px solid white;
+    border-radius:20px;
+    backdrop-filter:blur(2px) brightness(50%); 
+    color: whitesmoke;
+}
+
+legend
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    border:1px solid white;
+    border-radius:20px;
+    background-color: black;
+    color: whitesmoke;    
 }
 
 .thumbnail
@@ -40,6 +58,11 @@
 body
 {
     background-color: dimgray;
+}
+
+textarea
+{
+    resize: none;
 }
 
 .cPrincipal

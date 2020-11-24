@@ -14,12 +14,12 @@ html
     justify-content: center;
 }
 
-.select-group input.form-control
+.select-group input.busquedas
 { 
     width: 85%
 }
 
-.select-group select.input-group-addon 
+.select-group select.sel
 { 
     width: 15%; 
 }
