@@ -16,11 +16,10 @@
         echo "<script>alert('no se encuentra logueado');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
 
     }
-    $client = new MongoDB\Driver\Manager(sprintf(
-        'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
+    $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
     $query = new MongoDB\Driver\BulkWrite;
-    $idUsuario = isset($_POST["idUsuario"])?$_POST["idUsuario"]:'';
-    $idUsuario = 3;//provisional para test
+    $idUsuario =$ctrl->getUserInfo()->_id;
+    //$idUsuario = 3;//provisional para test
     $contadorPasos=0;
     $contadorIngredientes=0;
     $pasos = [];// La lista de pasos; por defecto vacía

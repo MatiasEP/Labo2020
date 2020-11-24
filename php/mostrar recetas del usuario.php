@@ -16,6 +16,10 @@
         <div class="row">
 
             <?php
+                require_once("../vendor/autoload.php");
+			    require_once("../app/clases/google_auth.php");
+    			require_once("../app/clases/operaciones.php");
+    			require_once("../app/init.php");
                 use \MongoDB\Driver\BulkWrite;
                 use \MongoDB\Driver\Query;
                 use \MongoDB\Driver\ReadPreference;

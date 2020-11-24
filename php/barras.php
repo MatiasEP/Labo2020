@@ -1,3 +1,9 @@
+<?php
+    require_once("../vendor/autoload.php");
+    require_once("../app/clases/google_auth.php");
+    require_once("../app/clases/operaciones.php");
+    require_once("../app/init.php");
+?>
 
 <!------------------------------------- SECTOR GOOGLE ICONS -------------------------------------->        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
