@@ -48,6 +48,7 @@
                                 <option value="1"> Titulo </option>
                                 <option value="2"> Ingredientes </option>
                             </select> 
+                            
                             <input type="text" class="form-control" name="busqueda" placeholder="Buscar..."/>
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
@@ -56,8 +57,6 @@
                             </div>
                         </div>                        
                     </div>
-                    
-                    
                     
                 </form>
             </div>
