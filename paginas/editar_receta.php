@@ -29,29 +29,38 @@
     
 
 </head>
-<body>
-    <div class="container-fluid">
-        <h1>Editar receta</h1><br><br>
-        <form class="editar" method="post" action="../php/actualizar_receta.php" enctype="multipart/form-data">
-            <input hidden="true" type="text" name="idReceta" id="idReceta" value="<?php echo $_GET['id'];?>"><br>
-            <label for="titulo">Titulo: </label><br>
-            <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
-            <label >Foto de la receta: </label><br>
-            <img id="imgPrincipalPreview"src="" alt="Plato terminado"><br><br>
-            <label for="imgPrincipal" class="btn btn-primary">Cambiar imagen </label><br>
-            <input type="file" id="imgPrincipal" name="imgPrincipal" class="invisible"><br>
-            <div id="listTipos">
-            </div>
-            <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
-            <input name="agregarTipo" id="agregarTipo" type="button" value="Agregar tipo" ></button><br><br>
-            <div id="listIngredientes">
-            </div>        
-            <input name="agregarIngrediente" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ></button><br><br>
-            <div id="listPasos">
-            </div>
-            <input name="agregarPaso" id="agregarPaso" class="btn btn-primary" type="button" value="Agregar Paso" ></button><br><br>
-            <button name="guardar" type="submit">Actualizar receta</button>
-        </form>
-    </div>
+    <body>
+        <div class="container-fluid">
+            <h1>Editar receta</h1><br><br>
+            
+            <form class="editar" method="post" action="../php/actualizar_receta.php" enctype="multipart/form-data">
+                <input hidden="true" type="text" name="idReceta" id="idReceta" value="<?php echo $_GET['id'];?>"><br>
+                <label for="titulo">Titulo: </label><br>
+
+                <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo..."><br>
+                <label >Foto de la receta: </label><br>
+                <img id="imgPrincipalPreview"src="" alt="Plato terminado"><br><br>
+                <label for="imgPrincipal" class="btn btn-primary">Cambiar imagen </label><br>
+
+                <input type="file" id="imgPrincipal" name="imgPrincipal" class="invisible"><br>
+
+                <div id="listTipos">
+                </div>
+
+                <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
+                <input name="agregarTipo" id="agregarTipo" type="button" value="Agregar tipo" > <br><br>
+                <div id="listIngredientes">
+                </div>
+
+                <input name="agregarIngrediente" id="agregarIngrediente" type="button" value="Agregar Ingrediente" > <br><br>
+                <div id="listPasos">
+                </div>
+
+                <input name="agregarPaso" id="agregarPaso" class="btn btn-primary" type="button" value="Agregar Paso" > <br><br>
+
+                <button name="guardar" type="submit">Actualizar receta</button>
+            </form>
+            
+        </div>
     </body>
 </html>

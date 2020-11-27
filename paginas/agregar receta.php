@@ -18,14 +18,17 @@
     <body>
 
         <h1 class="title-body"> Agregar Receta </h1><br><br>
-        <form class="formulary col-sm-3" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
+        <div class="container col-sm">
+            <form class="formulary" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
             
             <fieldset class="field-1">            
                 <label for="titulo">Titulo: </label><br>
-                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." maxlength="100" required><br>
+                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="100" autofocus pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" required><br>
+                
                 <label for="imgPrincipal"> Foto de la receta: </label><br>                
-                <img id="imgPrincipalPreview"src="" alt="Plato terminado" class="oculto"><br><br>
-                <label for="imgPrincipal" class="btn btn-primary">Seleccionar imagen </label><br>
+                <img id="imgPrincipalPreview"src="" alt="Plato terminado" class="oculto img-rounded"><br><br>
+                <label for="imgPrincipal" class="btn btn-warning">Seleccionar imagen </label><br>
+                
                 <input autocomplete="off" class="invisible" autofocus value="" type="file" id="imgPrincipal" name="imgPrincipal" required><br>
             </fieldset>
                 
@@ -45,7 +48,8 @@
             <fieldset class="field-1">
                 <div id="listIngredientes">
                     <label for="ingrediente">Ingrediente: </label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..." maxlength="50" required><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..." minlength="3" maxlength="50" pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" required><br>
+                    
                     <label for="cantidad">Cantidad</label><br>
                     <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]" maxlength="100" required placeholder="Ingrese una cantidad..."><br><br>
                 </div>  
@@ -56,18 +60,22 @@
                 <div id="listPasos">
                     <div id="paso0">
                         <label for="paso">Paso: </label><br>
-                        <input id="paso" class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese un paso..." required minlength="15" maxlength="350"><br>
+                        <input id="paso" class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese el paso (ej: 1# paso:...)" autofocus minlength="10" maxlength="150" pattern="([1-9]{0,1}[\\0-9][\#][\s][\\p][\\a][\\s][\\o][\\:][\s]([a-zA-Z,. ]{1,}[\s])){1,}" required><br>
+                        
                         <label >Imagen: </label><br>
-                        <img id="imgPasoPreview0"src="" class="oculto"><br><br>
-                        <label for="imagen0" class="btn btn-primary">Seleccionar imagen</label><br>
-                        <input class="invisible" id="imagen0"autocomplete="off" autofocus value="" type="file" name="imagen[]"><br><br>
+                        <img id="imgPasoPreview0"src="" class="oculto img-rounded"><br><br>
+                        
+                        <label for="imagen0" class="btn btn-warning">Seleccionar imagen</label><br>
+                        <input class="invisible" id="imagen0"autocomplete="off" autofocus value="" type="file" name="imagen[]"><br>
                     </div>
                 </div>
                 
-                <input name="agregarPaso" class="btn btn-primary" id="agregarPaso" type="button" value="Agregar Paso" ><br><br>
-                <button name="guardar" class="btn btn-primary" type="submit"> Guardar receta </button>                
+                <input name="agregarPaso" class="btn btn-primary" id="agregarPaso" type="button" value="Agregar Paso" ><br><br>   
             </fieldset>    
-
-        </form>
+            <button type="submit" name="guardar" class="btn btn-primary" id="btn_guardar_receta"> Guardar receta </button><br>
+            
+        </form>            
+        </div>    
+        
     </body>
 </html>

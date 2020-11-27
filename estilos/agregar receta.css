@@ -15,6 +15,10 @@ html
 .field-1
 {
     margin: 20px;
+    padding: 8px;
+    border-radius:20px;
+    border:1px solid dimgray;    
+    background-color: hsla(0, 0%, 0%, .5); 
 }
 
 h1, h5, label
@@ -43,7 +47,6 @@ input[type="text"]
     padding-bottom: 2%;
     
     text-align: center;
-
     
     z-index: 1;
     border:1px solid white;
@@ -51,6 +54,16 @@ input[type="text"]
     backdrop-filter:blur(2px) brightness(50%);    
 }
 
+#btn_guardar_receta
+{
+    background: linear-gradient(white 60%, rgba(160, 160, 160, 160));
+    color: dimgray;
+}
+    #btn_guardar_receta:hover
+    {
+        color: black;
+        background: whitesmoke;  
+    }
 
 .oculto
 {

@@ -1,3 +1,4 @@
+
 .thumbnail
 {
     max-width: 100%;
@@ -5,10 +6,12 @@
     display:block;
     margin:auto;
 }
+
 .panel{
     
     border-color: black;
 }
+
 .panel .panel-primary
 {
     padding:0; 
