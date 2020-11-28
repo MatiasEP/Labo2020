@@ -21,7 +21,7 @@ function imprimirPasos(pasos)
 {
     for(let i = 0; i< pasos.length; i++)
     {        
-        $("#pasos").append("Paso "+(i+1)+": "+pasos[i]["descripcion"]+"<br>"+"<img src='"+pasos[i]["imagen"]+"'>");
+        $("#pasos").append("Paso "+(i+1)+": "+pasos[i]["descripcion"]+"<br>"+"<img src='"+(pasos[i]["imagen"]).replace(/ /g, '%20')+"'>");
     }
 }
 
@@ -44,7 +44,7 @@ function visualizarReceta()
             let ingredientes = data[i]["ingredientes"];
             let pasos = data[i]["pasos"];
             $("#titulo").text(data[i]["titulo"]);
-            $("#imgPrincipal").attr("src",data[i]["imagen"]);
+            $("#imgPrincipal").attr("src",(data[i]["imagen"]).replace(/ /g, '%20'));
             imprimirCategorias(categorias);
             imprimirIngredientes(ingredientes);
             imprimirPasos(pasos);

@@ -41,10 +41,11 @@
                     
                     <div class="cabecera">
                         <div class="navbar-header">
+                            <a href="../paginas/mostrar todas las recetas.php">
                             <span class="navbar-brand">
                                 <i class="glyphicon glyphicon-queen"></i>
                                 <strong> El Mandarín </strong>
-                            </span>
+                            </span></a>
                         </div>
 
                         <div class="input-group select-group form-group col-lg-6">
