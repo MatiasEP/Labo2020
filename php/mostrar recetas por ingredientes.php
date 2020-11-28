@@ -6,7 +6,7 @@
     use \MongoDB\Driver\BulkWrite;
     use \MongoDB\Driver\Query;
     use \MongoDB\Driver\ReadPreference;
-    $ingrediente = isset($_POST["busqueda"])?$_POST["busqueda"]:'';
+    $ingrediente = isset($_GET["busqueda"])?$_GET["busqueda"]:'';
     $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
     if($ingrediente !='')
     {   
