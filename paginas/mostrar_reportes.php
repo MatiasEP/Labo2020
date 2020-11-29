@@ -14,7 +14,7 @@
     <title>Inicio</title>
 </head>
 <body>
-    <div class="container" >
+    <div class="container cPrincipal" >
         <div class="row" id="main">
 
         </div>
@@ -29,18 +29,19 @@
                     <h4 class="modal-title">Datos del reporte</h4>
                 </div>
                 <div class="modal-body">
-                <h4>Motivo: </h4><br>
-                        <div class="form-group">
-                            <textarea name="motivo" id="motivo" cols="50" rows="5"  disabled></textarea><br>
-                        </div>
-                        <div class="btn-group">
-                            <a href="" class="btn btn-primary " id="verReceta">
-                                <span class="glyphicon glyphicon-send"></span> Ir a receta
-                            </a>  
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="ignorarReceta">
-                            <span class="glyphicon glyphicon-remove"></span>Ignorar
-                            </button>
-                        </div>
+                    <h4>Motivo: </h4><br>
+                    <div class="form-group">
+                        <textarea name="motivo" id="motivo" cols="50" rows="5"  disabled></textarea><br>
+                    </div>
+                    <div class="btn-group">
+                        <a href="" class="btn btn-primary " id="verReceta">
+                            <span class="glyphicon glyphicon-send"></span> Ir a receta
+                        </a>  
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="ignorarReceta">
+                        <span class="glyphicon glyphicon-remove"></span>Ignorar
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

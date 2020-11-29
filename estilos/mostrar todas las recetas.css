@@ -1,4 +1,3 @@
-
 .thumbnail
 {
     max-width: 100%;
@@ -6,16 +5,23 @@
     display:block;
     margin:auto;
 }
-
 .panel{
     
     border-color: black;
 }
-
 .panel .panel-primary
 {
     padding:0; 
     margin:1rem;
+}
+
+.verReporte
+{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .panel-primary >.panel-heading
