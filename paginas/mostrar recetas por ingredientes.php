@@ -10,8 +10,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../estilos/mostrar todas las recetas.css" type="text/css">
     <script src="../scripts/mostrar recetas por ingredientes.js" async></script>
-    <?php include '../php/barras.php';
-        include '../php/mostrar recetas por ingredientes.php'?>
+    <?php
+     include '../php/barras.php';
+    ?>
     <title>Inicio</title>
 </head>
 <body>

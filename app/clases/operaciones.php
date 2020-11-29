@@ -1,6 +1,6 @@
 <?php
 
-require_once("../app/db/db.php");
+require_once("db.php");
     class Operaciones{
         public function __construct(){
         
@@ -61,6 +61,17 @@ require_once("../app/db/db.php");
 
 
         public function roleUsers()
+        {
+            try{
+                $db = new DB();
+                $result = $db->findRoleUserId($_SESSION['id_sesion_google']);
+                return $result;
+           }catch(Exception $ex){
+
+           }
+        }
+        
+        public function rolePermisoss()
         {
             try{
                 $db = new DB();

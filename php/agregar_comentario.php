@@ -19,6 +19,7 @@
         $idUsuario = $ctrl->getUserInfo()->_id->__toString();
         $idReceta = isset($_POST["idReceta"])?$_POST["idReceta"]:'';
         $comentario = isset($_POST["comentario"])?$_POST["comentario"]:'';
+        $comentario  = htmlspecialchars($comentario, ENT_QUOTES);
        // $idReceta = "5fa58577bd0d000028004567";//temporal para test
         //$idUsuario = "5fa1f37a25700000930007ed"; //temporal para test
         

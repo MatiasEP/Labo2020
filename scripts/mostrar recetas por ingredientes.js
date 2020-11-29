@@ -11,11 +11,17 @@ function tipos(aTipos)
 }
 
 function mostrarTodasLasRecetas()
-{
+{   
+    let params = new URLSearchParams(location.search);
+    let busqueda = params.get('busqueda');
+    let parametros = {
+        "busqueda" : busqueda
+    };
     let request = $.ajax(
     {
         method: "POST",
-        url: "../json/mostrar recetas por ingredientes.json"
+        url: "../php/mostrar recetas por ingredientes.php",
+        data:parametros
     });
         $("#main").empty();
         request.done(function(data) {  

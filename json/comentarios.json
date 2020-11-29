@@ -1,1 +1,0 @@
-[{"_id":{"$oid":"5fab00228a2a9901d3c98044"},"idReceta":{"$oid":"5fa58577bd0d000028004567"},"idUsuario":{"$oid":"5fa1f37a25700000930007ed"},"texto":"test de comentario","usuario":[{"_id":{"$oid":"5fa1f37a25700000930007ed"},"googleID":{"$oid":"5fa1f37925700000930007ec"},"nombre":"Mat\u00edas","visible":false}]}]

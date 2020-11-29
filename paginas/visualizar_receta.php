@@ -30,7 +30,9 @@
     <title>Inicio</title>
 </head>
 <body>
-    <div class="container" >
+<div class="container" >
+    <div id="receta" >
+    
         <h1 id="titulo"></h1><br><br>
         <img src="" alt="plato terminado" id="imgPrincipal"><br><br>
         <fieldset id="categorias">
@@ -41,7 +43,9 @@
         </fieldset>
         <fieldset id="pasos">
             <legend>Pasos:</legend>
-        </fieldset><br><br>
+        </fieldset>
+        <br><br>
+     </div>
         <button id="favorito" class="agregar">Agregar a favoritos</button>
         <button id="descargar">Descargar como PDF</button>
         <a href="#" class="btn btn-default" data-toggle="modal" data-target="#myModal">
@@ -56,7 +60,6 @@
         js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-
         <?php if ($ctrl->isLoggedIn()): ?>  
 
         <a href="http://localhost/Labo2020/paginas/editar_receta.php?id=<?php echo $_GET['id'];?>" target="_blank">Editar Receta</a>

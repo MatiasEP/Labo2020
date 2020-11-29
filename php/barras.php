@@ -9,12 +9,13 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../estilos/barras.css" type="text/css">
         
+        <script src= "../scripts/barras.js"></script>
         <script src= "../scripts/categorias.js"></script>
         <script src= "../scripts/servicios.js"></script>
 
         <nav class="navbar navbar-inverse">
             <div class="container">
-                <form action="./mostrar recetas por titulo.php" method="post" class="navbar-left" id="buscador">
+                <form action="./mostrar recetas por titulo.php" method="get" class="navbar-left" id="buscador">
                     <div id="mySidenav" class="sidenav"> <!--el ID y la CLASS del Sidebar-->
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a id ="micuenta" href="#"></a>
@@ -44,7 +45,7 @@
                         </div>
 
                         <div class="input-group select-group form-group col-lg-6">
-                            <select class="form-control input-group-addon ">
+                            <select id="selectBuscador" class="form-control input-group-addon ">
                                 <option value="1"> Titulo </option>
                                 <option value="2"> Ingredientes </option>
                             </select> 
