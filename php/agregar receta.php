@@ -30,6 +30,11 @@
     $arrayPasos=[];
     $arrayIngredientes=[];
     $imgPrincipal= (isset($_FILES['imgPrincipal'])?$_FILES['imgPrincipal']:'');
+    
+    //var_dump($_FILES);
+	if(isset($_FILES['imgPrincipal'])){
+		$imgPrincipalb64 = createBase64($_FILES['imgPrincipal']); 
+	}
     class ingrediente
     {
         public $descripcion;
@@ -41,7 +46,7 @@
         public $imagen;
     }
     /*echo '<pre>';
-    print_r($_FILES);
+    //print_r($_FILES);
     echo '</pre>';*/
     # Si hay nombres enviados por el formulario; entonces
     # la lista es el formulario.
@@ -53,7 +58,13 @@
     if (isset($_FILES["imagen"])) 
     {
         $imagenes = $_FILES["imagen"];
-        $contadorPasos = (count($imagenes['name']));
+        if(is_array($imagenes['name'])){
+            $contadorPasos = count($imagenes['name']);
+        }else{
+            $contadorPasos = 1;
+        }
+
+       
     }
     if (isset($_POST["ingrediente"])) 
     {
@@ -76,10 +87,12 @@
         for($i = 0; $i<$contadorPasos;$i++)
         {
             $ruta = "../imagenes/".$imagenes['name'][$i];
-            move_uploaded_file($imagenes['tmp_name'][$i],$ruta);
+            //move_uploaded_file($imagenes['tmp_name'][$i],$ruta);
+			
+			
         }
         $ruta = "../imagenes/".$imgPrincipal['name'];
-        move_uploaded_file($imgPrincipal['tmp_name'],$ruta);
+        //move_uploaded_file($imgPrincipal['tmp_name'],$ruta);
         for($i=0; $i < $contadorIngredientes; $i++)
         {
             $obj = new ingrediente();
@@ -87,17 +100,47 @@
             $obj->cantidad = $cantidades[$i];
             array_push($arrayIngredientes, $obj);
         }
-        for($i=0; $i < $contadorPasos; $i++)
-        {
+        if($contadorPasos == 1 ){
             $obj = new paso();
-            $obj->descripcion = $pasos[$i];
-            $obj->imagen = "../imagenes/".$imagenes['name'][$i];
+            $obj->descripcion = $pasos[0];
+
+            $obj->imagen = createBase640($_FILES['imagen']);
+            //$obj->imagen = createBase64Tmp($_FILES["imagen"],0);
+
             array_push($arrayPasos, $obj);
+        }else{
+            for($i=0; $i < $contadorPasos; $i++)
+            {
+                $obj = new paso();
+                $obj->descripcion = $pasos[$i];
+                $obj->imagen = createBase64Tmp($_FILES["imagen"],$i);
+    
+                array_push($arrayPasos, $obj);
+            }
         }
-        $query->insert(["_idCreador"=>$idUsuario,"titulo"=>$_POST["titulo"],"imagen"=>$ruta,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos,"activado"=>FALSE,"visible"=>FALSE]);
+        $query->insert(["_idCreador"=>$idUsuario,"titulo"=>$_POST["titulo"],"imagen"=>$imgPrincipalb64,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos,"activado"=>FALSE,"visible"=>FALSE]);
         $result = $client->executeBulkWrite("proyecto.recetas",$query);
-        echo "<script>alert('receta creada');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+        echo json_encode(true);
+                
 
 
     }
+    function createBase64($file){
+        $data = file_get_contents($file['tmp_name']);
+        $data = base64_encode($data);
+        return "data:image/gif;base64,".$data;
+    }
+    function createBase640($file){
+        $data = file_get_contents($file['tmp_name'][0]);
+        $data = base64_encode($data);
+        return "data:image/gif;base64,".$data;
+    }
+function createBase64Tmp($fileTmp,$ii){
+	$data = file_get_contents($fileTmp['tmp_name'][$ii]);
+	$data = base64_encode($data);
+	return "data:image/gif;base64,".$data;
+}
+
+
     ?>
+
