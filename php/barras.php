@@ -5,12 +5,12 @@
     require_once("../app/init.php");
 ?>
 
-<!------------------------------------- SECTOR GOOGLE ICONS -------------------------------------->        
+<!------------------------------------- SECTOR GOOGLE ICONS -------------------------------------->  
+        <script src= "../scripts/barras.js"></script>      
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <link rel="stylesheet" href="../estilos/barras.css" type="text/css">
-        <script src= "../scripts/barras.js"></script>
         
 
         <script src= "../scripts/categorias.js"></script>
