@@ -4,6 +4,30 @@ html
     background: url(../imagenes/image_example.jpg) no-repeat center fixed;    
 }
 
+.d-none
+{
+    display: none;
+}
+
+.selectBuscador
+{
+    width: 15%;
+}
+
+.select2
+{
+    height: 3.4rem;
+}
+
+.select2-container .select2-selection--single
+{
+    height: 3.4rem;
+}
+.select2-selection 
+{
+    height: 3.4rem;
+}
+
 .centrado
 {
     align-items: center;
