@@ -8,7 +8,7 @@
     use \MongoDB\Driver\ReadPreference;
     use \MongoDB\Driver\Aggregate;
     use \MongoDB\Driver\Command;
-    $titulo = isset($_POST["busqueda"])?$_POST["busqueda"]:'';
+    $titulo = isset($_GET["busqueda"])?$_GET["busqueda"]:'';
     $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
     if($titulo != '')
     {

@@ -1,6 +1,6 @@
 <?php
 
-require_once("db.php");
+require_once __DIR__."/db.php";
     class Operaciones{
         public function __construct(){
         
@@ -97,6 +97,28 @@ require_once("db.php");
                 $result = $db->comentarios($idReceta);
                 header('Content-type: application/json');
                 return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function reportes(){
+            try{
+                $db = new DB();
+                $result = $db->reportes();
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function ignorar_reporte($id){
+            try{
+                $db = new DB();
+                $result = $db->ignorar_reporte($id);
 
            }catch(Exception $ex){
 

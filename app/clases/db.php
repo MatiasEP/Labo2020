@@ -86,6 +86,56 @@ use \MongoDB\Driver\ReadPreference;
             }
             return $array;
         }
+
+
+        public function reportes()
+        {   
+            
+
+        $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+
+            $command = new MongoDB\Driver\command([
+                'aggregate' => 'reportes',
+                'pipeline' => [['$lookup'=>[
+                    
+                        "from"=> 'recetas',
+                        "localField"=> 'idReceta',
+                        "foreignField"=> '_id',
+                        "as"=> 'receta'
+                    ] 
+                    ],
+                        ['$match'=>["observado"=>false]]
+                    ],
+                    'cursor' => new stdClass()
+                ]);
+            $rows = $client->executeCommand('proyecto', $command);
+  
+            $array = array();
+            foreach ($rows as $row) 
+            {
+                array_push($array, $row);
+            }
+            return $array;
+        }
+
+        public function ignorar_reporte($id)
+        {   
+            
+
+            try{
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+                $firstKey = array_key_first($id);
+                $id = new MongoDB\BSON\ObjectId($id[$firstKey]);
+                $query = new BulkWrite();
+                $query->update(['_id'=>$id],
+                ['$set' => ['observado' => true]]);
+                $client->executeBulkWrite("proyecto.reportes",$query);
+
+                
+           }catch(Exception $ex){
+            echo($ex);
+           }	
+        }
 	    
 		public function findRecetaId($idReceta){
 			 try{

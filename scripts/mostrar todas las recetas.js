@@ -14,8 +14,8 @@ function mostrarTodasLasRecetas()
 {
     let request = $.ajax(
     {
-        method: "POST",
-        url: "../json/mostrar todas las recetas.json"
+        method: "GET",
+        url: "../php/mostrar todas las recetas.php"
     });
         $("#main").empty();
         request.done(function(data) {  
@@ -26,7 +26,7 @@ function mostrarTodasLasRecetas()
             "<div class='panel panel-primary' >"+   
             "<div class='panel-heading'>"+data[i]["titulo"]+"</div>"+
             "<div class='panel-body' >"+       
-            "<a href='../paginas/visualizar_receta.php?id="+(Object.values(data[i]["_id"]))[0]+"'><img src="+data[i]["imagen"]+" class='thumbnail' alt='preview'></a>"+
+            "<a href='../paginas/visualizar_receta.php?id="+(Object.values(data[i]["_id"]))[0]+"'><img src="+(data[i]["imagen"]).replace(/ /g, '%20')+" class='thumbnail' alt='preview'></a>"+
             "<div class='panel-footer' >Categoria: "+tipos(data[i]["tipo"])+
             
             "</div>"+

@@ -10,22 +10,21 @@ function tipos(aTipos)
     return array;
 }
 
-function mostrarRecetasPorIngrediente()
-{   
-    let params = new URLSearchParams(location.search);
-    let busqueda = params.get('busqueda');
-    let parametros = {
-        "busqueda" : busqueda
-    };
+function mostrarTodasLasRecetas()
+{
+    let params= new URLSearchParams(location.search);
+    var busqueda = params.get('id');
     let request = $.ajax(
     {
-        method: "POST",
-        url: "../php/mostrar recetas por ingredientes.php",
-        data:parametros
+        method: "GET",
+        url: "../php/mostrar recetas por usuario.php",
+        data: { 
+            id: busqueda,
+          }
     });
         $("#main").empty();
         request.done(function(data) {  
-        $("#main").append(  "<h1>Resultados:<h1><br><br>");            
+        $("#main").append(  "<h1>Inicio<h1><br><br>");       
         for(let i = 0; i<data.length;i++)
         {
             $("#main").append("<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>"+
@@ -49,5 +48,5 @@ function mostrarRecetasPorIngrediente()
 
 function inicio()
 {
-    mostrarRecetasPorIngrediente();
+    mostrarTodasLasRecetas();
 }

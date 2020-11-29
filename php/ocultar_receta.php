@@ -23,6 +23,10 @@
             $query2->update(["_id"=>$idReceta,'_idCreador' => $idUsuario],
             ['$set' => ['visible' => false]]);
             $client->executeBulkWrite("proyecto.recetas",$query2);
+            $query3 = new BulkWrite();
+            $query3->update(["idReceta"=>$idReceta],
+            ['$set' => ['observado' => true]]);
+            $client->executeBulkWrite("proyecto.reportes",$query3);
         }
     }
    

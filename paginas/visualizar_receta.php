@@ -31,8 +31,7 @@
 </head>
 <body>
 <div class="container" >
-    <div id="receta" >
-    
+    <div class="container-view ">
         <h1 id="titulo"></h1><br><br>
         <img src="" alt="plato terminado" id="imgPrincipal"><br><br>
         <fieldset id="categorias">
@@ -43,12 +42,12 @@
         </fieldset>
         <fieldset id="pasos">
             <legend>Pasos:</legend>
-        </fieldset>
-        <br><br>
-     </div>
-        <button id="favorito" class="agregar">Agregar a favoritos</button>
-        <button id="descargar">Descargar como PDF</button>
-        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+                </fieldset><br><br>
+
+                <button class="btn btn-primary" id="favorito" class="agregar">Agregar a favoritos</button>
+                <button class="btn btn-primary" id="descargar">Descargar como PDF</button>
+
+                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                         <span class="glyphicon glyphicon-exclamation-sign"> Reportar receta</span>
                     </a>
         
@@ -68,14 +67,12 @@
         <?php endif; ?>
 
         <!-- Your share button code -->
-        <div class="fb-share-button" 
-        data-href="http://localhost/<?php echo $urlCompartir;?>" 
-        data-layout="button_count">
+                <div class="fb-share-button" data-href="http://localhost/<?php echo $urlCompartir;?>" data-layout="button_count">
         </div>
 
         <a href="https://twitter.com/intent/tweet?text=recetas compartidas&url=http%3A%2F%2Flocalhost%2FLabo2020%2Fpaginas%2Fvisualizar_receta.php?id=<?php echo $idCompartir;?>&via=labo2020&hashtags=recetas" target="_blank">Twittear</a>
         
-
+                <br>
         <fieldset id="comentarios">
             <legend>Comentarios:</legend>
             <div id="divComentarios">
@@ -86,7 +83,7 @@
 
         <div class="" id="nuevoComentario">
          <label for="inputComentario"> Nuevo comentario: </label><br>
-         <textarea name="inputComentario" id="inputComentario" cols="50" rows="5" placeholder="Ingrese su comentario..."></textarea><br>
+                    <textarea name="inputComentario" class="form-control" id="inputComentario" cols="40" rows="8" placeholder="Ingrese su comentario..." minlength="2" maxlength="250"></textarea><br>
          <button id="agregarComentario">Agregar comentario</button>
         </div>
         <?php endif; ?>
@@ -106,7 +103,7 @@
                     <form id="formReporte" action="">
                         <div class="form-group">
                             <label for="reporte">Reporte</label>
-                            <textarea name="reporte" id="reporte" cols="50" rows="5" placeholder="Ingrese la razon del reporte..."></textarea><br>
+                                    <textarea name="reporte" class="form-control" id="reporte" cols="40" rows="8" placeholder="Ingrese la razon del reporte..." minlength="2" maxlength="100"></textarea><br>
                         </div>
                         <div class="btn-group">
                             <button type="submit" class="btn btn-primary ">
@@ -120,5 +117,11 @@
             </div>
         </div>
     </div>
+            </div>
+            
+            
+        </div>    
+          
+        
 </body>
 </html>
