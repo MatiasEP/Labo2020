@@ -108,7 +108,8 @@ use \MongoDB\Driver\ReadPreference;
                         "foreignField"=> '_id',
                         "as"=> 'receta'
                     ] 
-                    ]
+                    ],
+                        ['$match'=>["observado"=>false]]
                     ],
                     'cursor' => new stdClass()
                 ]);
@@ -122,21 +123,22 @@ use \MongoDB\Driver\ReadPreference;
             return $array;
         }
 
-        public function borrar_reporte($id)
+        public function ignorar_reporte($id)
         {   
             
 
             try{
                 $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
-                /*$bulk = new MongoDB\Driver\BulkWrite;
-                $bulk->delete(['_id' => $id], ['limit' => 1]);
-                $client->executeBulkWrite('proyecto.reportes', $bulk);*/
-                /*$coleccion = $this->getConnection()->proyecto->reportes;
-                $rows = $coleccion->remove(array('_id' => $id), array("justOne" => true)); // $mongo contains the connection object to MongoDB    */
-                $coleccion = $this->getConnection()->proyecto->reportes;
-                $coleccion->deleteOne(['_id' => $id],["justOne" => true]);
+                $firstKey = array_key_first($id);
+                $id = new MongoDB\BSON\ObjectId($id[$firstKey]);
+                $query = new BulkWrite();
+                $query->update(['_id'=>$id],
+                ['$set' => ['observado' => true]]);
+                $client->executeBulkWrite("proyecto.reportes",$query);
+
+                
            }catch(Exception $ex){
-            echo("pepe");
+            echo($ex);
            }	
         }
 	    

@@ -11,6 +11,6 @@
         $auth = new GoogleAuth($googleClient);  
         $ctrl = new Operaciones();
 
-        echo $ctrl->borrar_reporte($id);
+        echo $ctrl->ignorar_reporte($id);
     }
 ?>

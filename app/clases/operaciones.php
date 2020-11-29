@@ -104,10 +104,10 @@ require_once __DIR__."/db.php";
            }
         }
 
-        public function borrar_reporte($id){
+        public function ignorar_reporte($id){
             try{
                 $db = new DB();
-                $result = $db->borrar_reporte($id);
+                $result = $db->ignorar_reporte($id);
 
            }catch(Exception $ex){
 
