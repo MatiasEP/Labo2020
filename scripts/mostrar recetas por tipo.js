@@ -12,10 +12,15 @@ function tipos(aTipos)
 
 function mostrarRecetasPorTipo()
 {
+    let params= new URLSearchParams(location.search);
+    var busqueda = params.get('categoria');
     let request = $.ajax(
     {
-        method: "POST",
-        url: "../json/mostrar recetas por tipo.json"
+        method: "GET",
+        url: "../php/mostrar recetas por tipo.php",
+        data: { 
+            categoria: busqueda,
+          }
     });
         $("#main").empty();
         request.done(function(data) {

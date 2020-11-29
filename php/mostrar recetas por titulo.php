@@ -28,22 +28,24 @@
             'cursor' => new stdClass()
         ]);
         $rows = $client->executeCommand('proyecto', $command);
-        $file = '../json/mostrar recetas por titulo.json';
+        /*$file = '../json/mostrar recetas por ingredientes.json';
         if(file_exists($file))
         {        
             unlink($file);
         }
-        //file_put_contents($file,"[",FILE_APPEND | LOCK_EX);
+        //file_put_contents($file,"[",FILE_APPEND | LOCK_EX);*/
         $array = array();
         foreach ($rows as $row) 
         {
-            $json_string = json_encode($row);
-            array_push($array, $json_string);
+            //$json_string = json_encode($row);
+            array_push($array, $row);
         }
-        $array = implode(',',$array);
+        header('Content-type: application/json');
+        echo json_encode($array);
+        /*$array = implode(',',$array);
         file_put_contents($file, "[",FILE_APPEND | LOCK_EX);
         file_put_contents($file, $array,FILE_APPEND | LOCK_EX);
-        file_put_contents($file, "]",FILE_APPEND | LOCK_EX);
+        file_put_contents($file, "]",FILE_APPEND | LOCK_EX);*/
     }
     
 ?>

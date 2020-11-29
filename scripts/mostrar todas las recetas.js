@@ -14,8 +14,8 @@ function mostrarTodasLasRecetas()
 {
     let request = $.ajax(
     {
-        method: "POST",
-        url: "../json/mostrar todas las recetas.json"
+        method: "GET",
+        url: "../php/mostrar todas las recetas.php"
     });
         $("#main").empty();
         request.done(function(data) {  

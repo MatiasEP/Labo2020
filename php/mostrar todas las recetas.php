@@ -13,22 +13,24 @@
     $options = ['sort' =>['_id'=>-1],];
     $query = new MongoDB\Driver\Query($filter,$options);
     $rows = $client->executeQuery("proyecto.recetas", $query); // $mongo contains the connection object to MongoDB    
-    $file = '../json/mostrar todas las recetas.json';
-    if(file_exists($file))
-    {        
-        unlink($file);
-    }
-    //file_put_contents($file,"[",FILE_APPEND | LOCK_EX);
-    $array = array();
-    foreach ($rows as $row) 
-    {
-        $json_string = json_encode($row);
-        array_push($array, $json_string);
-    }
-    $array = implode(',',$array);
-    file_put_contents($file, "[",FILE_APPEND | LOCK_EX);
-    file_put_contents($file, $array,FILE_APPEND | LOCK_EX);
-    file_put_contents($file, "]",FILE_APPEND | LOCK_EX);
+    /*$file = '../json/mostrar recetas por ingredientes.json';
+        if(file_exists($file))
+        {        
+            unlink($file);
+        }
+        //file_put_contents($file,"[",FILE_APPEND | LOCK_EX);*/
+        $array = array();
+        foreach ($rows as $row) 
+        {
+            //$json_string = json_encode($row);
+            array_push($array, $row);
+        }
+        header('Content-type: application/json');
+        echo json_encode($array);
+        /*$array = implode(',',$array);
+        file_put_contents($file, "[",FILE_APPEND | LOCK_EX);
+        file_put_contents($file, $array,FILE_APPEND | LOCK_EX);
+        file_put_contents($file, "]",FILE_APPEND | LOCK_EX);*/
     /*foreach($rows as $row)
     {                    
         $json_string = json_encode($row);

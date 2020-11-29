@@ -9,10 +9,10 @@
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../estilos/mostrar todas las recetas.css" type="text/css">
-    <script src="../scripts/mostrar recetas por ingredientes.js" async></script>
+    <script src="../scripts/mostrar recetas por usuario.js" async></script>
     <?php include '../php/barras.php';
-        //include '../php/mostrar recetas por ingredientes.php';?>
-    <title>Inicio</title>
+        //include '../php/mostrar recetas por usuario.php';?>
+    <title>Resultados</title>
 </head>
 <body>
     <div class="container" >

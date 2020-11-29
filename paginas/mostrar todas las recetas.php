@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../estilos/mostrar todas las recetas.css" type="text/css">
     <script src="../scripts/mostrar todas las recetas.js" async></script>
     <?php include '../php/barras.php';
-        include '../php/mostrar todas las recetas.php'?>
+        //include '../php/mostrar todas las recetas.php';?>
     <title>Inicio</title>
 </head>
 <body>
