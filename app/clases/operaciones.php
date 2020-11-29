@@ -70,6 +70,17 @@ require_once __DIR__."/db.php";
 
            }
         }
+        
+        public function rolePermisoss()
+        {
+            try{
+                $db = new DB();
+                $result = $db->findRoleUserId($_SESSION['id_sesion_google']);
+                return $result;
+           }catch(Exception $ex){
+
+           }
+        }
         public function logout()
         {
             unset($_SESSION['access_token']);

@@ -12,7 +12,6 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <link rel="stylesheet" href="../estilos/barras.css" type="text/css">
         
-
         <script src= "../scripts/categorias.js"></script>
         <script src= "../scripts/servicios.js"></script>
 
@@ -49,7 +48,7 @@
                         </div>
 
                         <div class="input-group select-group form-group col-lg-6">
-                            <select class="form-control " style="width:15%"id="selectBuscador">
+                            <select class="form-control input-group-addon" style="width:15%"id="selectBuscador">
                                 <option value="1"> Titulo </option>
                                 <option value="2"> Ingredientes </option>
                                 <option value="3"> Categoria </option>

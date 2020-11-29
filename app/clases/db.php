@@ -21,10 +21,7 @@ use \MongoDB\Driver\ReadPreference;
            
 
             $coleccionu = $this->getConnection()->proyecto->usuarios;
-            $resultadou=$coleccionu->insertOne(array("googleID"=>$resultadog->getInsertedId(),"nombre"=>$payload->givenName,"visible"=>FALSE));
-
-            $coleccionr = $this->getConnection()->proyecto->roles;
-            $coleccionr->insertOne(array("googleID"=>$resultadog->getInsertedId(),"roles"=>array("crearReceta","eliminarPost","verReceta","comentarReceta")));
+            $resultadou=$coleccionu->insertOne(array("googleID"=>$resultadog->getInsertedId(),"nombre"=>$payload->givenName,"picture"=>$payload->picture,"rol"=>"usuario registrado","visible"=>FALSE));
 
             $coleccionf = $this->getConnection()->proyecto->favoritos;
             $coleccionf->insertOne(array("_idUsuario"=>$resultadou->getInsertedId(),"Recetas"=>array()));
@@ -63,8 +60,6 @@ use \MongoDB\Driver\ReadPreference;
         }
         public function comentarios($idReceta)
         {   
-            
-
         $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
             $id = new MongoDB\BSON\ObjectId($idReceta);
 
