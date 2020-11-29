@@ -31,9 +31,16 @@ body
     align-content: center;
 }
 
-input[type="text"]
+.centrado
 {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
 
+.ok
+{
+    margin: auto;
 }
 
 .formulary
@@ -47,13 +54,13 @@ input[type="text"]
     padding-bottom: 2%;
     
     text-align: center;
+
     
     z-index: 1;
     border:1px solid white;
     border-radius:20px;
     backdrop-filter:blur(2px) brightness(50%);    
 }
-
 #btn_guardar_receta
 {
     background: linear-gradient(white 60%, rgba(160, 160, 160, 160));
