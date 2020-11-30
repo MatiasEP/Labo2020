@@ -11,17 +11,16 @@ function tipos(aTipos)
 }
 
 function mostrarRecetasPorTitulo()
-{    
-    let params = new URLSearchParams(location.search);
-    let busqueda = params.get('busqueda');
-    let parametros = {
-        "busqueda" : busqueda
-    };
+{
+    let params= new URLSearchParams(location.search);
+    var busqueda = params.get('busqueda');
     let request = $.ajax(
     {
-        method: "POST",
+        method: "GET",
         url: "../php/mostrar recetas por titulo.php",
-        data: parametros
+        data: { 
+            busqueda: busqueda,
+          }
     });
         $("#main").empty();
         request.done(function(data) {
