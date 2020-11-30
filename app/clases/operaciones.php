@@ -70,7 +70,7 @@ require_once __DIR__."/db.php";
 
            }
         }
-        
+
         public function rolePermisoss()
         {
             try{
@@ -107,6 +107,42 @@ require_once __DIR__."/db.php";
             try{
                 $db = new DB();
                 $result = $db->reportes();
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function comprobar_favorito($idUsuario, $idReceta){
+            try{
+                $db = new DB();
+                $result = $db->comprobar_favorito($idUsuario, $idReceta);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function eliminar_favorito($idUsuario, $idReceta){
+            try{
+                $db = new DB();
+                $result = $db->eliminar_favorito($idUsuario, $idReceta);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function agregar_favorito($idUsuario, $idReceta){
+            try{
+                $db = new DB();
+                $result = $db->agregar_favorito($idUsuario, $idReceta);
                 header('Content-type: application/json');
                 return json_encode($result, JSON_PRETTY_PRINT);
 

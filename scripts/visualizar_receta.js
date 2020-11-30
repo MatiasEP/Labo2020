@@ -102,6 +102,7 @@ function eliminarDeFavoritos()
     });
 }
 
+
 function comprobarFavorito()
 {
     //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
@@ -117,21 +118,7 @@ function comprobarFavorito()
             url: "../php/comprobar_favorito.php"
         });
             request.done(function(data) { 
-                cargarJsonComprobarFavorito(); 
-        })
-        request.fail(function() {
-        alert("Algo salió mal");
-        });
-}
-
-function cargarJsonComprobarFavorito()
-{
-    let request = $.ajax(
-        {
-            method: "GET",
-            url: "../json/comprobar_favorito.json"
-        });
-            request.done(function(data) {  
+                console.log(data) 
             if(data.length == 0)
             {
                 $("#favorito").text("Agregar a favoritos");
