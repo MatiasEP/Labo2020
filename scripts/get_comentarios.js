@@ -16,7 +16,10 @@ function visualizarComentarios()
             $("#divComentarios").empty();
         for(let i = 0; i<data.length;i++)
         {            
-            $("#divComentarios").append(data[i]["usuario"][0]["nombre"]+" : "+data[i]["texto"]+"<br><br>")
+            $("#divComentarios").append("<div >"+
+            "<img class='img-circle perfil' src='"+data[i]["usuario"][0]["picture"]+"'>"+
+            "<a href='../paginas/mostrar%20recetas%20por%20usuario.php?id="+Object.values(data[i]["idUsuario"])+"'>"+
+            data[i]["usuario"][0]["nombre"]+"</a>"+" : "+data[i]["texto"]+"<br><br></div>")
         }
         
     })
