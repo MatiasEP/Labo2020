@@ -13,6 +13,7 @@ $(document).ready(function()
             var tercero = $("#tercero");
             var cuarto = $("#cuarto");
             var quinto = $("#quinto");
+            var sexto = $("#sexto");
 
             if(data==true){
 
@@ -23,11 +24,14 @@ $(document).ready(function()
                 tercero.attr("href", "mostrar%20recetas%20por%20usuario.php");
                 
                 cuarto.text ("Mis Favoritos");
-                cuarto.attr("href", "mostrar recetas favoritas.php");
+                cuarto.attr("href", "mostrar%20recetas%20favoritas.php");
+
+                quinto.text ("Usuarios seguidos");
+                quinto.attr("href", "mostrar%20usuarios%20seguidos.php");
                 
-                quinto.text ("cerrar sesion");
-                quinto.attr("href", "#");
-                quinto.click(cerrarSesion);
+                sexto.text ("cerrar sesion");
+                sexto.attr("href", "#");
+                sexto.click(cerrarSesion);
                 datosUsuario();
             }else{
                 primero.text ( "iniciar sesion");
@@ -41,6 +45,8 @@ $(document).ready(function()
                     cuarto.attr("href", "#");
                     quinto.text ("");
                     quinto.attr("href", "#");
+                    sexto.text ("");
+                    sexto.attr("href", "#");
                     
                });  
             }

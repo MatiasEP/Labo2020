@@ -12,7 +12,6 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <link rel="stylesheet" href="../estilos/barras.css" type="text/css">
         
-        <script src= "../scripts/categorias.js"></script>
         <script src= "../scripts/servicios.js"></script>
 
         <nav class="navbar navbar-inverse">
@@ -20,11 +19,13 @@
                 <form action="./mostrar recetas por titulo.php" method="GET" class="navbar-left" id="buscador">
                     <div id="mySidenav" class="sidenav"> <!--el ID y la CLASS del Sidebar-->
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <img class='img-circle perfil' src=''>
                         <a id="primero"href="#"></a>
                         <a id="segundo" href="#"></a>
                         <a id="tercero"href="#"></a>
                         <a id="cuarto"href="#"></a>
                         <a id="quinto"href="#"></a>
+                        <a id="sexto"href="#"></a>
                     </div>
                     <span style="font-size:30px;cursor:pointer" class="sidebtn navbar-brand" onclick="openNav()">&#9776;</span>
 
