@@ -97,7 +97,7 @@ function enviarReceta()
             contentType: "application/x-www-form-urlencoded; charset=UTF-8", // $_POST
             dataType : "json",
             method: "POST",
-            url: "../php/agregar_receta.php",
+            url: "../php/agregar receta.php",
             data: {receta: postdata},
         success: function(data) {
             if(data)
