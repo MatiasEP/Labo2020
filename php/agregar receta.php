@@ -49,6 +49,8 @@
         $ingredientes = $receta["ingredientes"];
         $cantidades = $receta["cantidad"];
         $pasos = $receta["paso"];
+        $tipos = $receta["tipos"];
+        
         $imgPasos = $receta["imgPaso"];
         $carga = $receta["carga"];
         
