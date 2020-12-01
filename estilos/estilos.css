@@ -4,6 +4,18 @@
     text-align: center; 
 }
 
+.centrado
+{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.ok
+{
+    margin: auto;
+}
+
 body
 {
     align-content: center;

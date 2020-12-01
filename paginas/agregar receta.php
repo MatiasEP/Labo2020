@@ -10,8 +10,16 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <!-- <link rel="stylesheet" href="./estilo.css" type="text/css"> -->
         <script src= "../scripts/agregar receta.js"></script>
-        <?php include '../php/barras.php'; ?>
+        <?php include '../php/barras.php'; 
+
+        $googleClient = new Google_Client();
+        $auth = new GoogleAuth($googleClient); 
+        $ctrl = new Operaciones();
+        $idUsuario =$ctrl->getUserInfo()->_id;
+        //hay que conseguir el id de la sesion actual, preguntarle a ale
+        ?>
         <link rel="stylesheet" href="../estilos/agregar receta.css" type="text/css">   
+        
         <title> Agregar receta </title>
     </head>
 
@@ -87,8 +95,8 @@
                     <div class="modal-body centrado">
                         <img class="img-responsive ok" src="../imagenes/ok.png" alt="">
                          <br><br>
-                        <a href="../paginas/mostrar%20recetas%20por%20usuario.php" id="misRecetasModal">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <a href="../paginas/mostrar%20recetas%20por%20usuario.php?id=<?php echo ($GLOBALS["idUsuario"])?>" id="misRecetasModal">
+                        <button type="button" class="btn btn-primary" >
                         <span class="glyphicon glyphicon-ok"></span>Aceptar
                         </button>
                         </a>

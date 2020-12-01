@@ -19,6 +19,8 @@
         $auth = new GoogleAuth($googleClient);  
 
         $ctrl = new Operaciones();
+        
+        $idUsuario =$ctrl->getUserInfo()->_id;
         if(!$ctrl->isLoggedIn()){
             echo "<script>alert('no se encuentra logueado');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
         }
@@ -70,6 +72,25 @@
                 
             </form>
             
+        </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">La receta se edito correctamente</h4>
+                    </div>
+                    <div class="modal-body centrado">
+                        <img class="img-responsive ok" src="../imagenes/ok.png" alt="">
+                         <br><br>
+                        <a href="../paginas/mostrar%20recetas%20por%20usuario.php?id=<?php echo ($GLOBALS["idUsuario"])?>" id="misRecetasModal">
+                        <button type="button" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-ok"></span>Aceptar
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
