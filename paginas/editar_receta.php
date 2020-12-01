@@ -20,7 +20,6 @@
 
         $ctrl = new Operaciones();
         
-        $idUsuario =$ctrl->getUserInfo()->_id;
         if(!$ctrl->isLoggedIn()){
             echo "<script>alert('no se encuentra logueado');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
         }
@@ -83,7 +82,7 @@
                     <div class="modal-body centrado">
                         <img class="img-responsive ok" src="../imagenes/ok.png" alt="">
                          <br><br>
-                        <a href="../paginas/mostrar%20recetas%20por%20usuario.php?id=<?php echo ($GLOBALS["idUsuario"])?>" id="misRecetasModal">
+                        <a href="../paginas/mostrar%20recetas%20por%20usuario.php" id="misRecetasModal">
                         <button type="button" class="btn btn-primary">
                         <span class="glyphicon glyphicon-ok"></span>Aceptar
                         </button>
