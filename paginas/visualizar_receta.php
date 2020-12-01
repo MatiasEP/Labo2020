@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <?php 
+
     require_once("../app/clases/operaciones.php");
     require_once("../app/init.php");
     $ctrl = new Operaciones();
     $urlCompartir= $_SERVER["REQUEST_URI"];
     $idCompartir= $_GET["id"];
 	$tituloCompartir="compartir receta	";
+    
 ?>
 
 <html lang="en">
@@ -36,52 +38,57 @@
 
             <div class="container-view ">
                 <h1 id="titulo"></h1><br><br>
-                <img src="" alt="plato terminado" id="imgPrincipal"><br><br>
+                
+                <fieldset class="field-3 field-primary">
+                    <img src="" alt="plato terminado" class="img-rounded" id="imgPrincipal"><br>
+                </fieldset>    
 
-                <fieldset id="categorias">
+                <fieldset class="field-3" id="categorias">
                     <legend>Categorias:</legend>
                 </fieldset>
 
-                <fieldset id="ingredientes">
+                <fieldset class="field-3" id="ingredientes">
                     <legend>Ingredientes:</legend>
                 </fieldset>
 
-                <fieldset id="pasos">
+                <fieldset class="field-3" id="pasos">
                     <legend>Pasos:</legend>
-                </fieldset><br><br>
+                </fieldset><br>
 
-                <button class="btn btn-primary" id="favorito" class="agregar">Agregar a favoritos</button>
-                <button class="btn btn-primary" id="descargar">Descargar como PDF</button>
+                <fieldset class="field-3">                
+                    <button class="btn btn-primary" id="favorito" class="agregar">Agregar a favoritos</button>
+                    <button class="btn btn-primary" id="descargar">Descargar como PDF</button>
 
-                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-exclamation-sign"> Reportar receta</span>
-                </a>
+                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-exclamation-sign"> Reportar receta</span>
+                    </a>
 
-                <div id="fb-root"></div>
+                    <div id="fb-root"></div>
 
-                <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-                fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
+                    <script>(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                    fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
 
-                <?php if ($ctrl->isLoggedIn()): ?>  
+                    <?php if ($ctrl->isLoggedIn()): ?>  
 
-                <a href="http://localhost/Labo2020/paginas/editar_receta.php?id=<?php echo $_GET['id'];?>" target="_blank"> Editar Receta </a>
+                    <a href="http://localhost/Labo2020/paginas/editar_receta.php?id=<?php echo $_GET['id'];?>" target="_blank"> Editar Receta </a>
 
-                <br>        
-                <?php endif; ?>
+                    <br>        
+                    <?php endif; ?>
 
-                <!-- Your share button code -->
-                <div class="fb-share-button" data-href="http://localhost/<?php echo $urlCompartir;?>" data-layout="button_count">
-                </div>
+                    <!-- Your share button code -->
+                    <div class="fb-share-button" data-href="http://localhost/<?php echo $urlCompartir;?>" data-layout="button_count">
+                    </div>
 
-                <a href="https://twitter.com/intent/tweet?text=recetas compartidas&url=http%3A%2F%2Flocalhost%2FLabo2020%2Fpaginas%2Fvisualizar_receta.php?id=<?php echo $idCompartir;?>&via=labo2020&hashtags=recetas" target="_blank">Twittear</a>
-
+                    <a href="https://twitter.com/intent/tweet?text=recetas compartidas&url=http%3A%2F%2Flocalhost%2FLabo2020%2Fpaginas%2Fvisualizar_receta.php?id=<?php echo $idCompartir;?>&via=labo2020&hashtags=recetas" target="_blank">Twittear</a>
+                </fieldset>
+                    
                 <br>
-                <fieldset id="comentarios">
+                <fieldset class="field-3" id="comentarios">
                     <legend>Comentarios:</legend>
                     <div id="divComentarios">
                     </div>
@@ -89,11 +96,13 @@
 
                 <?php if ($ctrl->isLoggedIn()): ?>  
 
-                <div class="" id="nuevoComentario">
-                    <label for="inputComentario"> Nuevo comentario: </label><br>
-                    <textarea name="inputComentario" class="form-control" id="inputComentario" cols="40" rows="8" placeholder="Ingrese su comentario..." minlength="2" maxlength="250"></textarea><br>
-                    <button id="agregarComentario">Agregar comentario</button>
-                </div>
+                <fieldset class="field-3">
+                    <div class="" id="nuevoComentario">
+                        <label for="inputComentario"> Nuevo comentario: </label><br>
+                        <textarea name="inputComentario" class="form-control" id="inputComentario" cols="40" rows="8" placeholder="Ingrese su comentario (solo hasta 250 caracteres)" minlength="2" maxlength="250"></textarea><br>
+                        <button class="btn btn-primary" id="agregarComentario">Agregar comentario</button> <br><br>
+                    </div>
+                </fieldset>    
                 <?php endif; ?>
 
             </div>

@@ -23,7 +23,7 @@
             
             <fieldset class="field-1">            
                 <label for="titulo">Titulo: </label><br>
-                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="100" autofocus pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" required><br>
+                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="100" autofocus pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" title="Introduzca solo letras" required><br>
                 
                 <label for="imgPrincipal"> Foto de la receta: </label><br>                
                 <img id="imgPrincipalPreview"src="" alt="Plato terminado" class="oculto img-rounded"><br><br>

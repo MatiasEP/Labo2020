@@ -56,7 +56,7 @@ input[type="text"]
 
 #btn_guardar_receta
 {
-    background: linear-gradient(white 60%, rgba(160, 160, 160, 160));
+    background: linear-gradient(white 40%, rgba(160, 160, 160, 160));
     color: dimgray;
 }
     #btn_guardar_receta:hover
