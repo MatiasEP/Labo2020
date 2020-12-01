@@ -27,7 +27,7 @@ $(document).ready(function()
                 cuarto.attr("href", "mostrar%20recetas%20favoritas.php");
 
                 quinto.text ("Usuarios seguidos");
-                quinto.attr("href", "mostrar%20usuarios%20seguidos.php");
+                quinto.attr("href", "mostrar%20seguidos.php");
                 
                 sexto.text ("cerrar sesion");
                 sexto.attr("href", "#");
