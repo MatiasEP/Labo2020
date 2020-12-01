@@ -10,6 +10,11 @@
     color: whitesmoke;
 }
 
+h1
+{
+    align-items: center;
+    text-align: center;    
+}
 .perfil
 {
     max-width: 75px;
@@ -25,6 +30,15 @@ legend
     border-radius: 10px;
     background-color: black;
     color: whitesmoke;    
+}
+
+.field-3
+{
+    margin: 20px;
+    padding: 8px;
+    border-radius:20px;
+    border:1px solid dimgray;    
+    background-color: hsla(0, 0%, 0%, .5); 
 }
 
 .thumbnail

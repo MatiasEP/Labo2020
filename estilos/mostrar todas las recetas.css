@@ -5,6 +5,13 @@
     display:block;
     margin:auto;
 }
+
+h1
+{
+    color: whitesmoke;
+    text-align: center;
+}
+
 .panel{
     
     border-color: black;
