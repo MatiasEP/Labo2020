@@ -88,6 +88,17 @@ function imprimirPasos(pasos)
                 $('#listPasos').children("div").children("#imagen").last().attr("id","imagen"+i);        
                 $('#listPasos').children("div").children("label").last().attr("for","imagen"+i);
                 
+                seleccionArchivos = document.querySelectorAll("#listPasos");
+                $("#listPasos").children("#paso"+i+"").children("#imagen"+i+"").change(function(e)
+                {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(e.target.files[0]);
+                    reader.onload = function()
+                    {      console.log(i)
+                        $(seleccionArchivos).children("#paso"+i+"").children("#imgPasoPreview"+i+"").attr("src",reader.result);
+                        $(seleccionArchivos).children("#paso"+i+"").children("#imgPasoPreview"+i+"").removeClass("oculto")
+                    }        
+                })
                 /*
                 $('#listPasos').children("div").children("#imagen").last().change(function(e)  {
                     
@@ -100,7 +111,6 @@ function imprimirPasos(pasos)
                     
                     reader.onload = function(){      
                     actual.siblings("#imgPasoPreview").attr("src",reader.result);}})*/
-                    seleccionArchivos = document.querySelectorAll("#listPasos");
                     seleccionpreview = document.querySelectorAll("#imgPasoPreview");
                     /*
                       // Los archivos seleccionados, pueden ser muchos o uno
@@ -178,7 +188,7 @@ function pasosConImagenes()
         {   const actual = i;//por alguna razon, no tomaba bien el indice directamente    
             previews(actual)
         } 
-    },1000);
+    },1500);
 }
 function agregarPaso()
 { 
@@ -289,7 +299,8 @@ $imagenPrevisualizacion.src = objectURL;})*/
             },false)
         }
     },500)*/
-    pasosConImagenes();/*
+    //pasosConImagenes();
+    /*
     $(seleccionArchivos).children("#paso0").children("#imagen0").change(function(e){
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);

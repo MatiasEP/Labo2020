@@ -70,6 +70,17 @@ require_once __DIR__."/db.php";
 
            }
         }
+
+        public function rolePermisoss()
+        {
+            try{
+                $db = new DB();
+                $result = $db->findRoleUserId($_SESSION['id_sesion_google']);
+                return $result;
+           }catch(Exception $ex){
+
+           }
+        }
         public function logout()
         {
             unset($_SESSION['access_token']);
@@ -104,10 +115,46 @@ require_once __DIR__."/db.php";
            }
         }
 
-        public function borrar_reporte($id){
+        public function comprobar_favorito($idUsuario, $idReceta){
             try{
                 $db = new DB();
-                $result = $db->borrar_reporte($id);
+                $result = $db->comprobar_favorito($idUsuario, $idReceta);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function eliminar_favorito($idUsuario, $idReceta){
+            try{
+                $db = new DB();
+                $result = $db->eliminar_favorito($idUsuario, $idReceta);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function agregar_favorito($idUsuario, $idReceta){
+            try{
+                $db = new DB();
+                $result = $db->agregar_favorito($idUsuario, $idReceta);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function ignorar_reporte($id){
+            try{
+                $db = new DB();
+                $result = $db->ignorar_reporte($id);
 
            }catch(Exception $ex){
 

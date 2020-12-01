@@ -19,7 +19,7 @@
 
         <h1 class="title-body"> Agregar Receta </h1><br><br>
         <div class="container col-sm">
-            <form class="formulary" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
+            <form class="formulary" id="form" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
             
             <fieldset class="field-1">            
                 <label for="titulo">Titulo: </label><br>
@@ -77,5 +77,25 @@
         </form>            
         </div>    
         
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">La receta se agrego correctamente</h4>
+                    </div>
+                    <div class="modal-body centrado">
+                        <img class="img-responsive ok" src="../imagenes/ok.png" alt="">
+                         <br><br>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <a href="" id="misRecetasModal">
+                        <span class="glyphicon glyphicon-ok"></span>Aceptar
+                        </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

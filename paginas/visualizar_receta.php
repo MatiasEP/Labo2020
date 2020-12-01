@@ -9,7 +9,6 @@
 	$tituloCompartir="compartir receta	";
     
 ?>
-
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -121,25 +120,24 @@
                                 <div class="form-group">
                                     <label for="reporte">Reporte</label>
                                     <textarea name="reporte" class="form-control" id="reporte" cols="40" rows="8" placeholder="Ingrese la razon del reporte..." minlength="2" maxlength="100"></textarea><br>
-                                </div>
-
-                                <div class="btn-group">
-                                    <button type="submit" class="btn btn-primary ">
-                                        <span class="glyphicon glyphicon-send"></span> Enviar
-                                    </button>  
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                    <span class="glyphicon glyphicon-remove"></span>Cancelar
-                                    </button>
-                                </div>
-                            </form>
                         </div>
-                    </div>
-                </div>
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary ">
+                                <span class="glyphicon glyphicon-send"></span> Enviar
+                            </button>  
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span>Cancelar
+                            </button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
             </div>
             
             
         </div>    
           
         
-    </body>
+</body>
 </html>

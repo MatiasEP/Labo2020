@@ -15,6 +15,11 @@ h1
     align-items: center;
     text-align: center;    
 }
+.perfil
+{
+    max-width: 75px;
+    max-height: 75px;
+}
 
 legend
 {

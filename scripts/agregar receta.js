@@ -2,6 +2,7 @@ $(document).ready(function()
 {
     cargarCategoriasEnUltimoSelect();
     eventImgPrincipalPreview();
+    enviarReceta();
     seleccionArchivos = document.querySelectorAll("#listPasos");
     seleccionpreview = document.querySelectorAll("#imgPasoPreview");
     pasosConImagenes();
@@ -69,6 +70,37 @@ function agregarPaso()
                       // Y a la fuente de la imagen le ponemos el objectURL
                     $imagenPrevisualizacion.src = objectURL;})*/
             })
+}
+
+function enviarReceta()
+{
+    $('#form').submit(function(e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);//a revisar, no pasa bien los datos, o tiene conflicto con los datos del back
+
+        $.ajax({
+        type: 'POST',
+        url: "../php/agregar receta.php",
+        data:formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            if(data)
+            {
+                $("#myModal").modal("show");
+                misRecetasModal("5fc3dbc3a86b0000cb004861");//ale, ponele el id del usuario actual, solo el numero(string);
+            }
+            
+        }
+        })
+    })
+}
+
+function misRecetasModal(id)
+{
+    $("#misRecetasModal").attr("href","../paginas/mostrar%20recetas%20por%20usuario.php?id="+id)
 }
 
 function cargarCategoriasEnUltimoSelect()

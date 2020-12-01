@@ -21,7 +21,7 @@ use \MongoDB\Driver\ReadPreference;
            
 
             $coleccionu = $this->getConnection()->proyecto->usuarios;
-            $resultadou=$coleccionu->insertOne(array("googleID"=>$resultadog->getInsertedId(),"nombre"=>$payload->givenName,"visible"=>FALSE));
+            $resultadou=$coleccionu->insertOne(array("googleID"=>$resultadog->getInsertedId(),"nombre"=>$payload->givenName,"picture"=>$payload->picture,"rol"=>"usuario registrado","visible"=>TRUE));
 
             $coleccionr = $this->getConnection()->proyecto->roles;
             $coleccionr->insertOne(array("googleID"=>$resultadog->getInsertedId(),"roles"=>array("crearReceta","eliminarPost","verReceta","comentarReceta")));
@@ -64,79 +64,172 @@ use \MongoDB\Driver\ReadPreference;
         public function comentarios($idReceta)
         {   
             
+            try
+            {                
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+                $id = new MongoDB\BSON\ObjectId($idReceta);
 
-        $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
-            $id = new MongoDB\BSON\ObjectId($idReceta);
+                $command = new MongoDB\Driver\command([
+                    'aggregate' => 'comentarios',
+                    'pipeline' => [['$lookup'=>[
+                        
+                            "from"=> 'usuarios',
+                            "localField"=> 'idUsuario',
+                            "foreignField"=> '_id',
+                            "as"=> 'usuario'
+                        ] 
+                        ],
+                            ['$match'=>["idReceta"=>$id]]
+                        ],
+                        'cursor' => new stdClass()
+                    ]);
+                $rows = $client->executeCommand('proyecto', $command);
 
-            $command = new MongoDB\Driver\command([
-                'aggregate' => 'comentarios',
-                'pipeline' => [['$lookup'=>[
-                    
-                        "from"=> 'usuarios',
-                        "localField"=> 'idUsuario',
-                        "foreignField"=> '_id',
-                        "as"=> 'usuario'
-                    ] 
-                    ],
-                        ['$match'=>["idReceta"=>$id]]
-                    ],
-                    'cursor' => new stdClass()
-                ]);
-            $rows = $client->executeCommand('proyecto', $command);
-  
-            $array = array();
-            foreach ($rows as $row) 
-            {
-                array_push($array, $row);
+                $array = array();
+                foreach ($rows as $row) 
+                {
+                    array_push($array, $row);
+                }
+                return $array;
             }
-            return $array;
+            catch(Exception $ex)
+            {
+               echo($ex);
+            }
         }
 
 
         public function reportes()
         {   
-            
-
-        $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
-
-            $command = new MongoDB\Driver\command([
-                'aggregate' => 'reportes',
-                'pipeline' => [['$lookup'=>[
-                    
-                        "from"=> 'recetas',
-                        "localField"=> 'idReceta',
-                        "foreignField"=> '_id',
-                        "as"=> 'receta'
-                    ] 
-                    ]
-                    ],
-                    'cursor' => new stdClass()
-                ]);
-            $rows = $client->executeCommand('proyecto', $command);
-  
-            $array = array();
-            foreach ($rows as $row) 
+            try
             {
-                array_push($array, $row);
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+
+                $command = new MongoDB\Driver\command([
+                    'aggregate' => 'reportes',
+                    'pipeline' => [['$lookup'=>[
+                        
+                            "from"=> 'recetas',
+                            "localField"=> 'idReceta',
+                            "foreignField"=> '_id',
+                            "as"=> 'receta'
+                        ] 
+                        ],
+                            ['$match'=>["observado"=>false]]
+                        ],
+                        'cursor' => new stdClass()
+                    ]);
+                $rows = $client->executeCommand('proyecto', $command);
+    
+                $array = array();
+                foreach ($rows as $row) 
+                {
+                    array_push($array, $row);
+                }
+                return $array;
             }
-            return $array;
+            catch(Exception $ex)
+            {
+               echo($ex);
+            }
+
+        
         }
 
-        public function borrar_reporte($id)
+        public function comprobar_favorito($idUsuario, $idReceta)
+        {     
+             try
+             {                  
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+                $idReceta = new MongoDB\BSON\ObjectId($idReceta);        
+                $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);
+                $filter = ["_idUsuario"=>$idUsuario, "Recetas"=>$idReceta];
+                $options = ['sort' =>['_id'=>-1],];
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $rows = $client->executeQuery("proyecto.favoritos", $query);
+                $array = array();
+                foreach ($rows as $row) 
+                {
+                    array_push($array, $row);
+                }
+                return $array;
+             } 
+             catch(Exception $ex)
+             {
+                echo($ex);
+             }
+        }
+
+        public function eliminar_favorito($idUsuario, $idReceta)
+        {
+            try
+            {                
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+                $idReceta = new MongoDB\BSON\ObjectId($idReceta);        
+                $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);
+                $filter = ["_idUsuario"=>$idUsuario, "Recetas"=>$idReceta];
+                $options = ['sort' =>['_id'=>-1],];
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $rows = $client->executeQuery("proyecto.favoritos", $query);
+                $res = $rows->toArray();
+                $count = count($res);
+                if($count == 1)
+                {            
+                    $query2 = new BulkWrite();
+                    $query2->update(['_idUsuario' => $idUsuario],
+                    ['$pull' => ['Recetas' => $idReceta]]);
+                    $client->executeBulkWrite("proyecto.favoritos",$query2);
+                }
+            }
+            catch(Exception $ex)
+            {
+                echo($ex);
+            }
+        }
+
+        public function agregar_favorito($idUsuario, $idReceta)
+        {
+            try
+            {
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+                $idReceta = new MongoDB\BSON\ObjectId($idReceta);        
+                $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);
+                $filter = ["_idUsuario"=>$idUsuario, "Recetas"=>$idReceta];
+                $options = ['sort' =>['_id'=>-1],];
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $rows = $client->executeQuery("proyecto.favoritos", $query);
+                $res = $rows->toArray();
+                $count = count($res);
+                if($count == 0)
+                {            
+                    $query2 = new BulkWrite();
+                    $query2->update(['_idUsuario' => $idUsuario],
+                    ['$push' => ['Recetas' => $idReceta]]);
+                    $client->executeBulkWrite("proyecto.favoritos",$query2);
+                }
+            }
+            catch(Exception $ex)
+            {
+                echo($ex);
+            }
+        }
+
+        public function ignorar_reporte($id)
         {   
             
 
             try{
                 $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
-                /*$bulk = new MongoDB\Driver\BulkWrite;
-                $bulk->delete(['_id' => $id], ['limit' => 1]);
-                $client->executeBulkWrite('proyecto.reportes', $bulk);*/
-                /*$coleccion = $this->getConnection()->proyecto->reportes;
-                $rows = $coleccion->remove(array('_id' => $id), array("justOne" => true)); // $mongo contains the connection object to MongoDB    */
-                $coleccion = $this->getConnection()->proyecto->reportes;
-                $coleccion->deleteOne(['_id' => $id],["justOne" => true]);
+                $firstKey = array_key_first($id);
+                $id = new MongoDB\BSON\ObjectId($id[$firstKey]);
+                $query = new BulkWrite();
+                $query->update(['_id'=>$id],
+                ['$set' => ['observado' => true]]);
+                $client->executeBulkWrite("proyecto.reportes",$query);
+
+                
            }catch(Exception $ex){
-            echo("pepe");
+            echo($ex);
            }	
         }
 	    
