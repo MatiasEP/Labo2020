@@ -19,7 +19,7 @@
                 <form action="./mostrar recetas por titulo.php" method="GET" class="navbar-left" id="buscador">
                     <div id="mySidenav" class="sidenav"> <!--el ID y la CLASS del Sidebar-->
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <img class='img-circle perfil' src=''>
+                        <img id="imgPerfil" class='img-circle perfil' src=''>
                         <a id="primero"href="#"></a>
                         <a id="segundo" href="#"></a>
                         <a id="tercero"href="#"></a>

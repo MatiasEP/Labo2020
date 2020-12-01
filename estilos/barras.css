@@ -63,8 +63,9 @@ form
 
 .perfil
 {
-    width: 5rem;
-    height: 5rem;
+    max-width: 80%;
+    max-height: 80%;
+    margin: auto;
 }
 
 .title-page
@@ -149,6 +150,7 @@ body
         transition: 0.5s;
         padding-top: 60px;
         border: solid 2px black;
+        text-align: center;
     }
   
     .sidenav a 

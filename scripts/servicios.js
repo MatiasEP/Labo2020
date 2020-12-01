@@ -66,6 +66,8 @@ $(document).ready(function()
     function datosUsuario() {
         $.get("http://localhost/Labo2020/index.php?accion=usuarioGoogle", function(data, status){
             var micuenta = $("#primero");
+            var imgPerfil = $("#imgPerfil");
+            imgPerfil.attr("src",data.picture);
             micuenta.text (data.email);
        });   
     }
