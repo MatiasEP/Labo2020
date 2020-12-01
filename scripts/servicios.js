@@ -8,26 +8,40 @@ $(document).ready(function()
 
     function estadoSesion() {
         $.get("http://localhost/Labo2020/index.php?accion=isLoggedIn", function(data, status){
-            var sesionData = $("#sesionData");
-            var micuenta = $("#micuenta");
-            var crearreceta = $("#crearreceta");
-            if(data==true){
-                sesionData.text ("cerrar sesion");
-                sesionData.attr("href", "#");
-                sesionData.click(cerrarSesion);
+            var primero = $("#primero");
+            var segundo = $("#segundo");
+            var tercero = $("#tercero");
+            var cuarto = $("#cuarto");
+            var quinto = $("#quinto");
 
-                crearreceta.text ("crear receta");
-                crearreceta.attr("href", "agregar%20receta.php");
+            if(data==true){
+
+                segundo.text ("Crear Receta");
+                segundo.attr("href", "agregar%20receta.php");
                 
+                tercero.text ("Mis Recetas");
+                tercero.attr("href", "mostrar%20recetas%20por%20usuario.php");
+                
+                cuarto.text ("Mis Favoritos");
+                cuarto.attr("href", "mostrar recetas favoritas.php");
+                
+                quinto.text ("cerrar sesion");
+                quinto.attr("href", "#");
+                quinto.click(cerrarSesion);
                 datosUsuario();
             }else{
-                sesionData.text ( "iniciar sesion");
+                primero.text ( "iniciar sesion");
                 $.get("http://localhost/Labo2020/index.php?login", function(data, status){
-                    sesionData.attr("href", data);
-                    micuenta.text ("");
-                    micuenta.attr("href", "#");
-                    crearreceta.text ("");
-                    crearreceta.attr("href", "#");
+                    primero.attr("href", data);
+                    segundo.text ("");
+                    segundo.attr("href", "#");
+                    tercero.text ("");
+                    tercero.attr("href", "#");
+                    cuarto.text ("");
+                    cuarto.attr("href", "#");
+                    quinto.text ("");
+                    quinto.attr("href", "#");
+                    
                });  
             }
        });   
@@ -45,7 +59,7 @@ $(document).ready(function()
 
     function datosUsuario() {
         $.get("http://localhost/Labo2020/index.php?accion=usuarioGoogle", function(data, status){
-            var micuenta = $("#micuenta");
+            var micuenta = $("#primero");
             micuenta.text (data.email);
        });   
     }

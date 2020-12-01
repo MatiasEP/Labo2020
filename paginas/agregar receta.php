@@ -87,11 +87,11 @@
                     <div class="modal-body centrado">
                         <img class="img-responsive ok" src="../imagenes/ok.png" alt="">
                          <br><br>
+                        <a href="../paginas/mostrar%20recetas%20por%20usuario.php" id="misRecetasModal">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">
-                        <a href="" id="misRecetasModal">
                         <span class="glyphicon glyphicon-ok"></span>Aceptar
-                        </a>
                         </button>
+                        </a>
                     </div>
                 </div>
             </div>

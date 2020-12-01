@@ -10,7 +10,15 @@
     $id = isset($_GET["id"])?$_GET["id"]:'';
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
-    if($id != '')
+    if($id == '')
+    {
+  	$googleClient = new Google_Client();
+    $auth = new GoogleAuth($googleClient);  
+    $ctrl = new Operaciones();
+    $id =  $ctrl->getUserInfo()->_id->__toString();
+
+    }
+	if($id != '')
     {
         $id = new MongoDB\BSON\ObjectId($id);
         $filter = ["_idCreador"=>$id];
@@ -35,6 +43,8 @@
         file_put_contents($file, "[",FILE_APPEND | LOCK_EX);
         file_put_contents($file, $array,FILE_APPEND | LOCK_EX);
         file_put_contents($file, "]",FILE_APPEND | LOCK_EX);*/
-    }
+    }else{
+	echo "redireccionar al iniciio";
+	}
     
 ?>

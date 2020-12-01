@@ -74,23 +74,35 @@ function agregarPaso()
 
 function enviarReceta()
 {
+
+    
     $('#form').submit(function(e) {
         e.preventDefault();
 
-        var formData = new FormData(this);//a revisar, no pasa bien los datos, o tiene conflicto con los datos del back
+        //var formData = new FormData(this);//a revisar, no pasa bien los datos, o tiene conflicto con los datos del back
+        var indice=0;
+        var postdata = {
+            carga: true,
+            titulo: $("#titulo").val(),
+            imgPrincipal : $("#imgPrincipalPreview").attr("src"),
+            tipos:$("[name='tipo[]']").map(function(){return this.value;}).get(),
+            ingredientes:$("[name='ingrediente[]']").map(function(){return this.value;}).get(),
+            cantidad:$("[name='cantidad[]']").map(function(){return this.value;}).get(),
+            paso:$("[name='paso[]']").map(function(){return this.value;}).get(),
+            imgPaso:$("[name='paso[]']").map(function(){return $("#imgPasoPreview"+indice).attr("src")==undefined?"nodata":$("#imgPasoPreview"+indice++).attr("src");}).get()
+            
+        }
 
         $.ajax({
-        type: 'POST',
-        url: "../php/agregar receta.php",
-        data:formData,
-        cache:false,
-        contentType: false,
-        processData: false,
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8", // $_POST
+            dataType : "json",
+            method: "POST",
+            url: "../php/agregar_receta.php",
+            data: {receta: postdata},
         success: function(data) {
             if(data)
             {
                 $("#myModal").modal("show");
-                misRecetasModal("5fc3dbc3a86b0000cb004861");//ale, ponele el id del usuario actual, solo el numero(string);
             }
             
         }
@@ -98,10 +110,7 @@ function enviarReceta()
     })
 }
 
-function misRecetasModal(id)
-{
-    $("#misRecetasModal").attr("href","../paginas/mostrar%20recetas%20por%20usuario.php?id="+id)
-}
+
 
 function cargarCategoriasEnUltimoSelect()
 {
