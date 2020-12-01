@@ -44,7 +44,7 @@
                     <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="100" autofocus pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" title="Introduzca solo letras" required><br>
 
                     <label >Foto de la receta: </label><br>
-                    <img id="imgPrincipalPreview"src="" alt="Plato terminado" class="oculto img-rounded"><br><br>
+                    <img id="imgPrincipalPreview"src="" alt="Plato terminado" class="img-rounded"><br><br>
 
                     <label for="imgPrincipal" class="btn btn-warning">Cambiar imagen </label><br>
                     <input type="file" id="imgPrincipal" name="imgPrincipal" class="invisible" required><br>
