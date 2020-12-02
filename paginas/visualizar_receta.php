@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-
+    require_once("../vendor/autoload.php");
     require_once("../app/clases/operaciones.php");
     require_once("../app/init.php");
     $ctrl = new Operaciones();
@@ -8,6 +8,23 @@
     $idCompartir= $_GET["id"];
 	$tituloCompartir="compartir receta	";
     
+    //if($ctrl->checkRole("editar todos")){}
+    //if($ctrl->checkRole("eliminar todos")){}
+    //if($ctrl->checkRole("eliminar usuario")){}
+    //if($ctrl->checkRole("crear receta")){}
+    //if($ctrl->checkRole("editar propio")){}
+    //if($ctrl->checkRole("activar propio")){}
+    //if($ctrl->checkRole("eliminar propio")){}
+    //if($ctrl->checkRole("compartir")){}
+    //if($ctrl->checkRole("reportar")){}
+    //if($ctrl->checkRole("ver reportes")){}
+    //if($ctrl->checkRole("ignorar reporte")){}
+    //if($ctrl->checkRole("stalker")){}
+    //if($ctrl->checkRole("favorito")){}
+    //if($ctrl->checkRole("comentar")){echo "si comentar";}else{echo "no comentar";}
+
+
+
 ?>
 <html lang="en">
     <head>
@@ -57,9 +74,11 @@
                 <fieldset class="field-3 creador" id="creador">
                     <legend>Creador:</legend>
                     <a id="zeldaCreador" href=""><img class='img-circle perfil' id="imgCreador" src=''></a><br><br>
+                    <?php if ($ctrl->checkRole("stalker") && $ctrl->isLoggedIn()): ?>
                     <button class="btn btn-primary"  id="btnCreador">             
                         <span class="glyphicon glyphicon-eye-open" id="seguirCreador"></span>
                     </button>
+                    <?php endif; ?>
                 </fieldset>
 
                 <fieldset class="field-3">   
@@ -110,8 +129,8 @@
                     <div id="divComentarios">
                     </div>
                 </fieldset>
-
-                <?php if ($ctrl->isLoggedIn()): ?>  
+               
+                <?php if ($ctrl->checkRole("comentar") && $ctrl->isLoggedIn()): ?>  
 
                 <fieldset class="field-3">
                     <div class="" id="nuevoComentario">
