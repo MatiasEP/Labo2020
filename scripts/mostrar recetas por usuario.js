@@ -24,7 +24,7 @@ function mostrarTodasLasRecetas()
     });
         $("#main").empty();
         request.done(function(data) {  
-        $("#main").append(  "<h1>Inicio<h1><br><br>");       
+        $("#main").append(  "<h1>Recetas del usuario<h1><br><br>");       
         for(let i = 0; i<data.length;i++)
         {
             $("#main").append("<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>"+

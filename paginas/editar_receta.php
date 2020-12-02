@@ -41,7 +41,7 @@
                 <input hidden="true" type="text" name="idReceta" id="idReceta" value="<?php echo $_GET['id'];?>"><br>
                 
                 <fieldset class="field-2">
-                    <label for="titulo">Titulo: </label><br>
+                    <label for="titulo"><h3>Titulo: </h3></label><br>
                     <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="100" autofocus pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" title="Introduzca solo letras" required><br>
 
                     <label >Foto de la receta: </label><br>
@@ -52,8 +52,9 @@
                 </fieldset>    
                 
                 <fieldset class="field-2">
+                    <label for="tipo"> <h3>Categorias: </h3></label><br>
                     <div id="listTipos"> </div>            
-                    <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
+                    <h5>Ejemplos de Categorias: Carnes, Vegetariano, Vegano, etc.</h5>
                     <input name="agregarTipo" class="btn btn-primary" id="agregarTipo" type="button" value="Agregar tipo" required> <br><br>
                 </fieldset>
                 

@@ -83,7 +83,8 @@ function imprimirPasos(pasos)
             {           
                 $("#listPasos").append($("<div id='paso"+i+"'>").append(data));
                 $('#listPasos').children("div").children("#paso").last().val(pasos[i]["descripcion"]);
-                $('#listPasos').children("div").children("#imgPasoPreview").last().attr("src",pasos[i]["imagen"]).attr("id","imgPasoPreview"+i);                
+                $('#listPasos').children("div").children("#imgPasoPreview").last().attr("src",pasos[i]["imagen"]).attr("id","imgPasoPreview"+i); 
+                $('#listPasos').children("div").children("#labelPaso").children("#hPaso").last().html("Paso "+(i+1)+" :");               
                 $("#imgPasoPreview"+i).removeClass("oculto");
                 $('#listPasos').children("div").children("#imagen").last().attr("id","imagen"+i);        
                 $('#listPasos').children("div").children("label").last().attr("for","imagen"+i);
@@ -205,6 +206,7 @@ function agregarPaso()
                 let i = $(seleccionArchivos).children().length;
                 $("#listPasos").append($("<div id='paso"+(i)+"'>").append(data));
                 $('#listPasos').children("div").children("#imgPasoPreview").last().attr("id","imgPasoPreview"+(i));
+                $('#listPasos').children("div").children("#labelPaso").children("#hPaso").last().html("Paso "+(i+1)+" :");       
                 $('#listPasos').children("div").children("#imagen").last().attr("id","imagen"+(i));        
                 $('#listPasos').children("div").children("label").last().attr("for","imagen"+(i)).text("Seleccionar imagen");
                 

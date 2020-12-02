@@ -100,6 +100,7 @@
                         <label for="inputComentario"> Nuevo comentario: </label><br>
                         <textarea name="inputComentario" class="form-control" id="inputComentario" cols="40" rows="8" placeholder="Ingrese su comentario (solo hasta 250 caracteres)" minlength="2" maxlength="250"></textarea><br>
                         <button class="btn btn-primary" id="agregarComentario">Agregar comentario</button> <br><br>
+                        <span id="comError"></span>
                     </div>
                 </fieldset>    
                 <?php endif; ?>

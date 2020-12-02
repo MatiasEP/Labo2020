@@ -24,7 +24,7 @@
             <form class="formulary" id="form" method="post" action="../php/agregar receta.php" enctype="multipart/form-data">
             
             <fieldset class="field-1">            
-                <label for="titulo">Titulo: </label><br>
+                <label for="titulo"><h3>Titulo: </h3></label><br>
                 <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="100" autofocus pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" title="Introduzca solo letras" required><br>
                 
                 <label for="imgPrincipal"> Foto de la receta: </label><br>                
@@ -37,22 +37,22 @@
             <fieldset class="field-1">
                 <div id="listTipos">
                     <div >
-                        <label for="tipo"> Tipo: </label><br>
+                        <label for="tipo"> <h3>Categorias: </h3></label><br>
                         <select class="form-control" name="tipo[]" id="tipo" required>
                         </select><br><br>
                     </div>
                 </div>
                 
-                <h5>Ejemplos de tipos: Carnes, Vegetariano, Vegano, etc.</h5>
-                <input name="agregarTipo" class="btn btn-primary" id="agregarTipo" type="button" value="Agregar tipo" ><br><br>
+                <h5>Ejemplos de categorias: Carnes, Vegetariano, Vegano, etc.</h5>
+                <input name="agregarTipo" class="btn btn-primary" id="agregarTipo" type="button" value="Agregar tipo" required><br><br>
             </fieldset>
             
             <fieldset class="field-1">
                 <div id="listIngredientes">
-                    <label for="ingrediente">Ingrediente: </label><br>
+                    <label for="ingrediente"><h3>Ingrediente: </h3></label><br>
                     <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..." minlength="3" maxlength="50" pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" required><br>
                     
-                    <label for="cantidad">Cantidad</label><br>
+                    <label for="cantidad"><h3>Cantidad: </h3></label><br>
                     <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]" maxlength="100" required placeholder="Ingrese una cantidad..."><br><br>
                 </div>  
                 <input name="agregarIngrediente" class="btn btn-primary" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ><br><br>
@@ -61,14 +61,13 @@
             <fieldset class="field-1">            
                 <div id="listPasos">
                     <div id="paso0">
-                        <label for="paso">Paso: </label><br>
-                        <input id="paso" class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese el paso (ej: 1# paso:...)" autofocus minlength="10" maxlength="150" pattern="([1-9]{0,1}[\\0-9][\#][\s][\\p][\\a][\\s][\\o][\\:][\s]([a-zA-Z,. ]{1,}[\s])){1,}" required><br>
+                        <label for="paso"><h3>Paso 1: </h3></label><br>
+                        <textarea id="paso" class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese el paso (ej: 1# paso:...)" rows="5"autofocus minlength="10" maxlength="150" pattern="([1-9]{0,1}[\\0-9][\#][\s][\\p][\\a][\\s][\\o][\\:][\s]([a-zA-Z,. ]{1,}[\s])){1,}" required></textarea><br>
                         
-                        <label >Imagen: </label><br>
                         <img id="imgPasoPreview0"src="" class="oculto img-rounded"><br><br>
                         
                         <label for="imagen0" class="btn btn-warning">Seleccionar imagen</label><br>
-                        <input class="invisible" id="imagen0"autocomplete="off" autofocus value="" type="file" name="imagen[]"><br>
+                        <input class="invisible" id="imagen0"autocomplete="off" autofocus value="" type="file" name="imagen[]" required><br>
                     </div>
                 </div>
                 

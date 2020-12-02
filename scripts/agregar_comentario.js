@@ -30,26 +30,35 @@ function agregarComentario()
     let params = new URLSearchParams(location.search);
     let idReceta = params.get('id');
     let comentario = $("#inputComentario").val();
-    //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
-    //id de receta se tomara de la receta actual
-       let parametros = {
+    $("#comError").empty();
+    if(comentario.length <10 || comentario.length >250)
+    {
+        $("#comError").text("El comentario acepta un minimo de 10 caracteres y maximo de 250.")
+    }
+    else
+    {
+        
+        //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
+        //id de receta se tomara de la receta actual
+        let parametros = {
         "idReceta" : idReceta,
         "comentario": comentario
-    };
-    let request = $.ajax(
-        {
-            data: parametros,
-            method: "POST",
-            url: "../php/agregar_comentario.php"
-        });
-            request.done(function(data) {  
-            
-            recargarComentarios();
-        })
-        request.fail(function() {
-        alert("Algo salió mal");
-        });
-    $("#inputComentario").val('');
+        };
+        let request = $.ajax(
+            {
+                data: parametros,
+                method: "POST",
+                url: "../php/agregar_comentario.php"
+            });
+                request.done(function(data) {  
+                
+                recargarComentarios();
+            })
+            request.fail(function() {
+            alert("Algo salió mal");
+            });
+        $("#inputComentario").val('');
+    }
 }
 
 function inicio()
