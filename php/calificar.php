@@ -24,30 +24,41 @@
     $idUsuario =  $ctrl->getUserInfo()->_id;
 
     try{
-        $idReceta = new MongoDB\BSON\ObjectId($idReceta);
-        $obj = new calificacion();
-        $obj->idUsuario = $idUsuario;
-        $obj->calificacion = $calificacion; 
-        
-        $filter = ["idReceta"=>$idReceta,"calificaciones"=>['$elemMatch'=>["idUsuario"=>$idUsuario]]];
-        $options = ['projection'=>["_id"=>0, "calificaciones"=>1]];
-        $query = new MongoDB\Driver\Query($filter,$options);
-        $rows = $client->executeQuery("proyecto.calificaciones", $query); // $mongo contains the connection object to MongoDB 
-        $res = $rows->toArray();
-        $count = count($res);
-        if($count == 0)
-        {           
-            $query2 = new BulkWrite();
-            $query2->update(['idReceta' => $idReceta],
-            ['$push' => ['calificaciones' => $obj]]);
-            $client->executeBulkWrite("proyecto.calificaciones",$query2);
+        if(!filter_var($calificacion, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1,"max_range"=>5]]))
+        {
+            echo("debe ingresar una calificacion entre 1 y 5");
+        }
+        else if($idReceta =='')
+        {
+            echo("debe ingresar una receta");
         }
         else
-        {
-            $query2 = new BulkWrite();
-            $query2->update(['calificaciones.idUsuario' => $idUsuario],
-            ['$set' => ['calificaciones.$.calificacion' => $calificacion]]);
-            $client->executeBulkWrite("proyecto.calificaciones",$query2);
+        {            
+            $idReceta = new MongoDB\BSON\ObjectId($idReceta);
+            $obj = new calificacion();
+            $obj->idUsuario = $idUsuario;
+            $obj->calificacion = $calificacion; 
+            
+            $filter = ["idReceta"=>$idReceta,"calificaciones"=>['$elemMatch'=>["idUsuario"=>$idUsuario]]];
+            $options = ['projection'=>["_id"=>0, "calificaciones"=>1]];
+            $query = new MongoDB\Driver\Query($filter,$options);
+            $rows = $client->executeQuery("proyecto.calificaciones", $query); // $mongo contains the connection object to MongoDB 
+            $res = $rows->toArray();
+            $count = count($res);
+            if($count == 0)
+            {           
+                $query2 = new BulkWrite();
+                $query2->update(['idReceta' => $idReceta],
+                ['$push' => ['calificaciones' => $obj]]);
+                $client->executeBulkWrite("proyecto.calificaciones",$query2);
+            }
+            else
+            {
+                $query2 = new BulkWrite();
+                $query2->update(['calificaciones.idUsuario' => $idUsuario],
+                ['$set' => ['calificaciones.$.calificacion' => $calificacion]]);
+                $client->executeBulkWrite("proyecto.calificaciones",$query2);
+            }
         }
          
     }
