@@ -10,16 +10,15 @@
     $id = isset($_GET["id"])?$_GET["id"]:'';
     $client = new MongoDB\Driver\Manager(sprintf(
         'mongodb+srv://labo2020:labo2020@cluster0.wvxvt.mongodb.net/proyecto?retryWrites=true&w=majority'));
-    /*if($id == '')
+    if($id == '')
     {
   	$googleClient = new Google_Client();
     $auth = new GoogleAuth($googleClient);  
     $ctrl = new Operaciones();
     $id =  $ctrl->getUserInfo()->_id->__toString();
 
-    }*/
+    }
 
-    $id = "5fc3dbc3a86b0000cb004861";
 	if($id != '')
     {
         $id = new MongoDB\BSON\ObjectId($id);
@@ -41,7 +40,7 @@
                 {
                     if($r2->visible and $r2->activado)
                         {    
-                            array_push($array, $r2);
+                            array_unshift($array, $r2);
                         }
                 }
             }

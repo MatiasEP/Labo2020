@@ -58,15 +58,14 @@ function visualizarReceta()
 
 function agregarAFavoritos()
 {
-    //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
-    //id de receta se tomara de la receta actual
-       /*let parametros = {
-        "idUsuario" : $idUsuario,
-        "idReceta" : $idReceta
-    };*/
+    let params = new URLSearchParams(location.search);
+    let idReceta = params.get('id');
+    let parametros = {
+    "idReceta" : idReceta
+    };
     let request = $.ajax(
     {
-        //data: parametros,
+        data: parametros,
         method: "POST",
         url: "../php/agregar_a_favoritos.php"
     });
@@ -81,15 +80,14 @@ function agregarAFavoritos()
 
 function eliminarDeFavoritos()
 {
-    //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
-    //id de receta se tomara de la receta actual
-       /*let parametros = {
-        "idUsuario" : $idUsuario,
-        "idReceta" : $idReceta
-    };*/
+    let params = new URLSearchParams(location.search);
+    let idReceta = params.get('id');
+    let parametros = {
+    "idReceta" : idReceta
+    };
     let request = $.ajax(
     {
-        //data: parametros,
+        data: parametros,
         method: "POST",
         url: "../php/eliminar_de_favoritos.php"
     });
@@ -107,13 +105,14 @@ function comprobarFavorito()
 {
     //el id de usuario se tomara de la sesion, eso lo deberia modificar ale
     //id de receta se tomara de la receta actual
-       /*let parametros = {
-        "idUsuario" : $idUsuario,
-        "idReceta" : $idReceta
-    };*/
+    let params = new URLSearchParams(location.search);
+    let idReceta = params.get('id');
+    let parametros = {
+    "idReceta" : idReceta
+    };
     let request = $.ajax(
         {
-            //data: parametros,
+            data: parametros,
             method: "POST",
             url: "../php/comprobar_favorito.php"
         });

@@ -84,11 +84,13 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">La receta se agrego correctamente</h4>
+                        <h2 class="modal-title">La receta se agrego correctamente</h4>
                     </div>
                     <div class="modal-body centrado">
                         <img class="img-responsive ok" src="../imagenes/ok.png" alt="">
-                         <br><br>
+                         <br>
+                         <h3>Aun debe activar su receta para que sea visible para otros.</h3>
+                         <br>
                         <a href="../paginas/mostrar%20recetas%20por%20usuario.php" id="misRecetasModal">
                         <button type="button" class="btn btn-primary" >
                         <span class="glyphicon glyphicon-ok"></span>Aceptar

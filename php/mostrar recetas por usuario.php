@@ -35,7 +35,10 @@
         foreach ($rows as $row) 
         {
             //$json_string = json_encode($row);
-            array_push($array, $row);
+            if($row->visible)
+            {                
+                array_push($array, $row);
+            }
         }
         header('Content-type: application/json');
         echo json_encode($array);

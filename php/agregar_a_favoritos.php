@@ -9,12 +9,17 @@
     $auth = new GoogleAuth($googleClient);  
     $ctrl = new Operaciones();
 
-    $idUsuario = isset($_POST["idUsuario"])?$_POST["idUsuario"]:'';
     $idReceta = isset($_POST["idReceta"])?$_POST["idReceta"]:'';
-    $idReceta = "5fa58577bd0d000028004567";
-    $idUsuario = "5fa1f37a25700000930007ed"; //temporal para test
+    $idUsuario =  $ctrl->getUserInfo()->_id->__toString();
     
-    echo $ctrl->agregar_favorito($idUsuario, $idReceta);
+    if($idUsuario !='' && $idReceta !='')
+    {        
+        echo $ctrl->agregar_favorito($idUsuario, $idReceta);
+    }
+    else
+    {
+        echo ("ingrese una receta valida");
+    }
         
    
 ?>
