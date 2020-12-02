@@ -298,6 +298,9 @@ require_once __DIR__."/db.php";
                     if("descargarpdf" == $checkPermiso){
                         return true;
                     }
+                    if("mis recetas" == $checkPermiso){
+                        return true;
+                    }
                     return false;
                 }else{
                     return false;

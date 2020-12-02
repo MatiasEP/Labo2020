@@ -10,7 +10,22 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../estilos/mostrar todas las recetas.css" type="text/css">
         <script src="../scripts/get_reportes.js" async></script>
-        <?php include '../php/barras.php';?>
+        <?php 
+
+            include '../php/barras.php';
+
+            $googleClient = new Google_Client();
+            $auth = new GoogleAuth($googleClient);  
+
+            $ctrl = new Operaciones();
+            if(!$ctrl->isLoggedIn()){
+                echo "<script>window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+            }
+
+            if(!($ctrl->checkRole("ver reportes"))){
+                echo "<script>window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+
+            }?>
         <title>Inicio</title>
     </head>
     
