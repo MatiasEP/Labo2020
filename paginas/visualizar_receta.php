@@ -7,7 +7,6 @@
     $urlCompartir= $_SERVER["REQUEST_URI"];
     $idCompartir= $_GET["id"];
 	$tituloCompartir="compartir receta	";
-    
     //if($ctrl->checkRole("editar todos")){}
     //if($ctrl->checkRole("eliminar todos")){}
     //if($ctrl->checkRole("eliminar usuario")){}
@@ -109,7 +108,7 @@
                     fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));</script>
 
-                    <?php if ($ctrl->isLoggedIn()): ?>  
+                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("editar propio") || $ctrl->checkRole("editar todos"))): ?>  
 
                     <a href="http://localhost/Labo2020/paginas/editar_receta.php?id=<?php echo $_GET['id'];?>" target="_blank"> Editar Receta </a>
 
