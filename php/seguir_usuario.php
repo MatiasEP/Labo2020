@@ -14,7 +14,7 @@
     
     if($idUsuario !='' && $idASeguir!='')
     {        
-        echo $ctrl->agregar_seguido($idUsuario, $idASeguir);
+        echo $ctrl->seguir($idUsuario, $idASeguir);
     }
     else
     {

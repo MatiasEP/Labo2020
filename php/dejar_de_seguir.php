@@ -15,7 +15,7 @@
     
     if($idUsuario !='' && $idCreador !='')
     {        
-        echo $ctrl->eliminar_seguido($idUsuario, $idCreador);
+        echo $ctrl->dejar_de_seguir($idUsuario, $idCreador);
     }
     else
     {

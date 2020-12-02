@@ -151,6 +151,42 @@ require_once __DIR__."/db.php";
            }
         }
 
+        public function comprobar_seguido($idUsuario, $idCreador){
+            try{
+                $db = new DB();
+                $result = $db->comprobar_seguido($idUsuario, $idCreador);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function dejar_de_seguir($idUsuario, $idCreador){
+            try{
+                $db = new DB();
+                $result = $db->dejar_de_seguir($idUsuario, $idCreador);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
+        public function seguir($idUsuario, $idCreador){
+            try{
+                $db = new DB();
+                $result = $db->seguir($idUsuario, $idCreador);
+                header('Content-type: application/json');
+                return json_encode($result, JSON_PRETTY_PRINT);
+
+           }catch(Exception $ex){
+
+           }
+        }
+
         public function ignorar_reporte($id){
             try{
                 $db = new DB();
