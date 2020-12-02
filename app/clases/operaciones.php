@@ -210,10 +210,19 @@ require_once __DIR__."/db.php";
        
        public function getPermiso(){
         try{
-             $usuario = $this->getUserInfo();
-             $db = new DB();
-             $rol = $db->findRol($usuario->rol);
-             return $rol;
+            if($this->isLoggedIn()){
+                $usuario = $this->getUserInfo();
+                $db = new DB();
+                $rol = $db->findRol($usuario->rol);
+                return $rol;
+
+            }else{
+
+                $db = new DB();
+                $rol = $db->findRol("nologueado");
+                return $rol;
+
+            }
          }catch(Exception $ex){
              return null;
          }
