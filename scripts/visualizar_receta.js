@@ -46,6 +46,47 @@ function getCreador(idCreador)
         })
 }
 
+function getCalificacion()
+{
+    let params = new URLSearchParams(location.search);
+    var idUrl = params.get('id');
+    let request = $.ajax(
+        {
+            method: "POST",
+            url: "../php/get_calificacion.php",
+            data: { 
+                id: idUrl,
+              }
+        });
+        request.done(function(data) 
+        {
+            $("#calActual").html("la calificacion actual es: "+data+" <span class='glyphicon glyphicon-star dorado'>");
+        })
+}
+
+function calificar(cal)
+{
+    let params = new URLSearchParams(location.search);
+    let idReceta = params.get('id');
+    let parametros = {
+    "idReceta" : idReceta,
+    "calificacion": cal
+    };
+    let request = $.ajax(
+    {
+        data: parametros,
+        method: "POST",
+        url: "../php/calificar.php"
+    });
+        request.done(function(data) {  
+            getCalificacion();
+        
+    })
+    request.fail(function() {
+    alert("Algo salió mal");
+    });
+}
+
 function visualizarReceta()
 {
     let params = new URLSearchParams(location.search);
@@ -334,6 +375,7 @@ function inicio()
 {
     visualizarReceta();
     comprobarFavorito();
+    getCalificacion();
     $("#favorito").on("click",function()
     {    
         if($("#favorito").hasClass("agregar"))
@@ -355,6 +397,27 @@ function inicio()
         {
             dejarDeSeguir();
         }
+    })
+
+    $("#cal1").on("click",function()
+    {  
+        calificar(1);
+    })
+    $("#cal2").on("click",function()
+    {  
+        calificar(2);
+    })
+    $("#cal3").on("click",function()
+    {  
+        calificar(3);
+    })
+    $("#cal4").on("click",function()
+    {  
+        calificar(4);
+    })
+    $("#cal5").on("click",function()
+    {  
+        calificar(5);
     })
     $("#descargar").on("click",descargarPDF);
 }

@@ -62,7 +62,17 @@
                     </button>
                 </fieldset>
 
-                <fieldset class="field-3">                
+                <fieldset class="field-3">   
+                    <h3 id="calActual">La calificacion actual es:  </h3> <br>
+                    <div class="" id="calificar">
+                        <h4>Calificar receta:</h4><br>
+                        <button class="btn btn-warning" id="cal1" >1 <span class="glyphicon glyphicon-star"></button>
+                        <button class="btn btn-warning" id="cal2" >2 <span class="glyphicon glyphicon-star"></button>
+                        <button class="btn btn-warning" id="cal3" >3 <span class="glyphicon glyphicon-star"></button>
+                        <button class="btn btn-warning" id="cal4" >4 <span class="glyphicon glyphicon-star"></button>
+                        <button class="btn btn-warning" id="cal5" >5 <span class="glyphicon glyphicon-star"></button>
+                        <br><br>
+                    </div>            
                     <button class="btn btn-primary" id="favorito" class="agregar">Agregar a favoritos</button>
                     <button class="btn btn-primary" id="descargar">Descargar como PDF</button>
 
