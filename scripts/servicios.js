@@ -14,7 +14,8 @@ $(document).ready(function()
             var cuarto = $("#cuarto");
             var quinto = $("#quinto");
             var sexto = $("#sexto");
-
+            var verreportes = $("#verreportes");
+            
             if(data==true){
 
                 segundo.text ("Crear Receta");
@@ -32,6 +33,9 @@ $(document).ready(function()
                 sexto.text ("cerrar sesion");
                 sexto.attr("href", "#");
                 sexto.click(cerrarSesion);
+
+                verreportes.text ("Ver Reportes");
+                verreportes.attr("href", "mostrar%20reportes.php");                    
                 datosUsuario();
             }else{
                 primero.text ( "iniciar sesion");
@@ -47,6 +51,11 @@ $(document).ready(function()
                     quinto.attr("href", "#");
                     sexto.text ("");
                     sexto.attr("href", "#");
+                        
+                    if(verreportes != undefined){
+                        verreportes.text ("");
+                        verreportes.attr("href", "#");                    
+                    }
                     
                });  
             }

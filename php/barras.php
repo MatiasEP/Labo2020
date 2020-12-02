@@ -29,6 +29,10 @@
                         <a id="tercero"href="#"></a>
                         <a id="cuarto"href="#"></a>
                         <a id="quinto"href="#"></a>
+                        <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("ver reportes"))): ?>  
+                            <a id="verreportes"href="#"></a>
+                        <?php endif; ?>
+
                         <a id="sexto"href="#"></a>
                     </div>
                     <span style="font-size:30px;cursor:pointer" class="sidebtn navbar-brand" onclick="openNav()">&#9776;</span>
