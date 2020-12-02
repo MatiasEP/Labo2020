@@ -28,14 +28,14 @@ $(document).ready(function()
                 cuarto.attr("href", "mostrar%20recetas%20favoritas.php");
 
                 quinto.text ("Usuarios seguidos");
-                quinto.attr("href", "mostrar_seguidos.php");
+                quinto.attr("href", "mostrar%20seguidos.php");
                 
                 sexto.text ("cerrar sesion");
                 sexto.attr("href", "#");
                 sexto.click(cerrarSesion);
 
                 verreportes.text ("Ver Reportes");
-                verreportes.attr("href", "mostrar%20reportes.php");                    
+                verreportes.attr("href", "mostrar_reportes.php");                    
                 datosUsuario();
             }else{
                 primero.text ( "iniciar sesion");
