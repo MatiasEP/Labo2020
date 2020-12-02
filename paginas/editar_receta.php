@@ -19,13 +19,15 @@
         $auth = new GoogleAuth($googleClient);  
 
         $ctrl = new Operaciones();
-        
         if(!$ctrl->isLoggedIn()){
             echo "<script>alert('no se encuentra logueado');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
         }
-        if(!(isset($_GET['id']) && $ctrl->editable($_GET['id']))){
-          echo "<script>alert('no es el usuario creador');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
-        } 
+
+        if(!($ctrl->checkRole("editar propio") || $ctrl->checkRole("editar todos"))){
+            echo "<script>alert('no tiene permiso');window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
+
+        }
+
         ?>
 
         <link rel="stylesheet" href="../estilos/estilos.css" type="text/css">
