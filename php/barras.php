@@ -21,7 +21,13 @@
                 <form action="./mostrar recetas por titulo.php" method="GET" class="navbar-left" id="buscador">
                     <div id="mySidenav" class="sidenav"> <!--el ID y la CLASS del Sidebar-->
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <img id="imgPerfil" class='img-circle perfilBarra' src=''>
+                        <?php if ($ctrl->isLoggedIn()): ?>  
+                            <img id="imgPerfil" class='img-circle perfilBarra' src=''>
+
+                        <?php endif; ?>
+                        <?php if (!$ctrl->isLoggedIn() ): ?>
+                            <img id="imgPerfil" class='img-circle perfilBarra' src='https://distrimar.s3.amazonaws.com/static/apm/img/misc/default_user.png'>
+                        <?php endif; ?>
                         <a id="primero"href="#"></a>
                         <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("crear receta"))): ?>  
                         <a id="segundo" href="#"></a>
