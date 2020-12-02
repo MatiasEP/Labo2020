@@ -85,6 +85,10 @@ textarea
     resize: none;
 }
 
+.creador
+{
+    text-align: center;
+}
 .cPrincipal
 {
     height: 100%;

@@ -53,6 +53,14 @@
                 <fieldset class="field-3" id="pasos">
                     <legend>Pasos:</legend>
                 </fieldset><br>
+                
+                <fieldset class="field-3 creador" id="creador">
+                    <legend>Creador:</legend>
+                    <a id="zeldaCreador" href=""><img class='img-circle perfil' id="imgCreador" src=''></a><br><br>
+                    <button class="btn btn-primary"  id="btnCreador">             
+                        <span class="glyphicon glyphicon-eye-open" id="seguirCreador"></span>
+                    </button>
+                </fieldset>
 
                 <fieldset class="field-3">                
                     <button class="btn btn-primary" id="favorito" class="agregar">Agregar a favoritos</button>

@@ -1,6 +1,7 @@
 $(document).ready(inicio)
 var data2;
-
+var idCreador;
+var nombreCreador;
 function imprimirCategorias(categorias)
 {
     for(let i = 0; i< categorias.length; i++)
@@ -25,6 +26,26 @@ function imprimirPasos(pasos)
     }
 }
 
+
+
+function getCreador(idCreador)
+{
+    let request = $.ajax(
+        {
+            method: "POST",
+            url: "../php/get_creador.php",
+            data: { 
+                id: idCreador,
+              }
+        });
+        request.done(function(data) 
+        {
+            $("#imgCreador").attr("src",data[0]["picture"]);
+            $("#zeldaCreador").attr("href","../paginas/mostrar%20recetas%20por%20usuario.php?id="+Object.values(data[0]["_id"]));
+            nombreCreador = data[0]["nombre"];
+        })
+}
+
 function visualizarReceta()
 {
     let params = new URLSearchParams(location.search);
@@ -37,7 +58,9 @@ function visualizarReceta()
             id: idUrl,
           }
     });
-        request.done(function(data) {  
+        request.done(function(data) {              
+        idCreador = Object.values(data[0]["_idCreador"])[0];            
+        getCreador(idCreador);
         for(let i = 0; i<data.length;i++)
         {            
             let categorias = data[i]["tipo"];
@@ -48,8 +71,8 @@ function visualizarReceta()
             imprimirCategorias(categorias);
             imprimirIngredientes(ingredientes);
             imprimirPasos(pasos);
-        }
-        
+        }        
+        comprobarSeguido();
     })
     request.fail(function() {
     alert("Algo salió mal");
@@ -134,6 +157,81 @@ function comprobarFavorito()
         request.fail(function() {
         alert("Algo salió mal");
         });
+}
+
+function comprobarSeguido()
+{
+    let parametros = {
+    "idCreador" : idCreador
+    };
+    let request = $.ajax(
+        {
+            data: parametros,
+            method: "POST",
+            url: "../php/comprobar_seguido.php"
+        });
+            request.done(function(data) { 
+                console.log(data) 
+            if(data.length == 0)
+            {
+                $("#seguirCreador").text("Seguir a "+nombreCreador);
+                $("#seguirCreador").addClass("glyphicon-eye-open")
+                $("#seguirCreador").removeClass("glyphicon-eye-close")
+                $("#btnCreador").addClass("agregar");
+                $("#btnCreador").removeClass("eliminar");
+            }
+            else
+            {
+                $("#seguirCreador").text("Dejar de seguir a "+nombreCreador);
+                $("#seguirCreador").addClass("glyphicon-eye-close")        
+                $("#seguirCreador").removeClass("glyphicon-eye-open")
+                $("#btnCreador").addClass("eliminar");
+                $("#btnCreador").removeClass("agregar");
+            }
+        })
+        request.fail(function() {
+        alert("Algo salió mal");
+        });
+}
+
+function dejarDeSeguir()
+{
+    let parametros = {
+    "idCreador" : idCreador
+    };
+    let request = $.ajax(
+    {
+        data: parametros,
+        method: "POST",
+        url: "../php/dejar_de_seguir.php"
+    });
+        request.done(function(data) {  
+            comprobarSeguido();
+        
+    })
+    request.fail(function() {
+    alert("Algo salió mal");
+    });
+}
+
+function seguir()
+{
+    let parametros = {
+    "idCreador" : idCreador
+    };
+    let request = $.ajax(
+    {
+        data: parametros,
+        method: "POST",
+        url: "../php/seguir_usuario.php"
+    });
+        request.done(function(data) {  
+            comprobarSeguido();
+        
+    })
+    request.fail(function() {
+    alert("Algo salió mal");
+    });
 }
 
 function descargarPDF()
@@ -245,6 +343,17 @@ function inicio()
         else if($("#favorito").hasClass("eliminar"))
         {
             eliminarDeFavoritos();
+        }
+    })
+    $("#btnCreador").on("click",function()
+    {    
+        if($("#btnCreador").hasClass("agregar"))
+        {
+            seguir();
+        }
+        else if($("#btnCreador").hasClass("eliminar"))
+        {
+            dejarDeSeguir();
         }
     })
     $("#descargar").on("click",descargarPDF);
