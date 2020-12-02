@@ -126,7 +126,7 @@ function cargarCategoriasEnUltimoSelect()
     });
     request.done(function(data) 
     {           
-        $('#listTipos').children("div").children("#tipo").last().append('<option value="null" selected disabled>'+ "Seleccionar categoria" + '</option>');
+        $('#listTipos').children("div").children("#tipo").last().append('<option value="" selected disabled>'+ "Seleccionar categoria" + '</option>');
         for(let i = 0; i<data.length; i++)
         {
             let categoria = data[i]["nombre"];
