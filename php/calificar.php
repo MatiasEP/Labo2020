@@ -55,9 +55,10 @@
             else
             {
                 $query2 = new BulkWrite();
-                $query2->update(['calificaciones.idUsuario' => $idUsuario],
+                $query2->update(['calificaciones.idUsuario' => $idUsuario,'idReceta'=>$idReceta],
                 ['$set' => ['calificaciones.$.calificacion' => $calificacion]]);
                 $client->executeBulkWrite("proyecto.calificaciones",$query2);
+                echo("pepin");
             }
         }
          
