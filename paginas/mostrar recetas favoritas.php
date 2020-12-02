@@ -22,7 +22,7 @@
                 echo "<script>window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
             }
 
-            if(!($ctrl->checkRole("favorito"))){
+            if(!($ctrl->checkRole("verfavoritos"))){
                 echo "<script>window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
 
             }?>

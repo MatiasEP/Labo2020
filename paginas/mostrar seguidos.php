@@ -22,7 +22,7 @@
                 echo "<script>window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
             }
 
-            if(!($ctrl->checkRole("stalker"))){
+            if(!($ctrl->checkRole("ver seguidos"))){
                 echo "<script>window.location = 'http://localhost/Labo2020/paginas/mostrar todas las recetas.php';        </script>";
 
             }?>
