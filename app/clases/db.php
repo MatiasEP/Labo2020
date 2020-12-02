@@ -222,6 +222,84 @@ use \MongoDB\Driver\ReadPreference;
             }
         }
 
+        public function comprobar_seguido($idUsuario, $idCreador)
+        {     
+             try
+             {                  
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+                $idCreador = new MongoDB\BSON\ObjectId($idCreador);        
+                $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);
+                $filter = ["idUsuario"=>$idUsuario, "seguidos"=>$idCreador];
+                $options = ['sort' =>['_id'=>-1],];
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $rows = $client->executeQuery("proyecto.seguidos", $query);
+                $array = array();
+                foreach ($rows as $row) 
+                {
+                    array_push($array, $row);
+                }
+                return $array;
+             } 
+             catch(Exception $ex)
+             {
+                echo($ex);
+             }
+        }
+
+        public function dejar_de_seguir($idUsuario, $idCreador)
+        {
+            try
+            {                
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+                $idCreador = new MongoDB\BSON\ObjectId($idCreador);        
+                $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);
+                $filter = ["idUsuario"=>$idUsuario, "seguidos"=>$idCreador];
+                $options = ['sort' =>['_id'=>-1],];
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $rows = $client->executeQuery("proyecto.seguidos", $query);
+                $res = $rows->toArray();
+                $count = count($res);
+                if($count == 1)
+                {            
+                    $query2 = new BulkWrite();
+                    $query2->update(['idUsuario' => $idUsuario],
+                    ['$pull' => ['seguidos' => $idCreador]]);
+                    $client->executeBulkWrite("proyecto.seguidos",$query2);
+                }
+            }
+            catch(Exception $ex)
+            {
+                echo($ex);
+            }
+        }
+
+        public function seguir($idUsuario, $idCreador)
+        {
+            try
+            {
+                $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
+                $idCreador = new MongoDB\BSON\ObjectId($idCreador);        
+                $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);
+                $filter = ["idUsuario"=>$idUsuario, "seguidos"=>$idCreador];
+                $options = ['sort' =>['_id'=>-1],];
+                $query = new MongoDB\Driver\Query($filter,$options);
+                $rows = $client->executeQuery("proyecto.seguidos", $query);
+                $res = $rows->toArray();
+                $count = count($res);
+                if($count == 0)
+                {            
+                    $query2 = new BulkWrite();
+                    $query2->update(['idUsuario' => $idUsuario],
+                    ['$push' => ['seguidos' => $idCreador]]);
+                    $client->executeBulkWrite("proyecto.seguidos",$query2);
+                }
+            }
+            catch(Exception $ex)
+            {
+                echo($ex);
+            }
+        }
+
         public function ignorar_reporte($id)
         {   
             
