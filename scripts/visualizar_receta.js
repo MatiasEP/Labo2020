@@ -200,6 +200,33 @@ function comprobarFavorito()
         });
 }
 
+function eliminar_receta()
+{
+    let params = new URLSearchParams(location.search);
+    let idReceta = params.get('id');
+    let parametros = {
+    "idReceta" : idReceta
+    };
+    let request = $.ajax(
+        {
+            data: parametros,
+            method: "POST",
+            url: "../php/ocultar_receta.php"
+        });
+            request.done(function(data) { 
+                console.log(data) 
+                if(data)
+                {
+                    $("#modalEliminar").modal("show");
+                }
+                else
+                {
+                    $("#modalEliminar").modal("show");
+                }
+        })
+
+}
+
 function comprobarSeguido()
 {
     let parametros = {
@@ -400,6 +427,10 @@ function inicio()
         {
             dejarDeSeguir();
         }
+    })
+    $("#btnEliminar").on("click",function()
+    {    
+        eliminar_receta();
     })
 
     $("#cal1").on("click",function()
