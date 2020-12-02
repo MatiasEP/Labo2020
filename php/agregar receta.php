@@ -40,6 +40,7 @@
     $tipos=[];
     $arrayPasos=[];
     $arrayIngredientes=[];
+    $calificaciones=[];
 
     $carga = false;
     if(isset($_POST['receta'])){
@@ -77,7 +78,7 @@
 
             array_push($arrayPasos, $obj);
         }
-        $query->insert(["_idCreador"=>$idUsuario,"titulo"=>$titulo,"imagen"=>$imgPrincipal,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos,"activado"=>FALSE,"visible"=>TRUE]);
+        $query->insert(["_idCreador"=>$idUsuario,"titulo"=>$titulo,"imagen"=>$imgPrincipal,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos,"activado"=>FALSE,"visible"=>TRUE,"calificaciones"=>$calificaciones]);
         $result = $client->executeBulkWrite("proyecto.recetas",$query);
         echo json_encode(true);
 
