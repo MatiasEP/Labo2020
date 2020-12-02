@@ -35,7 +35,7 @@ $(document).ready(function()
                 sexto.click(cerrarSesion);
 
                 verreportes.text ("Ver Reportes");
-                verreportes.attr("href", "mostrar%20reportes.php");                    
+                verreportes.attr("href", "mostrar_reportes.php");                    
                 datosUsuario();
             }else{
                 primero.text ( "iniciar sesion");
