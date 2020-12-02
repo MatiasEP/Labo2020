@@ -79,6 +79,10 @@
                     </button>
                     <?php endif; ?>
                 </fieldset>
+                
+                <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("eliminar propio") || $ctrl->checkRole("eliminar todos"))): ?>  
+                    <div id="htmldeelimiar"></div>
+                <?php endif; ?>
 
                 <fieldset class="field-3"> 
                     <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("calificar"))): ?>  
