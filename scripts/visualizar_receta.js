@@ -14,7 +14,7 @@ function imprimirIngredientes(ingredientes)
 {
     for(let i = 0; i< ingredientes.length; i++)
     {        
-        $("#ingredientes").append("Descripcion: "+ingredientes[i]["descripcion"]+"   Cantidad: "+ingredientes[i]["cantidad"]);
+        $("#ingredientes").append("Descripcion: "+ingredientes[i]["descripcion"]+"<br>" +" Cantidad: "+ingredientes[i]["cantidad"]+"<br><br>");        
     }
 }
 
@@ -22,7 +22,7 @@ function imprimirPasos(pasos)
 {
     for(let i = 0; i< pasos.length; i++)
     {        
-        $("#pasos").append("Paso "+(i+1)+": "+pasos[i]["descripcion"]+"<br>"+"<img src='"+(pasos[i]["imagen"]).replace(/ /g, '%20')+"'>");
+        $("#pasos").append("Paso "+(i+1)+": "+pasos[i]["descripcion"]+"<br>"+"<img src='"+(pasos[i]["imagen"]).replace(/ /g, '%20')+"'><br>");
     }
 }
 

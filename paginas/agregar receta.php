@@ -25,7 +25,7 @@
             
             <fieldset class="field-1">            
                 <label for="titulo"><h3>Titulo: </h3></label><br>
-                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="100" autofocus pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" title="Introduzca solo letras" required><br>
+                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingrese el titulo..." minlength="3" maxlength="100" autofocus pattern="([A-Za-z ñ]{1,}[\s]{0,1}){1,}" title="Introduzca solo letras" required><br>
                 
                 <label for="imgPrincipal"> Foto de la receta: </label><br>                
                 <img id="imgPrincipalPreview"src="" alt="Plato terminado" class="oculto img-rounded"><br><br>
@@ -50,10 +50,10 @@
             <fieldset class="field-1">
                 <div id="listIngredientes">
                     <label for="ingrediente"><h3>Ingrediente: </h3></label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..." minlength="3" maxlength="50" pattern="([A-Za-z]{1,}[\s]{0,1}){1,}" required><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="ingrediente[]" placeholder="Ingrese un ingrediente..." minlength="3" maxlength="50" pattern="([A-Za-z ñ]{1,}[\s]{0,1}){1,}" required><br>
                     
                     <label for="cantidad"><h3>Cantidad: </h3></label><br>
-                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]" maxlength="100" required placeholder="Ingrese una cantidad..."><br><br>
+                    <input class="form-control" autocomplete="off" autofocus value="" type="text" name="cantidad[]" minlength="4" maxlength="20" placeholder="Ingrese una cantidad (ej.: 200 mm. | grs. | lts. | unidades)" pattern="([0-9]{0,4}[\s][a-zA-Z.]{1,})" required><br><br>
                 </div>  
                 <input name="agregarIngrediente" class="btn btn-primary" id="agregarIngrediente" type="button" value="Agregar Ingrediente" ><br><br>
             </fieldset>
@@ -62,7 +62,7 @@
                 <div id="listPasos">
                     <div id="paso0">
                         <label for="paso"><h3>Paso 1: </h3></label><br>
-                        <textarea id="paso" class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese el paso (ej: 1# paso:...)" rows="5"autofocus minlength="10" maxlength="150" pattern="([1-9]{0,1}[\\0-9][\#][\s][\\p][\\a][\\s][\\o][\\:][\s]([a-zA-Z,. ]{1,}[\s])){1,}" required></textarea><br>
+                        <textarea id="paso" class="form-control" autocomplete="off" autofocus value="" type="text" name="paso[]" placeholder="Ingrese paso..." autofocus minlength="10" maxlength="150" pattern="([A-Za-z,.1-9]{1,}[\s]{0,1}){1,}" required></textarea><br>
                         
                         <img id="imgPasoPreview0"src="" class="oculto img-rounded"><br><br>
                         
@@ -83,7 +83,7 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title">La receta se agrego correctamente</h4>
+                        <h2 class="modal-title">La receta se agrego correctamente</h2>
                     </div>
                     <div class="modal-body centrado">
                         <img class="img-responsive ok" src="../imagenes/ok.png" alt="">
