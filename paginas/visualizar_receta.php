@@ -98,7 +98,7 @@
                     <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("favorito"))): ?>  
                     <button class="btn btn-primary" id="favorito" class="agregar">Agregar a favoritos</button>
                     <?php endif; ?>
-                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("descargarpdf"))): ?>  
+                    <?php if ($ctrl->checkRole("descargarpdf")): ?>  
 
                     <button class="btn btn-primary" id="descargar">Descargar como PDF</button>
                      <?php endif; ?>
@@ -133,7 +133,7 @@
                     <?php endif; ?>
                     <br>        
 
-                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("compartir"))): ?>  
+                    <?php if ($ctrl->checkRole("compartir")): ?>  
 
                     <!-- Your share button code -->
                     <div class="fb-share-button" data-href="http://localhost/<?php echo $urlCompartir;?>" data-layout="button_count">
