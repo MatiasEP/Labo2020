@@ -36,6 +36,10 @@ function enviarReceta()
             {
                 $("#myModal").modal("show");
             }
+            else
+            {
+                $("#myModal2").modal("show");
+            }
             
         }
         })

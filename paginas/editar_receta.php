@@ -85,7 +85,27 @@
                          <br><br>
                         <a href="../paginas/mostrar%20recetas%20por%20usuario.php" id="misRecetasModal">
                         <button type="button" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-ok"></span>Aceptar
+                        <span class="glyphicon glyphicon-ok"></span> Aceptar
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ocurrio un error</h4>
+                    </div>
+                    <div class="modal-body centrado">
+                        <img class="img-responsive ok" src="../imagenes/not%20ok.png" alt="">
+                         <br><br>
+                        <a href="../paginas/mostrar%20recetas%20por%20usuario.php" id="misRecetasModal">
+                        <button type="button" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-remove"></span> Volver a mis recetas
                         </button>
                         </a>
                     </div>
