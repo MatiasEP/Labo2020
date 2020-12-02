@@ -18,13 +18,12 @@
     }
 
     $client = new MongoDB\Driver\Manager(sprintf(DB::urlConn()));
-    $idReceta = isset($_POST["idReceta"])?$_POST["idReceta"]:'';
 
-    $imagenesSinEditar = findImagenesPasos($idReceta);
-    $imgPrincipalSinEditar = findImagenPrincipal($idReceta);
-    var_dump($imgPrincipalSinEditar);
+    //$imagenesSinEditar = findImagenesPasos($idReceta);
+    //$imgPrincipalSinEditar = findImagenPrincipal($idReceta);
+    //var_dump($imgPrincipalSinEditar);
 
-    $idUsuario = $ctrl->getUserInfo()->_id->__toString(); //temporal para test
+    $idUsuario = $ctrl->getUserInfo()->_id; //temporal para test
     $contadorPasos=0;
     $contadorIngredientes=0;
     $pasos = [];// La lista de pasos; por defecto vacía
@@ -34,7 +33,7 @@
     $tipos=[];
     $arrayPasos=[];
     $arrayIngredientes=[];
-    $imgPrincipal= (isset($_FILES['imgPrincipal'])?$_FILES['imgPrincipal']:'');
+
     class ingrediente
     {
         public $descripcion;
@@ -45,13 +44,79 @@
         public $descripcion;
         public $imagen;
     }
-    /*echo '<pre>';
+
+    
+    $carga = false;
+    if(isset($_POST['receta'])){
+        $receta = $_POST["receta"];
+        $idReceta = $receta["idReceta"];
+        $titulo= $receta["titulo"];
+        $imgPrincipal = $receta["imgPrincipal"];
+        $ingredientes = $receta["ingredientes"];
+        $cantidades = $receta["cantidad"];
+        $pasos = $receta["paso"];
+        $tipos = $receta["tipos"];
+        
+        $imgPasos = $receta["imgPaso"];
+        $carga = $receta["carga"];
+        
+        $contadorIngredientes = (count($ingredientes));
+        $contadorPasos= (count($pasos));
+
+    }
+    
+    if (isset($carga)) 
+    {        
+        
+        for($i=0; $i < $contadorIngredientes; $i++)
+        {
+            $obj = new ingrediente();
+            $obj->descripcion = $ingredientes[$i];
+            $obj->cantidad = $cantidades[$i];
+            array_push($arrayIngredientes, $obj);
+        }
+        for($i=0; $i < $contadorPasos; $i++)
+        {
+            $obj = new paso();
+            $obj->descripcion = $pasos[$i];
+            $obj->imagen =$imgPasos[$i];
+
+            array_push($arrayPasos, $obj);
+        }
+        $idReceta = new MongoDB\BSON\ObjectId($idReceta);
+        $filter = [ "_id"=>$idReceta,"_idCreador"=>$idUsuario];
+        $options = ['sort' =>['_id'=>-1]];
+        $query = new MongoDB\Driver\Query($filter,$options);
+        $rows = $client->executeQuery("proyecto.recetas", $query);
+        $res = $rows->toArray();
+        $count = count($res);
+        if($count != 0)//si existe la receta
+        {            
+            $query2 = new BulkWrite();
+            $query2->update(["_id"=>$idReceta,'_idCreador' => $idUsuario],['$set' => ["titulo"=>$titulo,"imagen"=>$imgPrincipal,"tipo"=>$tipos,"ingredientes"=>$arrayIngredientes,"pasos"=>$arrayPasos]]);
+            $client->executeBulkWrite("proyecto.recetas",$query2);            
+            echo json_encode(true);
+        }
+        else
+        {            
+            echo json_encode(false);//la receta no existe
+        }
+
+    }else{
+        echo json_encode(false);//error en los datos ingresados
+        
+    }
+
+    /*
+    $imgPrincipal= (isset($_FILES['imgPrincipal'])?$_FILES['imgPrincipal']:'');
+    
+    echo '<pre>';
     print_r($_FILES);
     echo '</pre>';*/
     # Si hay nombres enviados por el formulario; entonces
     # la lista es el formulario.
     # Cada que lo envíen, se agrega un elemento a la lista
-    if (isset($_POST["paso"])) 
+    /*if (isset($_POST["paso"])) 
     {
         $pasos = $_POST["paso"];
     }
@@ -72,10 +137,10 @@
     if (isset($_POST["tipo"])) 
     {
         $tipos = $_POST["tipo"];
-    }
+    }*/
     # Detectar cuál botón fue presionado
     # En caso de que haya sido el de guardar, no agregamos más campos
-    if (isset($_POST["guardar"])) 
+    /*if (isset($_POST["guardar"])) 
     {
         
         for($i = 0; $i<$contadorPasos;$i++)
@@ -112,8 +177,8 @@
                 $obj->imagen = "../imagenes/".$imagenes['name'][$i];
             }
             array_push($arrayPasos, $obj);
-        }
-    if($idUsuario != '' and $idReceta !='')
+        }*/
+    /*if($idUsuario != '' and $idReceta !='')
     {        
         $idReceta = new MongoDB\BSON\ObjectId($idReceta);        
         $idUsuario = new MongoDB\BSON\ObjectId($idUsuario);
@@ -172,5 +237,5 @@ function findImagenPrincipal($id)
         $imagen = $array[0];
         $imagen =  ($imagen->imagen);
         return $imagen;
-}
+}*/
 ?>

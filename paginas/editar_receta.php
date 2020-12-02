@@ -36,7 +36,7 @@
         <div class="container col-sm">
             <h1>Editar receta</h1><br><br>
             
-            <form class="editar" method="post" action="../php/actualizar_receta.php" enctype="multipart/form-data">
+            <form class="editar" id="form" method="post" action="../php/actualizar_receta.php" enctype="multipart/form-data">
                 
                 <input hidden="true" type="text" name="idReceta" id="idReceta" value="<?php echo $_GET['id'];?>"><br>
                 
@@ -48,7 +48,7 @@
                     <img id="imgPrincipalPreview"src="" alt="Plato terminado" class="img-rounded"><br><br>
 
                     <label for="imgPrincipal" class="btn btn-warning">Cambiar imagen </label><br>
-                    <input type="file" id="imgPrincipal" name="imgPrincipal" class="invisible" required><br>
+                    <input type="file" id="imgPrincipal" name="imgPrincipal" class="invisible" ><br>
                 </fieldset>    
                 
                 <fieldset class="field-2">

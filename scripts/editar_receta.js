@@ -3,6 +3,45 @@ var categorias;
 var seleccionArchivos;
 var seleccionpreview;
 
+function enviarReceta()
+{
+
+    
+    $('#form').submit(function(e) {
+        e.preventDefault();
+        console.log($("#idReceta").val())
+        //var formData = new FormData(this);//a revisar, no pasa bien los datos, o tiene conflicto con los datos del back
+        var indice=0;
+        var postdata = {
+            carga: true,
+            idReceta:$("#idReceta").val(),
+            titulo: $("#titulo").val(),
+            imgPrincipal : $("#imgPrincipalPreview").attr("src"),
+            tipos:$("[name='tipo[]']").map(function(){return this.value;}).get(),
+            ingredientes:$("[name='ingrediente[]']").map(function(){return this.value;}).get(),
+            cantidad:$("[name='cantidad[]']").map(function(){return this.value;}).get(),
+            paso:$("[name='paso[]']").map(function(){return this.value;}).get(),
+            imgPaso:$("[name='paso[]']").map(function(){return $("#imgPasoPreview"+indice).attr("src")==undefined?"nodata":$("#imgPasoPreview"+indice++).attr("src");}).get()
+            
+        }
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8", // $_POST
+            dataType : "json",
+            method: "POST",
+            url: "../php/actualizar_receta.php",
+            data: {receta: postdata},
+        success: function(data) {
+            if(data)
+            {
+                $("#myModal").modal("show");
+            }
+            
+        }
+        })
+    })
+}
+
 function cargarJsonCategorias()
 {
     let request = $.ajax(
@@ -341,4 +380,6 @@ $imagenPrevisualizacion.src = objectURL;})*/
         
         $("#listIngredientes").append($("<div>").load('../php/ingredientes%20dinamicos.php'));
     });
+
+    enviarReceta();
 }
