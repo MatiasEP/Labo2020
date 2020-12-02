@@ -301,9 +301,12 @@ function descargarPDF()
 			canvas.height = img.height;
 			var ctx = canvas.getContext("2d");
 			ctx.drawImage(img, 0, 0);
-			var dataURL = canvas.toDataURL("image/png");
-			img.src = dataURL;
-				
+			try {				
+				var dataURL = canvas.toDataURL("image/png");
+				img.src = dataURL;
+               	}catch (error) {
+
+                }
 		}
 
 		var images = document.getElementsByTagName("img");
