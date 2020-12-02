@@ -37,6 +37,18 @@ legend
     color: whitesmoke;    
 }
 
+.centrado
+{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.ok
+{
+    margin: auto;
+}
+
 .field-primary
 {
     text-align: center;

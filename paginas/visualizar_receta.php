@@ -79,10 +79,6 @@
                     </button>
                     <?php endif; ?>
                 </fieldset>
-                
-                <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("eliminar propio") || $ctrl->checkRole("eliminar todos"))): ?>  
-                    <div id="htmldeelimiar"></div>
-                <?php endif; ?>
 
                 <fieldset class="field-3"> 
                     <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("calificar"))): ?>  
@@ -107,6 +103,12 @@
                     <button class="btn btn-primary" id="descargar">Descargar como PDF</button>
                      <?php endif; ?>
                     
+                        
+                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("eliminar propio") || $ctrl->checkRole("eliminar todos"))): ?>  
+                            <button class="btn btn-danger"  id="btnEliminar">             
+                                <span class="glyphicon glyphicon-remove" id="eliminarReceta"> Eliminar receta</span>
+                            </button>
+                    <?php endif; ?>
                     <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("reportar"))): ?>  
 
                     <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
@@ -192,7 +194,26 @@
             </div>
             
             
-        </div>    
+        </div>   
+        <div class="modal fade" id="modalEliminar" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">La receta se elimino correctamente</h2>
+                    </div>
+                    <div class="modal-body centrado">
+                        <img class="img-responsive ok" src="../imagenes/ok.png" alt="">
+                         <br>
+                        <a href="../paginas/mostrar%20recetas%20por%20usuario.php" id="misRecetasModal">
+                        <button type="button" class="btn btn-primary" >
+                        <span class="glyphicon glyphicon-ok"></span>Aceptar
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> 
           
         
 </body>
