@@ -80,7 +80,9 @@
                     <?php endif; ?>
                 </fieldset>
 
-                <fieldset class="field-3">   
+                <fieldset class="field-3"> 
+                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("calificar"))): ?>  
+  
                     <h3 id="calActual">La calificacion actual es:  </h3> <br>
                     <div class="" id="calificar">
                         <h4>Calificar receta:</h4><br>
@@ -90,13 +92,23 @@
                         <button class="btn btn-warning" id="cal4" >4 <span class="glyphicon glyphicon-star"></button>
                         <button class="btn btn-warning" id="cal5" >5 <span class="glyphicon glyphicon-star"></button>
                         <br><br>
-                    </div>            
+                    </div>  
+                    <?php endif; ?>
+          
+                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("favorito"))): ?>  
                     <button class="btn btn-primary" id="favorito" class="agregar">Agregar a favoritos</button>
+                    <?php endif; ?>
+                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("descargarpdf"))): ?>  
+
                     <button class="btn btn-primary" id="descargar">Descargar como PDF</button>
+                     <?php endif; ?>
+                    
+                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("reportar"))): ?>  
 
                     <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                         <span class="glyphicon glyphicon-exclamation-sign"> Reportar receta</span>
                     </a>
+                    <?php endif; ?>
 
                     <div id="fb-root"></div>
 
@@ -112,14 +124,17 @@
 
                     <a href="http://localhost/Labo2020/paginas/editar_receta.php?id=<?php echo $_GET['id'];?>" target="_blank"> Editar Receta </a>
 
-                    <br>        
                     <?php endif; ?>
+                    <br>        
+
+                    <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("compartir"))): ?>  
 
                     <!-- Your share button code -->
                     <div class="fb-share-button" data-href="http://localhost/<?php echo $urlCompartir;?>" data-layout="button_count">
                     </div>
 
                     <a href="https://twitter.com/intent/tweet?text=recetas compartidas&url=http%3A%2F%2Flocalhost%2FLabo2020%2Fpaginas%2Fvisualizar_receta.php?id=<?php echo $idCompartir;?>&via=labo2020&hashtags=recetas" target="_blank">Twittear</a>
+                    <?php endif; ?>
                 </fieldset>
                     
                 <br>

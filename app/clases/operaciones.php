@@ -228,7 +228,7 @@ require_once __DIR__."/db.php";
                     if("compartir" == $checkPermiso){
                         return true;
                     }
-                    if("reportar" == $checkPermiso){
+                    if("reportar" == $checkPermiso && !$this->miReceta()){
                         return true;
                     }
                     if("ver reportes" == $checkPermiso){
@@ -237,13 +237,20 @@ require_once __DIR__."/db.php";
                     if("ignorar reporte" == $checkPermiso){
                         return true;
                     }
-                    if("stalker" == $checkPermiso){
+                    if("stalker" == $checkPermiso && !$this->miReceta()){
                         return true;
                     }
-                    if("favorito" == $checkPermiso){
+                    if("favorito" == $checkPermiso && !$this->miReceta()){
                         return true;
                     }
                     if("comentar" == $checkPermiso){
+                        return true;
+                    }
+                    
+                    if("calificar" == $checkPermiso && !$this->miReceta()){
+                        return true;
+                    }
+                    if("descargarpdf" == $checkPermiso){
                         return true;
                     }
                     return false;

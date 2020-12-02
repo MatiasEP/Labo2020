@@ -3,6 +3,8 @@
     require_once("../app/clases/google_auth.php");
     require_once("../app/clases/operaciones.php");
     require_once("../app/init.php");
+    $ctrl = new Operaciones();
+
 ?>
 
 <!------------------------------------- SECTOR GOOGLE ICONS -------------------------------------->  
@@ -21,7 +23,9 @@
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <img id="imgPerfil" class='img-circle perfilBarra' src=''>
                         <a id="primero"href="#"></a>
+                        <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("crear receta"))): ?>  
                         <a id="segundo" href="#"></a>
+                         <?php endif; ?>
                         <a id="tercero"href="#"></a>
                         <a id="cuarto"href="#"></a>
                         <a id="quinto"href="#"></a>
