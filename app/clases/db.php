@@ -1,5 +1,5 @@
 <?php 
-use MongoDB\Client;
+use \MongoDB\Client;
 use \MongoDB\Driver\BulkWrite;
 use \MongoDB\Driver\Query;
 use \MongoDB\Driver\ReadPreference;
@@ -61,6 +61,14 @@ use \MongoDB\Driver\ReadPreference;
             $resultado = $coleccion->findOne(['googleID' => $id]);
             return $resultado;
         }
+        
+        public function findRol($permiso)
+        {   
+            $coleccion = $this->getConnection()->proyecto->permisos;
+            $resultado = $coleccion->findOne(['rol' => $permiso]);
+            return $resultado;
+        }
+        
         public function comentarios($idReceta)
         {   
             

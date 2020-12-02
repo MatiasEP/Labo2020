@@ -170,7 +170,93 @@ require_once __DIR__."/db.php";
            }catch(Exception $ex){
 
            }
-		}
+        }
+       
+       public function getPermiso(){
+        try{
+             $usuario = $this->getUserInfo();
+             $db = new DB();
+             $rol = $db->findRol($usuario->rol);
+             return $rol;
+         }catch(Exception $ex){
+             return null;
+         }
+     }
+     
+     public function miReceta(){
+        try{
+            $idReceta = $_GET["id"];
+            return $this->editable($idReceta);
+         }catch(Exception $ex){
+             return null;
+         }
+     }
+        public function checkRole($checkPermiso){
+            try{
+               
+                $rol = $this->getPermiso();
+                $tienePermiso = false;
+                foreach ($rol->permisos as $permiso) {
+                    if($permiso == $checkPermiso){
+                        $tienePermiso = true;
+                    }
+                }
+               
+                if($tienePermiso){
+                    
+                    if("editar todos" == $checkPermiso){
+                        return true;
+                    }
+                    if("eliminar todos" == $checkPermiso){
+                        return true;
+                    }
+                    if("eliminar usuario" == $checkPermiso){
+                        return true;
+                    }
+                    if("crear receta" == $checkPermiso){
+                        return true;
+                    }
+                    if("editar propio" == $checkPermiso && $this->miReceta()){
+                       return true;
+                    }
+                    if("activar propio" == $checkPermiso && $this->miReceta()){
+                        return true;
+                    }
+                    if("eliminar propio" == $checkPermiso && $this->miReceta()){
+                        return true;
+                    }
+                    if("compartir" == $checkPermiso){
+                        return true;
+                    }
+                    if("reportar" == $checkPermiso){
+                        return true;
+                    }
+                    if("ver reportes" == $checkPermiso){
+                        return true;
+                    }
+                    if("ignorar reporte" == $checkPermiso){
+                        return true;
+                    }
+                    if("stalker" == $checkPermiso){
+                        return true;
+                    }
+                    if("favorito" == $checkPermiso){
+                        return true;
+                    }
+                    if("comentar" == $checkPermiso){
+                        return true;
+                    }
+                    return false;
+                }else{
+                    return false;
+                }
+
+            }catch(Exception $ex){
+                return false;
+
+            }
+        }
+
 
     }
 ?>
