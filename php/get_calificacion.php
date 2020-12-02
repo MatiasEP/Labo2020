@@ -31,7 +31,14 @@
                 }
             }
 
-            $total = $total/$contador;
+            if($contador>0)
+            {                
+                $total = $total/$contador;
+            }
+            else
+            {
+                $total = 0;
+            }
             header('Content-Type: application/json');
             echo json_encode($total);
         }
