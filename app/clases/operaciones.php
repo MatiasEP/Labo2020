@@ -285,7 +285,16 @@ require_once __DIR__."/db.php";
                     if("stalker" == $checkPermiso && !$this->miReceta()){
                         return true;
                     }
+                    
+                    if("ver seguidos" == $checkPermiso)
+                    {
+                        return true;
+                    }
                     if("favorito" == $checkPermiso && !$this->miReceta()){
+                        return true;
+                    }
+                    if("verfavoritos" == $checkPermiso)
+                    {
                         return true;
                     }
                     if("comentar" == $checkPermiso){
