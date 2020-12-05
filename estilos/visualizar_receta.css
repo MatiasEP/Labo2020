@@ -59,6 +59,12 @@ legend
     text-align: center;    
 }
 
+.chat_pic
+{
+    width: 50px;
+    height: 50px;
+    padding: 5px;    
+}
 
 .field-3
 {

@@ -128,10 +128,10 @@
 
                     <?php if ($ctrl->isLoggedIn()  && ($ctrl->checkRole("editar propio") || $ctrl->checkRole("editar todos"))): ?>  
 
-                    <a href="http://localhost/Labo2020/paginas/editar_receta.php?id=<?php echo $_GET['id'];?>" target="_blank"> Editar Receta </a>
+                    <a href="http://localhost/Labo2020/paginas/editar_receta.php?id=<?php echo $_GET['id'];?>" target="_blank" class="btn btn-primary" role="button"> Editar Receta </a>
 
                     <?php endif; ?>
-                    <br>        
+                         
 
                     <?php if ($ctrl->checkRole("compartir")): ?>  
 
@@ -139,7 +139,7 @@
                     <div class="fb-share-button" data-href="http://localhost/<?php echo $urlCompartir;?>" data-layout="button_count">
                     </div>
 
-                    <a href="https://twitter.com/intent/tweet?text=recetas compartidas&url=http%3A%2F%2Flocalhost%2FLabo2020%2Fpaginas%2Fvisualizar_receta.php?id=<?php echo $idCompartir;?>&via=labo2020&hashtags=recetas" target="_blank">Twittear</a>
+                    <a href="https://twitter.com/intent/tweet?text=recetas compartidas&url=http%3A%2F%2Flocalhost%2FLabo2020%2Fpaginas%2Fvisualizar_receta.php?id=<?php echo $idCompartir;?>&via=labo2020&hashtags=recetas" target="_blank" class="btn btn-primary" role="button">Twittear</a>
                     <?php endif; ?>
                 </fieldset>
                     
